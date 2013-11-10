@@ -44,7 +44,7 @@
   [usernameTextField setPlaceholder:@"Username"];
   [usernameTextField setReturnKeyType:UIReturnKeyDone];
   [usernameTextField setTag:999];
-  [usernameTextField setDelegate:self];
+  //[usernameTextField setDelegate:self];
   [usernameTextField setKeyboardType:UIKeyboardTypeEmailAddress];
   [usernameTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
   [usernameTextField setHidden:YES];

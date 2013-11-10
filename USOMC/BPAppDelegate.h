@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BPLoginNavigationViewController.h"
+#import "BPLoginViewController.h"
 #import "BPEventsNavigationController.h"
 #import "BPEventsTableViewController.h"
 

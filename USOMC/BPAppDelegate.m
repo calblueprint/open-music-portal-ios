@@ -13,6 +13,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
+  BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init];
+  BPLoginNavigationViewController *loginNavigationViewController = [[BPLoginNavigationViewController alloc] initWithRootViewController:loginViewController];
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
   
