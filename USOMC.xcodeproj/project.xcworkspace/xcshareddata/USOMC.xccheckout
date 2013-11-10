@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CF2BA29E-5880-4D6D-BC3C-9A945C8E9DAA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>USOMC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F55AC05A-915B-48E9-9B03-DF97281E6513</key>
+		<string>ssh://github.com/calblueprint/usomc-ios-v2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>USOMC/USOMC.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F55AC05A-915B-48E9-9B03-DF97281E6513</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/calblueprint/usomc-ios-v2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F55AC05A-915B-48E9-9B03-DF97281E6513</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F55AC05A-915B-48E9-9B03-DF97281E6513</string>
+			<key>IDESourceControlWCCName</key>
+			<string>usomc-ios-v2</string>
+		</dict>
+	</array>
+</dict>
+</plist>
