@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09DFFA22182F1C5200488C2E /* BPLoginNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA21182F1C5200488C2E /* BPLoginNavigationViewController.m */; };
+		0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0967DA451834C23D009D494A /* BPLoginNavigationController.m */; };
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
 		4DBBD94F182F0F2E00166BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD94E182F0F2E00166BC7 /* Foundation.framework */; };
 		4DBBD951182F0F2E00166BC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */; };
@@ -40,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09DFFA20182F1C5200488C2E /* BPLoginNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginNavigationViewController.h; path = Views/Login/BPLoginNavigationViewController.h; sourceTree = "<group>"; };
-		09DFFA21182F1C5200488C2E /* BPLoginNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginNavigationViewController.m; path = Views/Login/BPLoginNavigationViewController.m; sourceTree = "<group>"; };
+		0967DA441834C23D009D494A /* BPLoginNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginNavigationController.h; path = Views/Login/BPLoginNavigationController.h; sourceTree = "<group>"; };
+		0967DA451834C23D009D494A /* BPLoginNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginNavigationController.m; path = Views/Login/BPLoginNavigationController.m; sourceTree = "<group>"; };
 		09DFFA23182F1C7500488C2E /* BPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginViewController.h; path = Views/Login/BPLoginViewController.h; sourceTree = "<group>"; };
 		09DFFA24182F1C7500488C2E /* BPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginViewController.m; path = Views/Login/BPLoginViewController.m; sourceTree = "<group>"; };
 		4D425E1EE5B347A0A41FA6BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -102,8 +102,8 @@
 		09DFFA1F182F1BF400488C2E /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				09DFFA20182F1C5200488C2E /* BPLoginNavigationViewController.h */,
-				09DFFA21182F1C5200488C2E /* BPLoginNavigationViewController.m */,
+				0967DA441834C23D009D494A /* BPLoginNavigationController.h */,
+				0967DA451834C23D009D494A /* BPLoginNavigationController.m */,
 				09DFFA23182F1C7500488C2E /* BPLoginViewController.h */,
 				09DFFA24182F1C7500488C2E /* BPLoginViewController.m */,
 			);
@@ -352,10 +352,10 @@
 				09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */,
 				4DBBD994182F115600166BC7 /* BPEventsNavigationController.m in Sources */,
 				4DBBD986182F109100166BC7 /* BPViewController.m in Sources */,
-				09DFFA22182F1C5200488C2E /* BPLoginNavigationViewController.m in Sources */,
 				4DBBD991182F111C00166BC7 /* BPNavigationController.m in Sources */,
 				4DBBD95F182F0F2E00166BC7 /* BPAppDelegate.m in Sources */,
 				4DBBD95B182F0F2E00166BC7 /* main.m in Sources */,
+				0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */,
 				4DBBD98B182F10C900166BC7 /* BPTableViewController.m in Sources */,
 				4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */,
 			);

@@ -7,8 +7,14 @@
 //
 
 #import "BPViewController.h"
+#import <RestKit/RestKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+//#import <AFNetworking/AFJSONRequestOperation.h>
 
 #import "BPEventsNavigationController.h"
+#import "UIButton+NUI.h"
+#import "UILabel+NUI.h"
+#import "UITextField+NUI.h"
 
 @interface BPLoginViewController : BPViewController {
   UILabel *verifiedText;

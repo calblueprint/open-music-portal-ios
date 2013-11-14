@@ -1,20 +1,19 @@
 //
-//  BPLoginNavigationViewController.h
-//  USOMC
+//  BPLoginNavigationController.h
+//  
 //
-//  Created by William Tang on 11/9/13.
-//  Copyright (c) 2013 Mark Miyashita. All rights reserved.
+//  Created by William Tang on 11/14/13.
+//
 //
 
 #import "BPNavigationController.h"
 #import "BPEventsNavigationController.h"
 
-@interface BPLoginNavigationViewController : BPNavigationController {
+@interface BPLoginNavigationController : BPNavigationController {
   NSMutableDictionary *params;
   BPEventsNavigationController *eventsNavigationController;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *params;
 @property (nonatomic, retain) BPEventsNavigationController *eventsNavigationController;
-
 @end
