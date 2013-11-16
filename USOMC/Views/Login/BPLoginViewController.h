@@ -19,12 +19,14 @@
 @interface BPLoginViewController : BPViewController {
   UILabel *verifiedText;
   UITextField *usernameField;
+  UITextField *passwordField;
   
   BPEventsNavigationController *eventsNavigationController;
 }
 
 @property (nonatomic, assign) UILabel *verifiedText;
 @property (nonatomic, assign) UITextField *usernameField;
+@property (nonatomic, assign) UITextField *passwordField;
 @property (nonatomic, retain) BPEventsNavigationController *eventsNavigationController;
 
 - (id) init:(BPEventsNavigationController *)eventPage;
