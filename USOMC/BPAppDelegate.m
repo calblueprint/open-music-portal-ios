@@ -23,7 +23,7 @@
   
   self.window.rootViewController = eventsNavigationController;
   [self.window makeKeyAndVisible];
-   
+  
   // Login
   BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
   BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
@@ -43,6 +43,14 @@
   [RKObjectManager setSharedManager:objectManager];
 
   return YES;
+}
+
+-(void)checkLogin {
+  RKObjectManager *manager = [RKObjectManager sharedManager];
+  
+  KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
+  [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
+  
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application {

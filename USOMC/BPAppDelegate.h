@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 
+#import "KeychainItemWrapper.h"
 #import "BPLoginNavigationController.h"
 #import "BPLoginViewController.h"
 #import "BPEventsNavigationController.h"
