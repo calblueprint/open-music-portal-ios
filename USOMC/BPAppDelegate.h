@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
+#import "BPLoginNavigationController.h"
+#import "BPLoginViewController.h"
 #import "BPEventsNavigationController.h"
 #import "BPEventsTableViewController.h"
 
 @interface BPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) BPLoginNavigationController *loginNavigationController;
 
 @end

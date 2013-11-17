@@ -7,17 +7,40 @@
 //
 
 #import "BPAppDelegate.h"
+#import "NUIAppearance.h"
+
+
 
 @implementation BPAppDelegate
+@synthesize loginNavigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  [NUIAppearance init];
   
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
   
   self.window.rootViewController = eventsNavigationController;
   [self.window makeKeyAndVisible];
+   
+  // Login
+  BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
+  BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
+  [self setLoginNavigationController:loginNavController];
+  
+  //let AFNetworking manage the activity indicator
+  [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+  
+  // Initialize HTTPClients
+  NSURL *localURL = [NSURL URLWithString:@"http://localhost:3000/api/v1/"];
+  AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:localURL];
+  
+  [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
+  
+  //Initialize RestKit RKObjectManager
+  RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+  [RKObjectManager setSharedManager:objectManager];
 
   return YES;
 }
