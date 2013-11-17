@@ -18,16 +18,12 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   [NUIAppearance init];
   
-  //BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init];
-  //BPLoginNavigationViewController *loginNavigationViewController = [[BPLoginNavigationViewController alloc] initWithRootViewController:loginViewController];
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
   
   self.window.rootViewController = eventsNavigationController;
-  //self.window.rootViewController = loginNavigationViewController;
   [self.window makeKeyAndVisible];
    
-  
   // Login
   BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
   BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
