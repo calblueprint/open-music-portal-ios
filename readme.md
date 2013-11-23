@@ -8,4 +8,4 @@ To install:
     bundle install
     pod install
 
-After these steps, only open Judgement.xcworkspace
+After these steps, only open USOMC.xcworkspace
