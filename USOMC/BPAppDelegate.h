@@ -15,6 +15,7 @@
 #import "BPEventsTableViewController.h"
 #import "KeychainItemWrapper.h"
 #import "BPJudge.h"
+#import "BPEventViewController.h"
 
 @interface BPAppDelegate : UIResponder <UIApplicationDelegate>
 
