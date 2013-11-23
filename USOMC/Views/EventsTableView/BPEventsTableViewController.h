@@ -7,7 +7,9 @@
 //
 
 #import "BPTableViewController.h"
+#import "BPJudge.h"
 
 @interface BPEventsTableViewController : BPTableViewController
 
+@property (nonatomic, assign) BPJudge *judge;
 @end

@@ -12,6 +12,7 @@
 
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
+@synthesize eventTableViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -65,11 +66,14 @@
   [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
     NSLog(@"Succesfully logged in!");
     BPJudge *judge = [mappingResult.dictionary objectForKey:@"judge"];
-    
+    [self.eventTableViewController setJudge:judge];
+    [hud hide:YES];
     
   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
     NSLog(@"Couldn't log in");
   }];
+  
+  [manager enqueueObjectRequestOperation:objectRequestOperation];
   
   
 }
