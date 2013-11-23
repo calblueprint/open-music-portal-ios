@@ -33,7 +33,6 @@
   [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
   [self.tableView addSubview:refresh];
-    
   [self refreshTable:self.refreshControl];
 	// Do any additional setup after loading the view.
 }
@@ -41,6 +40,11 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,6 +75,7 @@
   
   BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
   cell.textLabel.text = cell_event.name;
+  NSLog(@"cell_event.name is %@", cell_event.name);
   return cell;
 }
 
@@ -82,7 +87,10 @@
 
 - (void)loadEvents {
   NSLog(@"entering loadEvents method");
-  NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil method:RKRequestMethodGET path:@"events/index" parameters:nil];
+  NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
+                                                                method:RKRequestMethodGET
+                                                                path:@"events/index"
+                                                                parameters:nil];
   NSLog(@"about to run RKObjectRequestOperation");
   RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[BPEvent.eventsResponseDescriptor]];
   NSLog(@"finished RKObjectRequestOperation");

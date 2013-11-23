@@ -42,7 +42,6 @@
   
   self.window.rootViewController = eventsNavigationController;
   [self.window makeKeyAndVisible];
-  
   return YES;
 }
 

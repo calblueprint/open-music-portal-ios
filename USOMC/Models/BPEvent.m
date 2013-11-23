@@ -40,7 +40,11 @@
 
 + (RKResponseDescriptor *)eventsResponseDescriptor {
     NSLog(@"entering eventsResponseDescriptor");
-    RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping
+        method:RKRequestMethodGET
+        pathPattern:nil
+        keyPath:@"events"
+        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     if (descriptor) {
         NSLog(@"descriptor in eventsResponseDescriptor is not nil");
         // Custom initialization
