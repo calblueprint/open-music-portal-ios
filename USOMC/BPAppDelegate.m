@@ -16,18 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  [NUIAppearance init];
-  
-  BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
-  BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
-  
-  self.window.rootViewController = eventsNavigationController;
-  [self.window makeKeyAndVisible];
-  
-  // Login
-  BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
-  BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
-  [self setLoginNavigationController:loginNavController];
   
   //let AFNetworking manage the activity indicator
   [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
@@ -41,7 +29,20 @@
   //Initialize RestKit RKObjectManager
   RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
   [RKObjectManager setSharedManager:objectManager];
-
+  
+  [NUIAppearance init];
+  
+  BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
+  BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
+  
+  // Login
+  BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
+  BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
+  [self setLoginNavigationController:loginNavController];
+  
+  self.window.rootViewController = eventsNavigationController;
+  [self.window makeKeyAndVisible];
+  
   return YES;
 }
 
@@ -71,6 +72,7 @@
     
   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
     NSLog(@"Couldn't log in");
+    [hud hide:YES];
   }];
   
   [manager enqueueObjectRequestOperation:objectRequestOperation];
