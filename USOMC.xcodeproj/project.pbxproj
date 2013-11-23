@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0932E26A1838435F00B473BA /* KeychainItemWrapper.h in Resources */ = {isa = PBXBuildFile; fileRef = 0932E2671838435F00B473BA /* KeychainItemWrapper.h */; };
-		0932E26B1838435F00B473BA /* KeychainItemWrapper.m in Resources */ = {isa = PBXBuildFile; fileRef = 0932E2681838435F00B473BA /* KeychainItemWrapper.m */; };
 		0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0967DA451834C23D009D494A /* BPLoginNavigationController.m */; };
+		098909F018414888004C22C2 /* KeychainItemWrapper.h in Resources */ = {isa = PBXBuildFile; fileRef = 098909ED18414888004C22C2 /* KeychainItemWrapper.h */; };
+		098909F118414888004C22C2 /* KeychainItemWrapper.m in Resources */ = {isa = PBXBuildFile; fileRef = 098909EE18414888004C22C2 /* KeychainItemWrapper.m */; };
+		098909F51841567F004C22C2 /* BPJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F41841567F004C22C2 /* BPJudge.m */; };
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
 		4DBBD94F182F0F2E00166BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD94E182F0F2E00166BC7 /* Foundation.framework */; };
 		4DBBD951182F0F2E00166BC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */; };
@@ -42,10 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0932E2671838435F00B473BA /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		0932E2681838435F00B473BA /* KeychainItemWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		0967DA441834C23D009D494A /* BPLoginNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginNavigationController.h; path = Views/Login/BPLoginNavigationController.h; sourceTree = "<group>"; };
 		0967DA451834C23D009D494A /* BPLoginNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginNavigationController.m; path = Views/Login/BPLoginNavigationController.m; sourceTree = "<group>"; };
+		098909ED18414888004C22C2 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		098909EE18414888004C22C2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		098909F31841567F004C22C2 /* BPJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPJudge.h; path = Models/BPJudge.h; sourceTree = "<group>"; };
+		098909F41841567F004C22C2 /* BPJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPJudge.m; path = Models/BPJudge.m; sourceTree = "<group>"; };
 		09DFFA23182F1C7500488C2E /* BPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginViewController.h; path = Views/Login/BPLoginViewController.h; sourceTree = "<group>"; };
 		09DFFA24182F1C7500488C2E /* BPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginViewController.m; path = Views/Login/BPLoginViewController.m; sourceTree = "<group>"; };
 		4D425E1EE5B347A0A41FA6BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -103,14 +106,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0932E2691838435F00B473BA /* Keychain */ = {
+		098909EF18414888004C22C2 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
-				0932E2671838435F00B473BA /* KeychainItemWrapper.h */,
-				0932E2681838435F00B473BA /* KeychainItemWrapper.m */,
+				098909ED18414888004C22C2 /* KeychainItemWrapper.h */,
+				098909EE18414888004C22C2 /* KeychainItemWrapper.m */,
 			);
 			name = Keychain;
 			path = BPClasses/Keychain;
+			sourceTree = "<group>";
+		};
+		098909F2184155FE004C22C2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				098909F31841567F004C22C2 /* BPJudge.h */,
+				098909F41841567F004C22C2 /* BPJudge.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		09DFFA1F182F1BF400488C2E /* Login */ = {
@@ -162,6 +174,7 @@
 				4DBBD95D182F0F2E00166BC7 /* BPAppDelegate.h */,
 				4DBBD95E182F0F2E00166BC7 /* BPAppDelegate.m */,
 				4DBBD983182F105500166BC7 /* BPClasses */,
+				098909F2184155FE004C22C2 /* Models */,
 				4DBBD987182F109400166BC7 /* Views */,
 				4DBBD966182F0F2E00166BC7 /* Images.xcassets */,
 				4DBBD955182F0F2E00166BC7 /* Supporting Files */,
@@ -201,7 +214,7 @@
 		4DBBD983182F105500166BC7 /* BPClasses */ = {
 			isa = PBXGroup;
 			children = (
-				0932E2691838435F00B473BA /* Keychain */,
+				098909EF18414888004C22C2 /* Keychain */,
 				4DBBD984182F109100166BC7 /* BPViewController.h */,
 				4DBBD985182F109100166BC7 /* BPViewController.m */,
 				4DBBD98F182F111C00166BC7 /* BPNavigationController.h */,
@@ -311,10 +324,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0932E26B1838435F00B473BA /* KeychainItemWrapper.m in Resources */,
+				098909F118414888004C22C2 /* KeychainItemWrapper.m in Resources */,
 				4DBBD967182F0F2E00166BC7 /* Images.xcassets in Resources */,
 				4DBBD959182F0F2E00166BC7 /* InfoPlist.strings in Resources */,
-				0932E26A1838435F00B473BA /* KeychainItemWrapper.h in Resources */,
+				098909F018414888004C22C2 /* KeychainItemWrapper.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */,
+				098909F51841567F004C22C2 /* BPJudge.m in Sources */,
 				4DBBD994182F115600166BC7 /* BPEventsNavigationController.m in Sources */,
 				4DBBD986182F109100166BC7 /* BPViewController.m in Sources */,
 				4DBBD991182F111C00166BC7 /* BPNavigationController.m in Sources */,

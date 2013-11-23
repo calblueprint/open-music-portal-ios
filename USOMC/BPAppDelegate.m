@@ -10,7 +10,6 @@
 #import "NUIAppearance.h"
 
 
-
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
 
@@ -46,13 +45,35 @@
 }
 
 -(void)checkLogin {
-  RKObjectManager *manager = [RKObjectManager sharedManager];
   
+  RKObjectManager *manager = [RKObjectManager sharedManager];
   KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
   [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
   
+  NSUUID *vendorIdObject = [[UIDevice currentDevice] identifierForVendor];
+  NSString *uuid = [vendorIdObject UUIDString];
+  NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+  NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
+  NSDictionary *auth = @{@"app_id":uuid, @"username":username, @"password":password};
+  
+  MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.window.rootViewController.view animated:YES];
+  hud.mode = MBProgressHUDModeIndeterminate;
+  hud.labelText = @"Loading";
+  
+  NSMutableURLRequest *request = [manager requestWithObject:nil method:RKRequestMethodPOST path:@"start" parameters:auth];
+  RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ BPJudge.judgesResponseDescriptor]];
+  [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSLog(@"Succesfully logged in!");
+    BPJudge *judge = [mappingResult.dictionary objectForKey:@"judge"];
+    
+    
+  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    NSLog(@"Couldn't log in");
+  }];
+  
+  
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application {
   // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
   // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
