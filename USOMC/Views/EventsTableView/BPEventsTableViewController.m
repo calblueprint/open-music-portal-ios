@@ -13,6 +13,7 @@
 @end
 
 @implementation BPEventsTableViewController
+@synthesize judge;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

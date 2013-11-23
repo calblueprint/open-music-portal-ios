@@ -7,7 +7,9 @@
 //
 
 #import "BPNavigationController.h"
+#import "BPJudge.h"
 
 @interface BPEventsNavigationController : BPNavigationController
+@property (nonatomic, retain) BPJudge *judge;
 
 @end

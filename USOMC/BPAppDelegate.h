@@ -13,10 +13,13 @@
 #import "BPLoginViewController.h"
 #import "BPEventsNavigationController.h"
 #import "BPEventsTableViewController.h"
+#import "KeychainItemWrapper.h"
+#import "BPJudge.h"
 
 @interface BPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) BPLoginNavigationController *loginNavigationController;
+@property (strong, nonatomic) BPEventsTableViewController *eventTableViewController;
 
 @end
