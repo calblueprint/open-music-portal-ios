@@ -56,10 +56,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  /*
   BPEventsTableViewCell *cell = (BPEventsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
   self.subEvent.title = cell.textLabel.text;
   
   [self.navigationController pushViewController:self.subEvent animated:YES];
+   */
+
+  BPEventsTableViewCell *cell = (BPEventsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+  if (indexPath != NULL) {
+    NSLog(@"Selected cell at index: %d", indexPath.row);
+    NSLog(@"cell name: %@", cell.textLabel.text);
+    BPEvent *event = [self.events objectAtIndex:indexPath.row];
+    BPEventViewController *eventViewController = [[BPEventViewController alloc] init];
+    NSLog(@"event.name: %@", event.name);
+    
+    [eventViewController setName:event.name];
+    
+    [eventViewController makeLabels];
+    [self.eventsNavigationController pushViewController:eventViewController animated:YES];
+  }
+
 }
 
 - (BPEventsTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,6 +93,8 @@
   BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
   cell.textLabel.text = cell_event.name;
   NSLog(@"cell_event.name is %@", cell_event.name);
+  
+
   return cell;
 }
 
