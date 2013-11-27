@@ -66,10 +66,8 @@
   BPEventsTableViewCell *cell = (BPEventsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
   if (indexPath != NULL) {
     NSLog(@"Selected cell at index: %d", indexPath.row);
-    NSLog(@"cell name: %@", cell.textLabel.text);
     BPEvent *event = [self.events objectAtIndex:indexPath.row];
     BPEventViewController *eventViewController = [[BPEventViewController alloc] init];
-    NSLog(@"event.name: %@", event.name);
     
     [eventViewController setName:event.name];
     
