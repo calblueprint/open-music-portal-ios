@@ -8,10 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "BPViewController.h"
 #import "BPEvent.h"
-#import "BPCommentSplitViewController.h"
 #import "BPEventsNavigationController.h"
-#import "BPUsersTableViewController.h"
-#import "BPCommentViewController.h"
+#import "BPDummyViewController.h"
 
 @interface BPEventViewController : BPViewController
 
