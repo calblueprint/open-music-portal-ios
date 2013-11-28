@@ -34,6 +34,7 @@
   
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
+  [eventsTableViewController setEventsNavigationController:eventsNavigationController];
   
   // Login
   BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];

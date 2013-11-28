@@ -29,6 +29,10 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    NSLog(@"VIEWDIDLOAD - EVENTSTABLEVIEWCONTROLLER");
+    if (self.eventsNavigationController == nil) {
+        NSLog(@"THE EVENTSNAVIGATIONCONTROLLER is NIL");
+    }
   UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
   [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
@@ -66,13 +70,8 @@
     [self.subEvent.view setBackgroundColor:[UIColor whiteColor]];
     [self.subEvent setEventsNavigationController:self.eventsNavigationController];
     [self.eventsNavigationController pushViewController:self.subEvent animated:YES];
-    
-    
-    
-  //self.subEvent.title = cell.textLabel.text;
   
-  [self.navigationController pushViewController:self.subEvent animated:YES];
-}
+ }
 
 - (BPEventsTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

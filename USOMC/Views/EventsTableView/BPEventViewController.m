@@ -95,8 +95,16 @@ UILabel *roomLabel;
     NSLog(@"commentButtonPressed!");
     BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
     [commentViewController setEventName:self.name];
-    //[commentViewController makeLabels];
+    [commentViewController.view setBackgroundColor:[UIColor whiteColor]];
     [self.eventsNavigationController pushViewController:commentViewController animated:YES];
+    /*
+    BPUsersTableViewController *usersTableViewController = [[BPUsersTableViewController alloc] init];
+    BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
+    BPCommentSplitViewController *commentSplitViewController = [[BPCommentSplitViewController alloc] init];
+    NSArray *twoViewControllers = @[usersTableViewController, commentViewController];
+    commentSplitViewController.viewControllers = twoViewControllers;
+    [self.eventsNavigationController pushViewController:commentSplitViewController animated:YES];
+     */
 }
 
 

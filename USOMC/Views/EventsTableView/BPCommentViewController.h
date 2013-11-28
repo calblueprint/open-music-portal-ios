@@ -10,6 +10,4 @@
 
 @interface BPCommentViewController : BPViewController
 @property (nonatomic) NSString *eventName;
-@property (nonatomic) NSArray *contestants;
-
 @end
