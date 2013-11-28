@@ -32,6 +32,15 @@
   
   [NUIAppearance init];
   
+  BPUsersTableViewController *usersTableViewController = [[BPUsersTableViewController alloc] init];
+  [usersTableViewController.view setBackgroundColor:[UIColor whiteColor]];
+  BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
+  [commentViewController.view setBackgroundColor:[UIColor whiteColor]];
+  BPCommentSplitViewController *commentSplitViewController = [[BPCommentSplitViewController alloc] init];
+  NSArray *twoViewControllers = @[usersTableViewController, commentViewController];
+  commentSplitViewController.viewControllers = twoViewControllers;
+  [commentSplitViewController.view setBackgroundColor:[UIColor whiteColor]];
+  
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
   [eventsTableViewController setEventsNavigationController:eventsNavigationController];
@@ -41,7 +50,7 @@
   BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
   [self setLoginNavigationController:loginNavController];
   
-  self.window.rootViewController = eventsNavigationController;
+  self.window.rootViewController = commentSplitViewController;
   [self.window makeKeyAndVisible];
   return YES;
 }
