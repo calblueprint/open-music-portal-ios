@@ -29,6 +29,10 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    NSLog(@"VIEWDIDLOAD - EVENTSTABLEVIEWCONTROLLER");
+    if (self.eventsNavigationController == nil) {
+        NSLog(@"THE EVENTSNAVIGATIONCONTROLLER is NIL");
+    }
   UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
   [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
@@ -56,11 +60,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  BPEventsTableViewCell *cell = (BPEventsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-  self.subEvent.title = cell.textLabel.text;
+    BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
+    NSLog(@"self.events objectAtIndex: %d: %@", indexPath.row, cell_event.name);
+    self.subEvent = [[BPEventViewController alloc] init];
+    [self.subEvent setName:cell_event.name];
+    [self.subEvent setTitle: cell_event.name];
+    [self.subEvent makeLabels];
+    [self.subEvent makeButtons];
+    [self.subEvent.view setBackgroundColor:[UIColor whiteColor]];
+    [self.subEvent setEventsNavigationController:self.eventsNavigationController];
+    [self.eventsNavigationController pushViewController:self.subEvent animated:YES];
   
-  [self.navigationController pushViewController:self.subEvent animated:YES];
-}
+ }
 
 - (BPEventsTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

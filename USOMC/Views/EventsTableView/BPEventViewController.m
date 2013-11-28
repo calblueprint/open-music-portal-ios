@@ -16,6 +16,7 @@
     
 
 UILabel *nameLabel;
+UILabel *roomLabel;
 //UILabel *roomNumberLabel;
 //UITableView *contestantListTable;
 //UITableView *judgeTable;
@@ -30,6 +31,7 @@ UILabel *nameLabel;
 //@synthesize judgeList;
 //@synthesize startTime;
 //@synthesize endTime;
+@synthesize eventsNavigationController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,9 +51,13 @@ UILabel *nameLabel;
 
 - (void)makeLabels {
     //User name label
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
-    nameLabel.text = [NSString stringWithFormat:@"Name: %@", self.name];
-    [self.view addSubview:nameLabel];
+    //nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
+    //nameLabel.text = [NSString stringWithFormat:@"Name: %@", self.name];
+    //[self.view addSubview:nameLabel];
+    
+    roomLabel =[[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
+    roomLabel.text = @"Room: 150";
+    [self.view addSubview:roomLabel];
     
     /*
     startTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 200, 300, 100)];
@@ -62,25 +68,45 @@ UILabel *nameLabel;
     
     */
     
-    /*
-    //City label
-    city_label = [[UILabel alloc] initWithFrame:CGRectMake(150 , 200,300 ,100)];
-    city_label.text = [NSString stringWithFormat:@"City: %@", self.city];
-    [self.view addSubview:city_label];
-    
-    //state label
-    state_label = [[UILabel alloc] initWithFrame:CGRectMake(150 ,250 ,300 ,100)];
-    state_label.text = [NSString stringWithFormat:@"State: %@", self.state];
-    [self.view addSubview:state_label];
-    
-    //Country label
-    country_label = [[UILabel alloc] initWithFrame:CGRectMake(150 , 300 ,300 ,100)];
-    country_label.text = [NSString stringWithFormat:@"Country: %@", self.country];
-    [self.view addSubview:country_label];
-     */
-    
     
 }
+- (void)makeButtons {
+    UIButton *commentButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [commentButton setBackgroundColor:[UIColor grayColor]];
+    [commentButton setFrame:CGRectMake(150, 300, 300, 100)];
+    [commentButton addTarget:self action:@selector(commentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [commentButton setTitle:@"Comment on a Contestant" forState:UIControlStateNormal];
+    [commentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.view addSubview:commentButton];
+    
+    UIButton *rateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [rateButton setBackgroundColor:[UIColor grayColor]];
+    [rateButton setFrame:CGRectMake(150, 450, 300, 100)];
+    [rateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    //[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [rateButton setTitle:@"Rate the Contestants (1 judge only)" forState:UIControlStateNormal];
+    [self.view addSubview:rateButton];
+}
+
+
+
+- (void)commentButtonPressed: (id)selector {
+    NSLog(@"commentButtonPressed!");
+    BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
+    [commentViewController setEventName:self.name];
+    [commentViewController.view setBackgroundColor:[UIColor whiteColor]];
+    [self.eventsNavigationController pushViewController:commentViewController animated:YES];
+    /*
+    BPUsersTableViewController *usersTableViewController = [[BPUsersTableViewController alloc] init];
+    BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
+    BPCommentSplitViewController *commentSplitViewController = [[BPCommentSplitViewController alloc] init];
+    NSArray *twoViewControllers = @[usersTableViewController, commentViewController];
+    commentSplitViewController.viewControllers = twoViewControllers;
+    [self.eventsNavigationController pushViewController:commentSplitViewController animated:YES];
+     */
+}
+
 
 - (void)didReceiveMemoryWarning
 {

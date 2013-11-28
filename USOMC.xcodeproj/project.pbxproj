@@ -11,6 +11,10 @@
 		098909F51841567F004C22C2 /* BPJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F41841567F004C22C2 /* BPJudge.m */; };
 		098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F718415E89004C22C2 /* KeychainItemWrapper.m */; };
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
+		1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */; };
+		1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */; };
+		1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C38184729E500E2F8BC /* BPCommentViewController.m */; };
+		1CE88C3C18472A9600E2F8BC /* BPCommentSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C3B18472A9600E2F8BC /* BPCommentSplitViewController.m */; };
 		4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFB18416D7C006E09F0 /* BPEvent.m */; };
 		4D047EFF18416D9A006E09F0 /* BPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFE18416D9A006E09F0 /* BPTableViewCell.m */; };
 		4D047F0418416DC3006E09F0 /* BPEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */; };
@@ -54,6 +58,14 @@
 		098909F718415E89004C22C2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		09DFFA23182F1C7500488C2E /* BPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginViewController.h; path = Views/Login/BPLoginViewController.h; sourceTree = "<group>"; };
 		09DFFA24182F1C7500488C2E /* BPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginViewController.m; path = Views/Login/BPLoginViewController.m; sourceTree = "<group>"; };
+		1CE88C2E1847244700E2F8BC /* BPSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSplitViewController.h; path = BPClasses/BPSplitViewController.h; sourceTree = "<group>"; };
+		1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPSplitViewController.m; path = BPClasses/BPSplitViewController.m; sourceTree = "<group>"; };
+		1CE88C341847262C00E2F8BC /* BPUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUsersTableViewController.h; path = Views/EventsTableView/BPUsersTableViewController.h; sourceTree = "<group>"; };
+		1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUsersTableViewController.m; path = Views/EventsTableView/BPUsersTableViewController.m; sourceTree = "<group>"; };
+		1CE88C37184729E500E2F8BC /* BPCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCommentViewController.h; path = Views/EventsTableView/BPCommentViewController.h; sourceTree = "<group>"; };
+		1CE88C38184729E500E2F8BC /* BPCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCommentViewController.m; path = Views/EventsTableView/BPCommentViewController.m; sourceTree = "<group>"; };
+		1CE88C3A18472A9600E2F8BC /* BPCommentSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCommentSplitViewController.h; path = Views/EventsTableView/BPCommentSplitViewController.h; sourceTree = "<group>"; };
+		1CE88C3B18472A9600E2F8BC /* BPCommentSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCommentSplitViewController.m; path = Views/EventsTableView/BPCommentSplitViewController.m; sourceTree = "<group>"; };
 		4D047EFA18416D7C006E09F0 /* BPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEvent.h; path = Models/BPEvent.h; sourceTree = "<group>"; };
 		4D047EFB18416D7C006E09F0 /* BPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEvent.m; path = Models/BPEvent.m; sourceTree = "<group>"; };
 		4D047EFD18416D9A006E09F0 /* BPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPTableViewCell.h; path = BPClasses/BPTableViewCell.h; sourceTree = "<group>"; };
@@ -72,7 +84,7 @@
 		4DBBD95A182F0F2E00166BC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4DBBD95C182F0F2E00166BC7 /* USOMC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "USOMC-Prefix.pch"; sourceTree = "<group>"; };
 		4DBBD95D182F0F2E00166BC7 /* BPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPAppDelegate.h; sourceTree = "<group>"; };
-		4DBBD95E182F0F2E00166BC7 /* BPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPAppDelegate.m; sourceTree = "<group>"; };
+		4DBBD95E182F0F2E00166BC7 /* BPAppDelegate.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = BPAppDelegate.m; sourceTree = "<group>"; tabWidth = 2; };
 		4DBBD966182F0F2E00166BC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4DBBD96C182F0F2E00166BC7 /* USOMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = USOMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBBD96D182F0F2E00166BC7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -236,6 +248,8 @@
 				4DBBD990182F111C00166BC7 /* BPNavigationController.m */,
 				4DBBD989182F10C900166BC7 /* BPTableViewController.h */,
 				4DBBD98A182F10C900166BC7 /* BPTableViewController.m */,
+				1CE88C2E1847244700E2F8BC /* BPSplitViewController.h */,
+				1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */,
 			);
 			name = BPClasses;
 			sourceTree = "<group>";
@@ -260,6 +274,12 @@
 				4DBBD993182F115600166BC7 /* BPEventsNavigationController.m */,
 				4DBBD98C182F10EE00166BC7 /* BPEventsTableViewController.h */,
 				4DBBD98D182F10EE00166BC7 /* BPEventsTableViewController.m */,
+				1CE88C341847262C00E2F8BC /* BPUsersTableViewController.h */,
+				1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */,
+				1CE88C37184729E500E2F8BC /* BPCommentViewController.h */,
+				1CE88C38184729E500E2F8BC /* BPCommentViewController.m */,
+				1CE88C3A18472A9600E2F8BC /* BPCommentSplitViewController.h */,
+				1CE88C3B18472A9600E2F8BC /* BPCommentSplitViewController.m */,
 			);
 			name = EventsTableView;
 			sourceTree = "<group>";
@@ -397,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */,
+				1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */,
 				098909F51841567F004C22C2 /* BPJudge.m in Sources */,
 				4D047F0418416DC3006E09F0 /* BPEventsTableViewCell.m in Sources */,
 				4D047F0518416DC3006E09F0 /* BPEventViewController.m in Sources */,
@@ -408,8 +429,11 @@
 				4DBBD95F182F0F2E00166BC7 /* BPAppDelegate.m in Sources */,
 				098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */,
 				4DBBD95B182F0F2E00166BC7 /* main.m in Sources */,
+				1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */,
 				0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */,
 				4DBBD98B182F10C900166BC7 /* BPTableViewController.m in Sources */,
+				1CE88C3C18472A9600E2F8BC /* BPCommentSplitViewController.m in Sources */,
+				1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */,
 				4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
