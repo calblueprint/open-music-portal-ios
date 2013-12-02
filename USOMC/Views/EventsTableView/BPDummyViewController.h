@@ -12,6 +12,8 @@
 #import "BPCommentSplitViewController.h"
 
 @interface BPDummyViewController : BPViewController
+@property (nonatomic) NSArray *contestants;
+@property (nonatomic) NSInteger eventId;
 -(void)makeSplitView;
 @end
 

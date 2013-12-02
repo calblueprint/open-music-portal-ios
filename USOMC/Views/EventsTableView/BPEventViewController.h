@@ -14,6 +14,7 @@
 @interface BPEventViewController : BPViewController
 
 @property (nonatomic) NSString *name;
+@property (nonatomic) NSInteger encid;
 //@property (nonatomic) NSInteger *roomNumber;
 //@property (nonatomic) NSArray *contestantList;
 //@property (nonatomic) NSArray *judgeList;

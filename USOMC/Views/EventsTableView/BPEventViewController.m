@@ -17,15 +17,11 @@
 
 UILabel *nameLabel;
 UILabel *roomLabel;
-//UILabel *roomNumberLabel;
-//UITableView *contestantListTable;
-//UITableView *judgeTable;
-//UILabel *startTimeLabel;
-//UILabel *endTimeLabel;
     
 }
 
 @synthesize name;
+@synthesize encid;
 //@synthesize roomNumber;
 //@synthesize contestantList;
 //@synthesize judgeList;
@@ -50,11 +46,6 @@ UILabel *roomLabel;
 }
 
 - (void)makeLabels {
-    //User name label
-    //nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
-    //nameLabel.text = [NSString stringWithFormat:@"Name: %@", self.name];
-    //[self.view addSubview:nameLabel];
-    
     roomLabel =[[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
     roomLabel.text = @"Room: 150";
     [self.view addSubview:roomLabel];
@@ -94,6 +85,10 @@ UILabel *roomLabel;
 - (void)commentButtonPressed: (id)selector {
     NSLog(@"commentButtonPressed!");
     BPDummyViewController *dummyViewController = [[BPDummyViewController alloc] init];
+    
+    //NSArray *children = @[@"Sally", @"Billy", @"Raymond"];
+    //[dummyViewController setContestants:children];
+    [dummyViewController setEventId:self.encid];
     [dummyViewController makeSplitView];
     [self.eventsNavigationController pushViewController:dummyViewController animated:YES];
   

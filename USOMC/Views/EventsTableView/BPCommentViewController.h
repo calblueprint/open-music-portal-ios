@@ -10,4 +10,6 @@
 
 @interface BPCommentViewController : BPViewController
 @property (nonatomic) NSString *eventName;
+-(void)makeInstructionView;
+-(void)makeCommentField;
 @end

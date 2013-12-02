@@ -10,9 +10,12 @@
 
 @interface BPCommentViewController ()
 
+
 @end
 
 @implementation BPCommentViewController
+UILabel *instructionLabel;
+
 @synthesize eventName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +37,27 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)makeInstructionView {
+    instructionLabel =[[UILabel alloc] initWithFrame:CGRectMake(50, 150, 600, 100)];
+    instructionLabel.numberOfLines = 0;
+    instructionLabel.text = @"Instructions: Select a Contestant from the list at the left to begin making comments.";
+    [self.view addSubview:instructionLabel];
+
+}
+
+- (void)makeCommentField {
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 300, 40)];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.font = [UIFont systemFontOfSize:15];
+    textField.placeholder = @"Type Comments Here";
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.keyboardType = UIKeyboardTypeDefault;
+    textField.returnKeyType = UIReturnKeyDone;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    //textField.delegate = self;
+    [self.view addSubview:textField];
 }
 
 @end

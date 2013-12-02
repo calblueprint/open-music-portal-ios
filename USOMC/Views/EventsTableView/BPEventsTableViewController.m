@@ -29,10 +29,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-    NSLog(@"VIEWDIDLOAD - EVENTSTABLEVIEWCONTROLLER");
-    if (self.eventsNavigationController == nil) {
-        NSLog(@"THE EVENTSNAVIGATIONCONTROLLER is NIL");
-    }
   UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
   [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
@@ -62,9 +58,11 @@
 {
     BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
     NSLog(@"self.events objectAtIndex: %d: %@", indexPath.row, cell_event.name);
+    NSInteger rowNum = indexPath.row;
     self.subEvent = [[BPEventViewController alloc] init];
     [self.subEvent setName:cell_event.name];
     [self.subEvent setTitle: cell_event.name];
+    [self.subEvent setEncid: rowNum];
     [self.subEvent makeLabels];
     [self.subEvent makeButtons];
     [self.subEvent.view setBackgroundColor:[UIColor whiteColor]];
