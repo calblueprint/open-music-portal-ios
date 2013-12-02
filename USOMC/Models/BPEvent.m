@@ -15,7 +15,7 @@
     [eventMapping addAttributeMappingsFromDictionary:@{
                                                        //@"name in json : name I assign"
                                                       @"name" : @"name",
-                                                      //@"room_number" : @"roomNumber",
+                                                      @"room_id" : @"roomNumber",
                                                       //@"users" : @"contestantList",
                                                       //@"judge_list" : @"judgeList",
                                                       //@"start_time" : @"startTime",

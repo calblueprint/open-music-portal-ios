@@ -21,7 +21,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setTitle:@"Contestants"];
-        [self setContestants:@[@"Peeta", @"Mulan", @"Qian Po"]];
     }
     return self;
 }
@@ -35,7 +34,7 @@
     self.refreshControl = refresh;
     [self.tableView addSubview:refresh];
     [self refreshTable:self.refreshControl];
-  [self.tableView reloadData];
+    [self.tableView reloadData];
    
 }
 
@@ -53,7 +52,7 @@
     // Return the number of rows in the section.
     // If you're serving data from an array, return the length of the array:
     NSLog(@"self.contestants count %d", [self.contestants count]);
-  return 3;//[self.contestants count];
+  return [self.contestants count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,6 +75,7 @@
 
 - (BPUserTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  NSLog(@"in cellForRowAtIndexPath");
     static NSString *CellIdentifier = @"cellIdD";
     BPUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -83,16 +83,11 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
   
-  //UNCOMMENT FOLLOWING LINES WHEN DATABASE HAS DATA
-  /*
     BPUser *cell_user = [self.contestants objectAtIndex:indexPath.row];
     NSString *firstLast = [NSString stringWithFormat:@"%@ %@", cell_user.firstName, cell_user.lastName];
     cell.textLabel.text = firstLast;
     NSLog(@"cell_event.name is %@", firstLast);
-   */
-  NSLog(@"Setting Cell Text Label to %@", [self.contestants objectAtIndex:indexPath.row]);
-  cell.textLabel.text = [self.contestants objectAtIndex:indexPath.row];
-  return cell;
+   return cell;
 }
 
 - (void)refreshTable: (UIRefreshControl *)calledRefreshControl {
@@ -112,10 +107,8 @@
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[BPUser.usersResponseDescriptor]];
     NSLog(@"finished RKObjectRequestOperation");
     [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        //UNCOMMENT LINE BELOW WHEN DATABASE HAS DATA
-        //[self setContestants:[mappingResult.dictionary objectForKey:@"users"]];
+        [self setContestants:[mappingResult.dictionary objectForKey:@"users"]];
         NSLog(@"setContestants");
-        [self setContestants:@[@"Peeta", @"Mulan", @"Qian Po"]];
         [self.refreshControl endRefreshing];
         NSLog(@"LOADED Contestants: %@", self.contestants);
         [self.tableView reloadData];

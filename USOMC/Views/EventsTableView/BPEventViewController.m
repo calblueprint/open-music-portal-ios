@@ -22,7 +22,7 @@ UILabel *roomLabel;
 
 @synthesize name;
 @synthesize encid;
-//@synthesize roomNumber;
+@synthesize roomNumber;
 //@synthesize contestantList;
 //@synthesize judgeList;
 //@synthesize startTime;
@@ -47,7 +47,11 @@ UILabel *roomLabel;
 
 - (void)makeLabels {
     roomLabel =[[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
-    roomLabel.text = @"Room: 150";
+    if (self.roomNumber == nil) {
+        roomLabel.text = @"Room: Not Yet Assigned";
+    } else {
+        roomLabel.text = [NSString stringWithFormat:@"Room: %@", self.roomNumber];
+    }
     [self.view addSubview:roomLabel];
     
     /*

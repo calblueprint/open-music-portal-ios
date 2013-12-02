@@ -15,7 +15,7 @@
 
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSInteger encid;
-//@property (nonatomic) NSInteger *roomNumber;
+@property (nonatomic) NSString *roomNumber;
 //@property (nonatomic) NSArray *contestantList;
 //@property (nonatomic) NSArray *judgeList;
 //@property (nonatomic) NSDate *startTime;

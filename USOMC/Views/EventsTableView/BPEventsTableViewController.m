@@ -63,6 +63,7 @@
     [self.subEvent setName:cell_event.name];
     [self.subEvent setTitle: cell_event.name];
     [self.subEvent setEncid: rowNum];
+    [self.subEvent setRoomNumber:cell_event.roomNumber];
     [self.subEvent makeLabels];
     [self.subEvent makeButtons];
     [self.subEvent.view setBackgroundColor:[UIColor whiteColor]];

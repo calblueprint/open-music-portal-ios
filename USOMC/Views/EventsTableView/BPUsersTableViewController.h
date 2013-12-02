@@ -11,7 +11,7 @@
 
 
 @interface BPUsersTableViewController : BPTableViewController
-@property (nonatomic) NSArray *contestants;
+@property (nonatomic, retain) NSArray *contestants;
 @property (nonatomic) NSInteger eventId;
 
 @end
