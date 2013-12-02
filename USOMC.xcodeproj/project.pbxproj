@@ -74,6 +74,7 @@
 		4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventsTableViewCell.m; path = Views/EventsTableView/BPEventsTableViewCell.m; sourceTree = "<group>"; };
 		4D047F0218416DC3006E09F0 /* BPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEventViewController.h; path = Views/EventsTableView/BPEventViewController.h; sourceTree = "<group>"; };
 		4D047F0318416DC3006E09F0 /* BPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventViewController.m; path = Views/EventsTableView/BPEventViewController.m; sourceTree = "<group>"; };
+		4D2D90D1184C3AC9008E3406 /* EnvironmentVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnvironmentVariables.h; sourceTree = "<group>"; };
 		4D425E1EE5B347A0A41FA6BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4DBBD94B182F0F2E00166BC7 /* USOMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USOMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBBD94E182F0F2E00166BC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -203,6 +204,7 @@
 				4DBBD987182F109400166BC7 /* Views */,
 				4DBBD966182F0F2E00166BC7 /* Images.xcassets */,
 				4DBBD955182F0F2E00166BC7 /* Supporting Files */,
+				4D2D90D1184C3AC9008E3406 /* EnvironmentVariables.h */,
 			);
 			path = USOMC;
 			sourceTree = "<group>";
