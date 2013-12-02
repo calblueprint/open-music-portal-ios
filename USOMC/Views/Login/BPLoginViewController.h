@@ -16,6 +16,8 @@
 #import "UILabel+NUI.h"
 #import "UITextField+NUI.h"
 #import "KeychainItemWrapper.h"
+#import "AESCrypt.h"
+#import "EnvironmentVariables.h"
 
 
 @interface BPLoginViewController : BPViewController {

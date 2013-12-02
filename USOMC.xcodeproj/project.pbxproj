@@ -10,6 +10,12 @@
 		0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0967DA451834C23D009D494A /* BPLoginNavigationController.m */; };
 		098909F51841567F004C22C2 /* BPJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F41841567F004C22C2 /* BPJudge.m */; };
 		098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F718415E89004C22C2 /* KeychainItemWrapper.m */; };
+		09B9863A184C4CB8002B2746 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B98631184C4CB8002B2746 /* AESCrypt.m */; };
+		09B9863B184C4CB8002B2746 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 09B98632184C4CB8002B2746 /* LICENSE */; };
+		09B9863C184C4CB8002B2746 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B98634184C4CB8002B2746 /* NSData+Base64.m */; };
+		09B9863D184C4CB8002B2746 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B98636184C4CB8002B2746 /* NSData+CommonCrypto.m */; };
+		09B9863E184C4CB8002B2746 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B98638184C4CB8002B2746 /* NSString+Base64.m */; };
+		09B9863F184C4CB8002B2746 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09B98639184C4CB8002B2746 /* README.md */; };
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
 		1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */; };
 		1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */; };
@@ -56,6 +62,17 @@
 		098909F41841567F004C22C2 /* BPJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPJudge.m; path = Models/BPJudge.m; sourceTree = "<group>"; };
 		098909F618415E88004C22C2 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		098909F718415E89004C22C2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		09B9862E184C44B0002B2746 /* EnvironmentVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnvironmentVariables.h; sourceTree = "<group>"; };
+		09B98630184C4CB8002B2746 /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		09B98631184C4CB8002B2746 /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
+		09B98632184C4CB8002B2746 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		09B98633184C4CB8002B2746 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		09B98634184C4CB8002B2746 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		09B98635184C4CB8002B2746 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		09B98636184C4CB8002B2746 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		09B98637184C4CB8002B2746 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		09B98638184C4CB8002B2746 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		09B98639184C4CB8002B2746 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		09DFFA23182F1C7500488C2E /* BPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginViewController.h; path = Views/Login/BPLoginViewController.h; sourceTree = "<group>"; };
 		09DFFA24182F1C7500488C2E /* BPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginViewController.m; path = Views/Login/BPLoginViewController.m; sourceTree = "<group>"; };
 		1CE88C2E1847244700E2F8BC /* BPSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSplitViewController.h; path = BPClasses/BPSplitViewController.h; sourceTree = "<group>"; };
@@ -74,7 +91,6 @@
 		4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventsTableViewCell.m; path = Views/EventsTableView/BPEventsTableViewCell.m; sourceTree = "<group>"; };
 		4D047F0218416DC3006E09F0 /* BPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEventViewController.h; path = Views/EventsTableView/BPEventViewController.h; sourceTree = "<group>"; };
 		4D047F0318416DC3006E09F0 /* BPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventViewController.m; path = Views/EventsTableView/BPEventViewController.m; sourceTree = "<group>"; };
-		4D2D90D1184C3AC9008E3406 /* EnvironmentVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnvironmentVariables.h; sourceTree = "<group>"; };
 		4D425E1EE5B347A0A41FA6BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4DBBD94B182F0F2E00166BC7 /* USOMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USOMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBBD94E182F0F2E00166BC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +167,24 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		09B9862F184C4CB8002B2746 /* AESCrypt */ = {
+			isa = PBXGroup;
+			children = (
+				09B98630184C4CB8002B2746 /* AESCrypt.h */,
+				09B98631184C4CB8002B2746 /* AESCrypt.m */,
+				09B98632184C4CB8002B2746 /* LICENSE */,
+				09B98633184C4CB8002B2746 /* NSData+Base64.h */,
+				09B98634184C4CB8002B2746 /* NSData+Base64.m */,
+				09B98635184C4CB8002B2746 /* NSData+CommonCrypto.h */,
+				09B98636184C4CB8002B2746 /* NSData+CommonCrypto.m */,
+				09B98637184C4CB8002B2746 /* NSString+Base64.h */,
+				09B98638184C4CB8002B2746 /* NSString+Base64.m */,
+				09B98639184C4CB8002B2746 /* README.md */,
+			);
+			name = AESCrypt;
+			path = BPClasses/AESCrypt;
+			sourceTree = "<group>";
+		};
 		09DFFA1F182F1BF400488C2E /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +231,7 @@
 		4DBBD954182F0F2E00166BC7 /* USOMC */ = {
 			isa = PBXGroup;
 			children = (
+				09B9862E184C44B0002B2746 /* EnvironmentVariables.h */,
 				4DBBD95D182F0F2E00166BC7 /* BPAppDelegate.h */,
 				4DBBD95E182F0F2E00166BC7 /* BPAppDelegate.m */,
 				4DBBD983182F105500166BC7 /* BPClasses */,
@@ -204,7 +239,6 @@
 				4DBBD987182F109400166BC7 /* Views */,
 				4DBBD966182F0F2E00166BC7 /* Images.xcassets */,
 				4DBBD955182F0F2E00166BC7 /* Supporting Files */,
-				4D2D90D1184C3AC9008E3406 /* EnvironmentVariables.h */,
 			);
 			path = USOMC;
 			sourceTree = "<group>";
@@ -241,6 +275,7 @@
 		4DBBD983182F105500166BC7 /* BPClasses */ = {
 			isa = PBXGroup;
 			children = (
+				09B9862F184C4CB8002B2746 /* AESCrypt */,
 				098909EF18414888004C22C2 /* Keychain */,
 				4DBBD984182F109100166BC7 /* BPViewController.h */,
 				4DBBD985182F109100166BC7 /* BPViewController.m */,
@@ -365,7 +400,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B9863B184C4CB8002B2746 /* LICENSE in Resources */,
 				4DBBD967182F0F2E00166BC7 /* Images.xcassets in Resources */,
+				09B9863F184C4CB8002B2746 /* README.md in Resources */,
 				4DBBD959182F0F2E00166BC7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,20 +457,24 @@
 			files = (
 				09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */,
 				1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */,
+				09B9863D184C4CB8002B2746 /* NSData+CommonCrypto.m in Sources */,
 				098909F51841567F004C22C2 /* BPJudge.m in Sources */,
 				4D047F0418416DC3006E09F0 /* BPEventsTableViewCell.m in Sources */,
 				4D047F0518416DC3006E09F0 /* BPEventViewController.m in Sources */,
 				4D047EFF18416D9A006E09F0 /* BPTableViewCell.m in Sources */,
 				4DBBD994182F115600166BC7 /* BPEventsNavigationController.m in Sources */,
 				4DBBD986182F109100166BC7 /* BPViewController.m in Sources */,
+				09B9863E184C4CB8002B2746 /* NSString+Base64.m in Sources */,
 				4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */,
 				4DBBD991182F111C00166BC7 /* BPNavigationController.m in Sources */,
 				4DBBD95F182F0F2E00166BC7 /* BPAppDelegate.m in Sources */,
 				098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */,
+				09B9863A184C4CB8002B2746 /* AESCrypt.m in Sources */,
 				4DBBD95B182F0F2E00166BC7 /* main.m in Sources */,
 				1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */,
 				0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */,
 				4DBBD98B182F10C900166BC7 /* BPTableViewController.m in Sources */,
+				09B9863C184C4CB8002B2746 /* NSData+Base64.m in Sources */,
 				1CE88C3C18472A9600E2F8BC /* BPCommentSplitViewController.m in Sources */,
 				1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */,
 				4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */,
