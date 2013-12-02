@@ -113,12 +113,12 @@
     //verify credentials
     [self verifyCredentialsWithSuccessBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
       NSDictionary *jsonResponse = (NSDictionary *)JSON;
-      NSLog(@"returned json: %@", jsonResponse);
+      NSLog(@"success: returned json: %@", jsonResponse);
       //Credentials are valid
       [self credentialsVerified:jsonResponse];
     } andFailBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
       NSDictionary *jsonResponse = (NSDictionary *)JSON;
-      NSLog(@"returned json: %@", jsonResponse);
+      NSLog(@"failure: returned json: %@", jsonResponse);
       //Credentials are invalid
       [self credentialsNotVerified:jsonResponse];
     }];
@@ -131,12 +131,14 @@
   NSString *inputUsername = self.usernameField.text;
   NSString *inputPassword = self.passwordField.text;
   NSDictionary *params = @{};
-  if (usernameField != nil && passwordField != nil) {
-    params = @{@"username":inputUsername, @"password":inputPassword};
+  if (self.usernameField.text != nil && self.passwordField.text != nil) {
+    params = @{@"email":inputUsername, @"password":inputPassword};
+    NSLog(@"Credentials all here");
   } else {
     NSLog(@"Missing Credentials");
-    params = @{@"username":@"", @"password":@""};
+    params = @{@"email":@"", @"password":@""};
   }
+  NSLog(@"PARAMS: %@", params);
   
   //Make api calls
   RKObjectManager *manager = [RKObjectManager sharedManager];
@@ -165,6 +167,7 @@
     [self.verifiedText setText:@"Success! Credentials are valid."];
     [self.verifiedText setHidden:NO];
     [self.verifiedText setAlpha:1];
+    [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
     NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
