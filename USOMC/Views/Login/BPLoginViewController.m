@@ -72,13 +72,14 @@
   [self.view addSubview:passwordTextField];
   
   
-  UILabel *verified = [[UILabel alloc] initWithFrame:CGRectMake(200, 400, 280, 30)];
+  UILabel *verified = [[UILabel alloc] initWithFrame:CGRectMake(200, 400, 400, 30)];
   [verified setText:@"Invalid Login"];
   [verified setHidden:YES];
   [self setVerifiedText:verified];
   [self.view addSubview:verified];
   
   //Check Keychain email + password first
+  NSLog(@"Checking Keychain credentials first.");
   self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
   [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
   email = [keychain objectForKey:(__bridge id)kSecAttrAccount];
@@ -88,12 +89,11 @@
     NSDictionary *jsonResponse = (NSDictionary *)JSON;
     NSLog(@"success: returned json: %@", jsonResponse);
     //Credentials are valid
-    [self credentialsVerified:jsonResponse];
+    [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } andFailBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
     NSDictionary *jsonResponse = (NSDictionary *)JSON;
     NSLog(@"failure: returned json: %@", jsonResponse);
     //Credentials are invalid
-    [self credentialsNotVerified:jsonResponse];
   }];
 
 }
@@ -128,14 +128,15 @@
     [nextResponder becomeFirstResponder];
   } else {
     [textField resignFirstResponder]; //if done editing password, resign first responder status
-    NSLog(@"self.usernameField.text: %@", self.usernameField.text);
-    NSLog(@"self.passwordField.text: %@", self.passwordField.text);
+    //NSLog(@"self.usernameField.text: %@", self.usernameField.text);
+    //NSLog(@"self.passwordField.text: %@", self.passwordField.text);
     email = self.usernameField.text;
     password = self.passwordField.text;
     [keychain setObject:email forKey:(__bridge id)kSecAttrAccount];
     [keychain setObject:password forKey:(__bridge id)kSecValueData];
     
     //verify credentials
+    NSLog(@"Checking Text Field Entered Credentials.");
     [self verifyCredentialsWithSuccessBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
       NSDictionary *jsonResponse = (NSDictionary *)JSON;
       NSLog(@"success: returned json: %@", jsonResponse);
@@ -155,14 +156,18 @@
   NSLog(@"Checking username and password");
   //NSString *inputUsername = self.usernameField.text;
   //NSString *inputPassword = self.passwordField.text;
-  NSString *inputUsername = email;
-  NSString *inputPassword = password;
+  //NSString *inputUsername = email;
+  //NSString *inputPassword = password;
+  NSLog(@"email: %@", email);
+  NSLog(@"password: %@", password);
+  NSString *encryptedEmail = [AESCrypt encrypt:email password:PUBLICKEY];
+  NSString *encryptedPassword = [AESCrypt encrypt:password password:PUBLICKEY];
 
   NSDictionary *params = @{};
   //if (self.usernameField.text != nil && self.passwordField.text != nil) {
-  if (email != nil && password != nil) {
-    params = @{@"email":inputUsername, @"password":inputPassword};
-    NSLog(@"Credentials all here");
+  if (encryptedEmail != nil && encryptedPassword != nil) {
+    params = @{@"email":encryptedEmail, @"password":encryptedPassword};
+    //NSLog(@"Credentials all here");
   } else {
     NSLog(@"Missing Credentials");
     params = @{@"email":@"", @"password":@""};
@@ -191,6 +196,7 @@
 }
 
 -(void)credentialsVerified: (NSDictionary *)jsonResponse {
+  NSLog(@"Entered credentialsVerified");
   if ([jsonResponse objectForKey:@"success"]) {
     [NUILabelRenderer render:self.verifiedText withClass:@"ConfirmText"];
     [self.verifiedText setText:@"Success! Credentials are valid."];
@@ -199,17 +205,18 @@
     [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
-    NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
-    [self.verifiedText setText:failText];
+    //NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
+    [self.verifiedText setText:@"LOGIN FAILED. PLEASE TRY AGAIN"];
     [self.verifiedText setHidden:NO];
     [self.verifiedText setAlpha:1];
   }
 }
 
 -(void)credentialsNotVerified: (NSDictionary *)jsonResponse {
+  NSLog(@"Entered credentialsNotVerified");
   [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
-  NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
-  [self.verifiedText setText:failText];
+  //NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
+  [self.verifiedText setText:@"LOGIN FAILED. PLEASE TRY AGAIN"];
   [self.verifiedText setHidden:NO];
   [self.verifiedText setAlpha:1];
 
