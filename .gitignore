@@ -4,3 +4,5 @@ USOMC.xcodeproj/xcuserdata/*
 USOMC.xcodeproj/project.xcworkspace/*
 USOMC.xcworkspace/xcuserdata/*
 USOMC.xcodeproj/project.xcworkspace/xcursedata/*
+
+USOMC/EnvironmentVariables.h
