@@ -30,6 +30,7 @@
 @property (nonatomic, assign) UITextField *usernameField;
 @property (nonatomic, assign) UITextField *passwordField;
 @property (nonatomic, retain) BPEventsNavigationController *eventsNavigationController;
+@property (nonatomic) KeychainItemWrapper *keychain;
 
 - (id) init:(BPEventsNavigationController *)eventPage;
 @end

@@ -8,8 +8,10 @@
 
 #import "BPLoginViewController.h"
 
-@interface BPLoginViewController ()
-
+@interface BPLoginViewController () {
+  NSString *email;
+  NSString *password;
+}
 @end
 
 @implementation BPLoginViewController
@@ -17,6 +19,7 @@
 @synthesize usernameField = _usernameField;
 @synthesize passwordField = _passwordField;
 @synthesize eventsNavigationController = _eventsNavigationController;
+@synthesize keychain;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -75,6 +78,24 @@
   [self setVerifiedText:verified];
   [self.view addSubview:verified];
   
+  //Check Keychain email + password first
+  self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
+  [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
+  email = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+  password = [keychain objectForKey:(__bridge id)kSecValueData];
+  
+  [self verifyCredentialsWithSuccessBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    NSDictionary *jsonResponse = (NSDictionary *)JSON;
+    NSLog(@"success: returned json: %@", jsonResponse);
+    //Credentials are valid
+    [self credentialsVerified:jsonResponse];
+  } andFailBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    NSDictionary *jsonResponse = (NSDictionary *)JSON;
+    NSLog(@"failure: returned json: %@", jsonResponse);
+    //Credentials are invalid
+    [self credentialsNotVerified:jsonResponse];
+  }];
+
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -109,6 +130,10 @@
     [textField resignFirstResponder]; //if done editing password, resign first responder status
     NSLog(@"self.usernameField.text: %@", self.usernameField.text);
     NSLog(@"self.passwordField.text: %@", self.passwordField.text);
+    email = self.usernameField.text;
+    password = self.passwordField.text;
+    [keychain setObject:email forKey:(__bridge id)kSecAttrAccount];
+    [keychain setObject:password forKey:(__bridge id)kSecValueData];
     
     //verify credentials
     [self verifyCredentialsWithSuccessBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -128,10 +153,14 @@
 
 -(void)verifyCredentialsWithSuccessBlock:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))successBlock andFailBlock:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failBlock {
   NSLog(@"Checking username and password");
-  NSString *inputUsername = self.usernameField.text;
-  NSString *inputPassword = self.passwordField.text;
+  //NSString *inputUsername = self.usernameField.text;
+  //NSString *inputPassword = self.passwordField.text;
+  NSString *inputUsername = email;
+  NSString *inputPassword = password;
+
   NSDictionary *params = @{};
-  if (self.usernameField.text != nil && self.passwordField.text != nil) {
+  //if (self.usernameField.text != nil && self.passwordField.text != nil) {
+  if (email != nil && password != nil) {
     params = @{@"email":inputUsername, @"password":inputPassword};
     NSLog(@"Credentials all here");
   } else {
