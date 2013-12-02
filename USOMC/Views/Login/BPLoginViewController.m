@@ -154,10 +154,6 @@
 
 -(void)verifyCredentialsWithSuccessBlock:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))successBlock andFailBlock:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failBlock {
   NSLog(@"Checking username and password");
-  //NSString *inputUsername = self.usernameField.text;
-  //NSString *inputPassword = self.passwordField.text;
-  //NSString *inputUsername = email;
-  //NSString *inputPassword = password;
   NSLog(@"email: %@", email);
   NSLog(@"password: %@", password);
   NSString *encryptedEmail = [AESCrypt encrypt:email password:PUBLICKEY];
@@ -205,7 +201,6 @@
     [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
-    //NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
     [self.verifiedText setText:@"LOGIN FAILED. PLEASE TRY AGAIN"];
     [self.verifiedText setHidden:NO];
     [self.verifiedText setAlpha:1];
@@ -215,7 +210,6 @@
 -(void)credentialsNotVerified: (NSDictionary *)jsonResponse {
   NSLog(@"Entered credentialsNotVerified");
   [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
-  //NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
   [self.verifiedText setText:@"LOGIN FAILED. PLEASE TRY AGAIN"];
   [self.verifiedText setHidden:NO];
   [self.verifiedText setAlpha:1];
