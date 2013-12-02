@@ -12,7 +12,7 @@
 
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
-@synthesize eventTableViewController;
+@synthesize homeViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -35,6 +35,7 @@
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
   [eventsTableViewController setEventsNavigationController:eventsNavigationController];
+  [self setHomeViewController:eventsNavigationController];
   
   // Login
   BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
@@ -57,6 +58,7 @@
   NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
   NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
   NSDictionary *auth = @{@"app_id":uuid, @"username":username, @"password":password};
+  NSLog(@"AUTH: %@", auth);
   
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.window.rootViewController.view animated:YES];
   hud.mode = MBProgressHUDModeIndeterminate;
@@ -73,6 +75,8 @@
   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
     NSLog(@"Couldn't log in");
     [hud hide:YES];
+    //[self.window setRootViewController:self.loginNavigationController];
+    [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
   }];
   
   [manager enqueueObjectRequestOperation:objectRequestOperation];
