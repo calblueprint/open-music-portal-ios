@@ -89,11 +89,14 @@
     NSDictionary *jsonResponse = (NSDictionary *)JSON;
     NSLog(@"success: returned json: %@", jsonResponse);
     //Credentials are valid
-    [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
+    //[self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
+    [self credentialsVerified:jsonResponse];
   } andFailBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
     NSDictionary *jsonResponse = (NSDictionary *)JSON;
     NSLog(@"failure: returned json: %@", jsonResponse);
     //Credentials are invalid
+    [self credentialsNotVerified:jsonResponse];
+    //[self.verifiedText setHidden:YES];
   }];
 
 }
