@@ -28,14 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
-	UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
-    [self.tableView addSubview:refresh];
-    [self refreshTable:self.refreshControl];
-    [self.tableView reloadData];
-   
+  NSLog(@"viewDidLoad is called in BPUsersTableViewController and self.contestants.count is %d", self.contestants.count);
+  [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +52,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   NSLog(@"Selected row at indexpath %d", indexPath.row);
+  BPUser *cell_user = [self.contestants objectAtIndex:indexPath.row];
+  BPCommentViewController *newCommentView = [[BPCommentViewController alloc] init];
+  
     /*
     BPEvent *cell_user = [self.contestants objectAtIndex:indexPath.row];
     NSLog(@"self.events objectAtIndex: %d: %@", indexPath.row, cell_user.name);
@@ -90,36 +87,6 @@
    return cell;
 }
 
-- (void)refreshTable: (UIRefreshControl *)calledRefreshControl {
-    NSLog(@"Refresh Users table");
-    [calledRefreshControl beginRefreshing];
-    [self loadUsers];
-}
-
-- (void)loadUsers {
-    NSString *pathString = [NSString stringWithFormat: @"events/%d/users", (self.eventId+1)];
-    NSLog(@"sending objectRequestOperation to path: %@", pathString);
-    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
-                                                                              method:RKRequestMethodGET
-                                                                              path:pathString
-                                                                              parameters:nil];
-    NSLog(@"about to run RKObjectRequestOperation");
-    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[BPUser.usersResponseDescriptor]];
-    NSLog(@"finished RKObjectRequestOperation");
-    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [self setContestants:[mappingResult.dictionary objectForKey:@"users"]];
-        NSLog(@"setContestants");
-        [self.refreshControl endRefreshing];
-        NSLog(@"LOADED Contestants: %@", self.contestants);
-        [self.tableView reloadData];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [self.refreshControl endRefreshing];
-        NSLog(@"ERROR: BPUsersTableViewController.loadUsers");
-    }];
-    
-    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
-    
-}
 
 
 

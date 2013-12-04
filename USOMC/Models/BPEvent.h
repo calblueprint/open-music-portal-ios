@@ -8,12 +8,13 @@
 
 #import <RestKit/RestKit.h>
 #import <Foundation/Foundation.h>
+#import "BPUser.h"
 
 @interface BPEvent : NSObject
 
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *roomNumber;
-//@property (nonatomic) NSInteger *contestantList;
+@property (nonatomic) NSArray *contestants;
 //@property (nonatomic) NSArray *judgeList;
 //@property (nonatomic) NSDate *startTime;
 //@property (nonatomic) NSDate *endTime;

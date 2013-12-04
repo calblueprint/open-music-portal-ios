@@ -12,6 +12,7 @@
 @interface BPUser : NSObject
 @property (nonatomic) NSString *firstName;
 @property (nonatomic) NSString *lastName;
+@property (nonatomic) NSInteger *userId;
 + (RKObjectMapping *)mapping;
 + (RKResponseDescriptor *)usersResponseDescriptor;
 @end

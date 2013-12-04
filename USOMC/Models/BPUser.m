@@ -19,6 +19,7 @@
                                                        //@"name in json : name I assign"
                                                        @"first_name" : @"firstName",
                                                        @"last_name" : @"lastName",
+                                                       @"encid" : @"userId",
                                                        }];
     return userMapping;
 }

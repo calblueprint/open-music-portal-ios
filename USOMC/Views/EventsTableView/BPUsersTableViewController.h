@@ -8,6 +8,7 @@
 #import "Restkit/Restkit.h"
 #import "BPTableViewController.h"
 #import "BPUserTableViewCell.h"
+#import "BPCommentViewController.h"
 
 
 @interface BPUsersTableViewController : BPTableViewController

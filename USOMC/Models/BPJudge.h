@@ -10,9 +10,9 @@
 #import <RestKit/RestKit.h>
 
 @interface BPJudge : NSObject
-
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *username;
+@property (nonatomic) NSInteger *judgeId;
+@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy) NSString *lastName;
 
 + (RKObjectMapping *) mapping;
 + (RKResponseDescriptor *) judgeResponseDescriptor;

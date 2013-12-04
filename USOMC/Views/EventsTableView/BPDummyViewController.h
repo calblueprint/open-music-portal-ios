@@ -10,10 +10,14 @@
 #import "BPUsersTableViewController.h"
 #import "BPCommentViewController.h"
 #import "BPCommentSplitViewController.h"
+#import "BPJudge.h"
 
-@interface BPDummyViewController : BPViewController
+@interface BPDummyViewController : BPViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic) NSArray *contestants;
 @property (nonatomic) NSInteger eventId;
+@property (nonatomic) BPJudge *judge;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) BPCommentViewController *commentViewController;
 -(void)makeSplitView;
 @end
 

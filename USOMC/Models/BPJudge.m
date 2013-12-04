@@ -13,8 +13,9 @@
 + (RKObjectMapping *)mapping {
   RKObjectMapping *judgeMapping = [RKObjectMapping mappingForClass:[self class]];
   [judgeMapping addAttributeMappingsFromDictionary:@{
-                                                    @"name" : @"name",
-                                                    @"username" : @"username",
+                                                    @"first_name" : @"firstName",
+                                                    @"last_name" : @"lastName",
+                                                    @"encid" : @"judgeId",
                                                     }];
   return judgeMapping;
 }

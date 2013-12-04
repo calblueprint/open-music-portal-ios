@@ -10,13 +10,15 @@
 #import "BPEvent.h"
 #import "BPEventsNavigationController.h"
 #import "BPDummyViewController.h"
+#import "BPJudge.h"
 
 @interface BPEventViewController : BPViewController
 
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSInteger encid;
+@property (nonatomic) NSInteger eventId;
 @property (nonatomic) NSString *roomNumber;
-//@property (nonatomic) NSArray *contestantList;
+@property (nonatomic) NSArray *contestants;
+@property (nonatomic) BPJudge *judge;
 //@property (nonatomic) NSArray *judgeList;
 //@property (nonatomic) NSDate *startTime;
 //@property (nonatomic) NSDate *endTime;

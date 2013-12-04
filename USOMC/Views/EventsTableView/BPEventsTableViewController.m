@@ -62,7 +62,10 @@
     self.subEvent = [[BPEventViewController alloc] init];
     [self.subEvent setName:cell_event.name];
     [self.subEvent setTitle: cell_event.name];
-    [self.subEvent setEncid: rowNum];
+    NSLog(@"In EventsTableViewController cell_event.contestants.count = %d", cell_event.contestants.count);
+    [self.subEvent setContestants:cell_event.contestants];
+    [self.subEvent setJudge:self.judge];
+    [self.subEvent setEventId:rowNum];
     [self.subEvent setRoomNumber:cell_event.roomNumber];
     [self.subEvent makeLabels];
     [self.subEvent makeButtons];

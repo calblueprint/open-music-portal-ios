@@ -21,9 +21,10 @@ UILabel *roomLabel;
 }
 
 @synthesize name;
-@synthesize encid;
+@synthesize eventId;
 @synthesize roomNumber;
-//@synthesize contestantList;
+@synthesize contestants;
+@synthesize judge;
 //@synthesize judgeList;
 //@synthesize startTime;
 //@synthesize endTime;
@@ -92,10 +93,12 @@ UILabel *roomLabel;
     
     //NSArray *children = @[@"Sally", @"Billy", @"Raymond"];
     //[dummyViewController setContestants:children];
-    [dummyViewController setEventId:self.encid];
+    [dummyViewController setEventId:self.eventId];
+    NSLog(@"In EventViewController self.contestants.count = %d", self.contestants.count);
+    [dummyViewController setContestants:self.contestants];
+    [dummyViewController setJudge:self.judge];
     [dummyViewController makeSplitView];
     [self.eventsNavigationController pushViewController:dummyViewController animated:YES];
-  
 }
 
 
