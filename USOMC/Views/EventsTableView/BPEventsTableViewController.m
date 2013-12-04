@@ -61,7 +61,7 @@
     NSInteger rowNum = indexPath.row;
     self.subEvent = [[BPEventViewController alloc] init];
     [self.subEvent setName:cell_event.name];
-    [self.subEvent setTitle: cell_event.name];
+    [self.subEvent setTitle:cell_event.name];
     NSLog(@"In EventsTableViewController cell_event.contestants.count = %d", cell_event.contestants.count);
     [self.subEvent setContestants:cell_event.contestants];
     [self.subEvent setJudge:self.judge];

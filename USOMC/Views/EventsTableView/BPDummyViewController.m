@@ -70,12 +70,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.commentViewController.view removeFromSuperview];
     NSLog(@"selected row %d", indexPath.row);
-    BPUser *cell_user = [self.contestants objectAtIndex:indexPath.row];
+    BPContestant *cell_contestant = [self.contestants objectAtIndex:indexPath.row];
     float tableWidth = 350;
     self.commentViewController = [[BPCommentViewController alloc] init];
     [self.commentViewController setTitle:@"CommentViewTitle"];
     [self.commentViewController makeCommentField];
-    [self.commentViewController setContestant:cell_user];
+    [self.commentViewController setContestant:cell_contestant];
     [self.commentViewController makeLabels];
     [self.commentViewController.view setBackgroundColor:[UIColor whiteColor]];
     self.commentViewController.view.frame = CGRectMake(tableWidth, 64, self.view.frame.size.width - tableWidth, self.view.frame.size.height);

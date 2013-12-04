@@ -11,6 +11,7 @@
 @implementation BPUser
 @synthesize firstName;
 @synthesize lastName;
+@synthesize userId;
 
 
 + (RKObjectMapping *)mapping {

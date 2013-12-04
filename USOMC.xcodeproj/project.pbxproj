@@ -27,6 +27,10 @@
 		4D047F0418416DC3006E09F0 /* BPEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */; };
 		4D047F0518416DC3006E09F0 /* BPEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047F0318416DC3006E09F0 /* BPEventViewController.m */; };
 		4D8AFD81185071C5006B4A95 /* BPDummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD80185071C5006B4A95 /* BPDummyViewController.m */; };
+		4D8AFD8818507367006B4A95 /* BPComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8318507367006B4A95 /* BPComment.m */; };
+		4D8AFD8918507367006B4A95 /* BPContestant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8518507367006B4A95 /* BPContestant.m */; };
+		4D8AFD8A18507367006B4A95 /* BPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8618507367006B4A95 /* BPUser.m */; };
+		4D8AFD8D18507417006B4A95 /* BPUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8C18507417006B4A95 /* BPUserTableViewCell.m */; };
 		4DBBD94F182F0F2E00166BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD94E182F0F2E00166BC7 /* Foundation.framework */; };
 		4DBBD951182F0F2E00166BC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */; };
 		4DBBD953182F0F2E00166BC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD952182F0F2E00166BC7 /* UIKit.framework */; };
@@ -97,6 +101,14 @@
 		4D425E1EE5B347A0A41FA6BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4D8AFD7F185071C5006B4A95 /* BPDummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPDummyViewController.h; path = Views/EventsTableView/BPDummyViewController.h; sourceTree = "<group>"; };
 		4D8AFD80185071C5006B4A95 /* BPDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPDummyViewController.m; path = Views/EventsTableView/BPDummyViewController.m; sourceTree = "<group>"; };
+		4D8AFD8218507367006B4A95 /* BPComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPComment.h; path = Models/BPComment.h; sourceTree = "<group>"; };
+		4D8AFD8318507367006B4A95 /* BPComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPComment.m; path = Models/BPComment.m; sourceTree = "<group>"; };
+		4D8AFD8418507367006B4A95 /* BPContestant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPContestant.h; path = Models/BPContestant.h; sourceTree = "<group>"; };
+		4D8AFD8518507367006B4A95 /* BPContestant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPContestant.m; path = Models/BPContestant.m; sourceTree = "<group>"; };
+		4D8AFD8618507367006B4A95 /* BPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUser.m; path = Models/BPUser.m; sourceTree = "<group>"; };
+		4D8AFD8718507367006B4A95 /* BPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUser.h; path = Models/BPUser.h; sourceTree = "<group>"; };
+		4D8AFD8B18507417006B4A95 /* BPUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUserTableViewCell.h; path = Views/EventsTableView/BPUserTableViewCell.h; sourceTree = "<group>"; };
+		4D8AFD8C18507417006B4A95 /* BPUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUserTableViewCell.m; path = Views/EventsTableView/BPUserTableViewCell.m; sourceTree = "<group>"; };
 		4DBBD94B182F0F2E00166BC7 /* USOMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USOMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBBD94E182F0F2E00166BC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +188,12 @@
 				4D047EFB18416D7C006E09F0 /* BPEvent.m */,
 				098909F31841567F004C22C2 /* BPJudge.h */,
 				098909F41841567F004C22C2 /* BPJudge.m */,
+				4D8AFD8218507367006B4A95 /* BPComment.h */,
+				4D8AFD8318507367006B4A95 /* BPComment.m */,
+				4D8AFD8418507367006B4A95 /* BPContestant.h */,
+				4D8AFD8518507367006B4A95 /* BPContestant.m */,
+				4D8AFD8618507367006B4A95 /* BPUser.m */,
+				4D8AFD8718507367006B4A95 /* BPUser.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -327,6 +345,8 @@
 				4DBBD98D182F10EE00166BC7 /* BPEventsTableViewController.m */,
 				1CE88C341847262C00E2F8BC /* BPUsersTableViewController.h */,
 				1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */,
+				4D8AFD8B18507417006B4A95 /* BPUserTableViewCell.h */,
+				4D8AFD8C18507417006B4A95 /* BPUserTableViewCell.m */,
 				1CE88C37184729E500E2F8BC /* BPCommentViewController.h */,
 				1CE88C38184729E500E2F8BC /* BPCommentViewController.m */,
 				4D8AFD7F185071C5006B4A95 /* BPDummyViewController.h */,
@@ -488,12 +508,16 @@
 				098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */,
 				09B9863A184C4CB8002B2746 /* AESCrypt.m in Sources */,
 				4D8AFD81185071C5006B4A95 /* BPDummyViewController.m in Sources */,
+				4D8AFD8A18507367006B4A95 /* BPUser.m in Sources */,
 				4DBBD95B182F0F2E00166BC7 /* main.m in Sources */,
 				1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */,
+				4D8AFD8918507367006B4A95 /* BPContestant.m in Sources */,
 				0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */,
 				4DBBD98B182F10C900166BC7 /* BPTableViewController.m in Sources */,
 				09B9863C184C4CB8002B2746 /* NSData+Base64.m in Sources */,
 				1CE88C3C18472A9600E2F8BC /* BPCommentSplitViewController.m in Sources */,
+				4D8AFD8D18507417006B4A95 /* BPUserTableViewCell.m in Sources */,
+				4D8AFD8818507367006B4A95 /* BPComment.m in Sources */,
 				1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */,
 				4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */,
 			);

@@ -10,7 +10,9 @@
 #import "BPUsersTableViewController.h"
 #import "BPCommentViewController.h"
 #import "BPCommentSplitViewController.h"
+#import "BPUser.h"
 #import "BPJudge.h"
+#import "BPContestant.h"
 
 @interface BPDummyViewController : BPViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic) NSArray *contestants;

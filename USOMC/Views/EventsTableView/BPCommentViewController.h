@@ -8,11 +8,13 @@
 #import "Restkit/Restkit.h"
 #import "BPViewController.h"
 #import "BPJudge.h"
+#import "BPContestant.h"
+#import "BPComment.h"
 
 @interface BPCommentViewController : BPViewController<UITextFieldDelegate>
 @property (nonatomic) NSString *eventName;
 @property (nonatomic) NSInteger eventId;
-@property (nonatomic) BPUser *contestant;
+@property (nonatomic) BPContestant *contestant;
 @property (nonatomic) BPJudge *judge;
 -(void)makeInstructionView;
 -(void)makeCommentField;

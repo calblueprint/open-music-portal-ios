@@ -81,10 +81,11 @@ UILabel *nameLabel;
     UIView *commentView = ((UIView *)selector).superview;
     NSString *comments = ((UITextField *)[commentView.subviews objectAtIndex:0]).text;
     NSDictionary *commentDict = @{@"body": comments};
-    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,self.judge.judgeId, self.contestant.userId];
+    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,(int)self.judge.judgeId, (int)self.contestant.contestantId];
     
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil method:RKRequestMethodPOST path:pathString parameters:commentDict];
-    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ DTUser.responseDescriptor ]];
+    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ BPComment.commentsResponseDescriptor ]];
+    //[[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

@@ -9,6 +9,7 @@
 #import "BPTableViewController.h"
 #import "BPUserTableViewCell.h"
 #import "BPCommentViewController.h"
+#import "BPUser.h"
 
 
 @interface BPUsersTableViewController : BPTableViewController

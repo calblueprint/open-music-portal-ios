@@ -15,7 +15,6 @@
 @property (nonatomic, copy) NSString *lastName;
 
 + (RKObjectMapping *) mapping;
-+ (RKResponseDescriptor *) judgeResponseDescriptor;
 + (RKResponseDescriptor *) judgesResponseDescriptor;
 
 @end

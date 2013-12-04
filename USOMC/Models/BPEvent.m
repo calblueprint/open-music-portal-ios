@@ -26,7 +26,8 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     eventMapping.dateFormatters = [NSArray arrayWithObject: dateFormat];
      */
-    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"users" toKeyPath:@"contestants" withMapping:BPUser.mapping]];
+    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contestants" toKeyPath:@"contestants" withMapping:BPContestant.mapping]];
+    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"judges" toKeyPath:@"judges" withMapping:BPJudge.mapping]];
     NSLog(@"About to return eventMapping");
     return eventMapping;
 }
