@@ -19,7 +19,6 @@
 #import "AESCrypt.h"
 #import "EnvironmentVariables.h"
 
-
 @interface BPLoginViewController : BPViewController {
   UILabel *verifiedText;
   UITextField *usernameField;
@@ -35,4 +34,5 @@
 @property (nonatomic) KeychainItemWrapper *keychain;
 
 - (id) init:(BPEventsNavigationController *)eventPage;
+- (NSDictionary*) keychainCredentials;
 @end

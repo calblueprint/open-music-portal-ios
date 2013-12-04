@@ -13,6 +13,8 @@
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
 @synthesize homeViewController;
+//@synthesize keychain;
+@synthesize loginViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -38,13 +40,35 @@
   [self setHomeViewController:eventsNavigationController];
   
   // Login
-  BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
-  BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
-  [self setLoginNavigationController:loginNavController];
+  self.loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
+  self.loginNavigationController = [[BPLoginNavigationController alloc] initWithRootViewController:self.loginViewController];
+  
   
   self.window.rootViewController = eventsNavigationController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+-(void)checkLogin {
+  RKObjectManager *manager = [RKObjectManager sharedManager];
+  AFHTTPClient *client = [manager HTTPClient];
+  NSDictionary *params = [self.loginViewController keychainCredentials];
+  
+  NSLog(@"DICTINARY: %@", params);
+  
+  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
+  AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    NSDictionary *jsonResponse = (NSDictionary*)JSON;
+    if ([jsonResponse objectForKey:@"user"]) {
+      //NSLog(jsonResponse);
+    } else{
+      [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
+    }
+  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    NSLog(@"Failed to login with keychain credentials");
+  }];
+  
+  [client enqueueHTTPRequestOperation:checkCredentials];
 }
 
 
@@ -64,8 +88,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  //[self checkLogin];
-  [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
+  //[self.homeViewController presentViewController:self.loginNavigationController animated:NO completion:nil];
+  
+  [self checkLogin];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

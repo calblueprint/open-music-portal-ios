@@ -11,6 +11,7 @@
 @interface BPLoginViewController () {
   NSString *email;
   NSString *password;
+  Boolean *success;
 }
 @end
 
@@ -20,7 +21,6 @@
 @synthesize passwordField = _passwordField;
 @synthesize eventsNavigationController = _eventsNavigationController;
 @synthesize keychain;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +46,7 @@
   [self.view setBackgroundColor:[UIColor whiteColor]];
   
   UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(200, 310, 280, 30)];
-  [usernameTextField setPlaceholder:@"Username"];
+  [usernameTextField setPlaceholder:@"Email"];
   [usernameTextField setReturnKeyType:UIReturnKeyDone];
   [usernameTextField setTag:998];
   [usernameTextField setDelegate:(id) self];
@@ -79,25 +79,12 @@
   [self.view addSubview:verified];
   
   //Check Keychain email + password first
+  
   NSLog(@"Checking Keychain credentials first.");
   self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
   [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
   email = [keychain objectForKey:(__bridge id)kSecAttrAccount];
   password = [keychain objectForKey:(__bridge id)kSecValueData];
-  
-  [self verifyCredentialsWithSuccessBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-    NSDictionary *jsonResponse = (NSDictionary *)JSON;
-    NSLog(@"success: returned json: %@", jsonResponse);
-    //Credentials are valid
-    //[self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
-    [self credentialsVerified:jsonResponse];
-  } andFailBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-    NSDictionary *jsonResponse = (NSDictionary *)JSON;
-    NSLog(@"failure: returned json: %@", jsonResponse);
-    //Credentials are invalid
-    [self credentialsNotVerified:jsonResponse];
-    //[self.verifiedText setHidden:YES];
-  }];
 
 }
 
@@ -135,8 +122,8 @@
     //NSLog(@"self.passwordField.text: %@", self.passwordField.text);
     email = self.usernameField.text;
     password = self.passwordField.text;
-    [keychain setObject:email forKey:(__bridge id)kSecAttrAccount];
-    [keychain setObject:password forKey:(__bridge id)kSecValueData];
+    [self.keychain setObject:email forKey:(__bridge id)kSecAttrAccount];
+    [self.keychain setObject:password forKey:(__bridge id)kSecValueData];
     
     //verify credentials
     NSLog(@"Checking Text Field Entered Credentials.");
@@ -196,11 +183,11 @@
 
 -(void)credentialsVerified: (NSDictionary *)jsonResponse {
   NSLog(@"Entered credentialsVerified");
-  if ([jsonResponse objectForKey:@"success"]) {
-    [NUILabelRenderer render:self.verifiedText withClass:@"ConfirmText"];
-    [self.verifiedText setText:@"Success! Credentials are valid."];
-    [self.verifiedText setHidden:NO];
-    [self.verifiedText setAlpha:1];
+  if ([jsonResponse objectForKey:@"user"]) {
+    //[NUILabelRenderer render:self.verifiedText withClass:@"ConfirmText"];
+    //[self.verifiedText setText:@"Success! Credentials are valid."];
+    //[self.verifiedText setHidden:NO];
+    //[self.verifiedText setAlpha:1];
     [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
@@ -219,12 +206,23 @@
 
 }
 
+-(NSDictionary*)keychainCredentials {
+  self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
+  email = [self.keychain objectForKey:(__bridge id)kSecAttrAccount];
+  password = [self.keychain objectForKey:(__bridge id)kSecValueData];
+  NSString *encryptedEmail = [AESCrypt encrypt:email password:PUBLICKEY];
+  NSString *encryptedPassword = [AESCrypt encrypt:password password:PUBLICKEY];
+  
+  NSDictionary *params = @{@"email":encryptedEmail, @"password":encryptedPassword};
+  return params;
+}
+
+
 - (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
-
 
 
 @end
