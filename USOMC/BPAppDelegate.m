@@ -12,7 +12,9 @@
 
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
-@synthesize eventTableViewController;
+@synthesize homeViewController;
+//@synthesize keychain;
+@synthesize loginViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -34,12 +36,15 @@
   
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
+  UIBarButtonItem *butt = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
+  eventsTableViewController.navigationItem.rightBarButtonItem = butt;
   [eventsTableViewController setEventsNavigationController:eventsNavigationController];
+  [self setHomeViewController:eventsNavigationController];
   
   // Login
-  BPLoginViewController *loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
-  BPLoginNavigationController *loginNavController = [[BPLoginNavigationController alloc] initWithRootViewController:loginViewController];
-  [self setLoginNavigationController:loginNavController];
+  self.loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
+  self.loginNavigationController = [[BPLoginNavigationController alloc] initWithRootViewController:self.loginViewController];
+  
   
   self.window.rootViewController = eventsNavigationController;
   [self.window makeKeyAndVisible];
@@ -47,37 +52,33 @@
 }
 
 -(void)checkLogin {
-  
   RKObjectManager *manager = [RKObjectManager sharedManager];
-  KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
-  [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
+  AFHTTPClient *client = [manager HTTPClient];
+  NSDictionary *params = [self.loginViewController keychainCredentials];
   
-  NSUUID *vendorIdObject = [[UIDevice currentDevice] identifierForVendor];
-  NSString *uuid = [vendorIdObject UUIDString];
-  NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
-  NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
-  NSDictionary *auth = @{@"app_id":uuid, @"username":username, @"password":password};
+  NSLog(@"Login Parameters: %@", params);
   
-  MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.window.rootViewController.view animated:YES];
-  hud.mode = MBProgressHUDModeIndeterminate;
-  hud.labelText = @"Loading";
-  
-  NSMutableURLRequest *request = [manager requestWithObject:nil method:RKRequestMethodPOST path:@"start" parameters:auth];
-  RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ BPJudge.judgesResponseDescriptor]];
-  [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-    NSLog(@"Succesfully logged in!");
-    BPJudge *judge = [mappingResult.dictionary objectForKey:@"judge"];
-    [self.eventTableViewController setJudge:judge];
-    [hud hide:YES];
-    
-  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-    NSLog(@"Couldn't log in");
-    [hud hide:YES];
+  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
+  AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    NSDictionary *jsonResponse = (NSDictionary*)JSON;
+    if ([jsonResponse objectForKey:@"user"]) {
+      //NSLog(jsonResponse);
+    } else{
+      [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
+    }
+  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    NSLog(@"Failed to login with keychain credentials");
   }];
   
-  [manager enqueueObjectRequestOperation:objectRequestOperation];
-  
-  
+  [client enqueueHTTPRequestOperation:checkCredentials];
+}
+
+-(void)logout: (id)selector {
+  NSLog(@"logout button pressed");
+  //clear keychain
+  [self.loginViewController clearKeychain];
+  //display login controller
+  [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -96,6 +97,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+  //[self.homeViewController presentViewController:self.loginNavigationController animated:NO completion:nil];
+  
   [self checkLogin];
 }
 

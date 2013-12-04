@@ -13,7 +13,6 @@
 @end
 
 @implementation BPLoginNavigationController
-@synthesize params = _params;
 @synthesize eventsNavigationController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -21,7 +20,6 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    self.params = [[NSMutableDictionary alloc] init];
   }
   return self;
 }
@@ -30,6 +28,10 @@
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+-(void)logout: (id)selector{
+  NSLog(@"LOGGING OUT");
 }
 
 - (void)didReceiveMemoryWarning

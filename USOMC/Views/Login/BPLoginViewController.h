@@ -15,6 +15,9 @@
 #import "UIButton+NUI.h"
 #import "UILabel+NUI.h"
 #import "UITextField+NUI.h"
+#import "KeychainItemWrapper.h"
+#import "AESCrypt.h"
+#import "EnvironmentVariables.h"
 
 @interface BPLoginViewController : BPViewController {
   UILabel *verifiedText;
@@ -28,6 +31,9 @@
 @property (nonatomic, assign) UITextField *usernameField;
 @property (nonatomic, assign) UITextField *passwordField;
 @property (nonatomic, retain) BPEventsNavigationController *eventsNavigationController;
+@property (nonatomic) KeychainItemWrapper *keychain;
 
 - (id) init:(BPEventsNavigationController *)eventPage;
+- (NSDictionary*) keychainCredentials;
+- (void) clearKeychain;
 @end

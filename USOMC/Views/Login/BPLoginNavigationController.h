@@ -10,10 +10,9 @@
 #import "BPEventsNavigationController.h"
 
 @interface BPLoginNavigationController : BPNavigationController {
-  NSMutableDictionary *params;
+  //NSMutableDictionary *params;
   BPEventsNavigationController *eventsNavigationController;
 }
 
-@property (nonatomic, retain) NSMutableDictionary *params;
 @property (nonatomic, retain) BPEventsNavigationController *eventsNavigationController;
 @end

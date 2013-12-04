@@ -8,8 +8,11 @@
 
 #import "BPLoginViewController.h"
 
-@interface BPLoginViewController ()
-
+@interface BPLoginViewController () {
+  NSString *email;
+  NSString *password;
+  Boolean *success;
+}
 @end
 
 @implementation BPLoginViewController
@@ -17,7 +20,7 @@
 @synthesize usernameField = _usernameField;
 @synthesize passwordField = _passwordField;
 @synthesize eventsNavigationController = _eventsNavigationController;
-
+@synthesize keychain;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,7 +46,7 @@
   [self.view setBackgroundColor:[UIColor whiteColor]];
   
   UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(200, 310, 280, 30)];
-  [usernameTextField setPlaceholder:@"Username"];
+  [usernameTextField setPlaceholder:@"Email"];
   [usernameTextField setReturnKeyType:UIReturnKeyDone];
   [usernameTextField setTag:998];
   [usernameTextField setDelegate:(id) self];
@@ -69,12 +72,20 @@
   [self.view addSubview:passwordTextField];
   
   
-  UILabel *verified = [[UILabel alloc] initWithFrame:CGRectMake(200, 400, 280, 30)];
+  UILabel *verified = [[UILabel alloc] initWithFrame:CGRectMake(200, 400, 400, 30)];
   [verified setText:@"Invalid Login"];
   [verified setHidden:YES];
   [self setVerifiedText:verified];
   [self.view addSubview:verified];
   
+  //Check Keychain email + password first
+  
+  NSLog(@"Checking Keychain credentials first.");
+  self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
+  [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
+  email = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+  password = [keychain objectForKey:(__bridge id)kSecValueData];
+
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -107,18 +118,23 @@
     [nextResponder becomeFirstResponder];
   } else {
     [textField resignFirstResponder]; //if done editing password, resign first responder status
-    NSLog(@"self.usernameField.text: %@", self.usernameField.text);
-    NSLog(@"self.passwordField.text: %@", self.passwordField.text);
+    //NSLog(@"self.usernameField.text: %@", self.usernameField.text);
+    //NSLog(@"self.passwordField.text: %@", self.passwordField.text);
+    email = self.usernameField.text;
+    password = self.passwordField.text;
+    [self.keychain setObject:email forKey:(__bridge id)kSecAttrAccount];
+    [self.keychain setObject:password forKey:(__bridge id)kSecValueData];
     
     //verify credentials
+    NSLog(@"Checking Text Field Entered Credentials.");
     [self verifyCredentialsWithSuccessBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
       NSDictionary *jsonResponse = (NSDictionary *)JSON;
-      NSLog(@"returned json: %@", jsonResponse);
+      NSLog(@"success: returned json: %@", jsonResponse);
       //Credentials are valid
       [self credentialsVerified:jsonResponse];
     } andFailBlock:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
       NSDictionary *jsonResponse = (NSDictionary *)JSON;
-      NSLog(@"returned json: %@", jsonResponse);
+      NSLog(@"failure: returned json: %@", jsonResponse);
       //Credentials are invalid
       [self credentialsNotVerified:jsonResponse];
     }];
@@ -128,15 +144,21 @@
 
 -(void)verifyCredentialsWithSuccessBlock:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))successBlock andFailBlock:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failBlock {
   NSLog(@"Checking username and password");
-  NSString *inputUsername = self.usernameField.text;
-  NSString *inputPassword = self.passwordField.text;
+  NSLog(@"email: %@", email);
+  NSLog(@"password: %@", password);
+  NSString *encryptedEmail = [AESCrypt encrypt:email password:PUBLICKEY];
+  NSString *encryptedPassword = [AESCrypt encrypt:password password:PUBLICKEY];
+
   NSDictionary *params = @{};
-  if (usernameField != nil && passwordField != nil) {
-    params = @{@"username":inputUsername, @"password":inputPassword};
+  //if (self.usernameField.text != nil && self.passwordField.text != nil) {
+  if (encryptedEmail != nil && encryptedPassword != nil) {
+    params = @{@"email":encryptedEmail, @"password":encryptedPassword};
+    //NSLog(@"Credentials all here");
   } else {
     NSLog(@"Missing Credentials");
-    params = @{@"username":@"", @"password":@""};
+    params = @{@"email":@"", @"password":@""};
   }
+  NSLog(@"PARAMS: %@", params);
   
   //Make api calls
   RKObjectManager *manager = [RKObjectManager sharedManager];
@@ -160,27 +182,44 @@
 }
 
 -(void)credentialsVerified: (NSDictionary *)jsonResponse {
-  if ([jsonResponse objectForKey:@"success"]) {
-    [NUILabelRenderer render:self.verifiedText withClass:@"ConfirmText"];
-    [self.verifiedText setText:@"Success! Credentials are valid."];
-    [self.verifiedText setHidden:NO];
-    [self.verifiedText setAlpha:1];
+  NSLog(@"Entered credentialsVerified");
+  if ([jsonResponse objectForKey:@"user"]) {
+    //[NUILabelRenderer render:self.verifiedText withClass:@"ConfirmText"];
+    //[self.verifiedText setText:@"Success! Credentials are valid."];
+    //[self.verifiedText setHidden:NO];
+    //[self.verifiedText setAlpha:1];
+    [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
-    NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
-    [self.verifiedText setText:failText];
+    [self.verifiedText setText:@"LOGIN FAILED. PLEASE TRY AGAIN"];
     [self.verifiedText setHidden:NO];
     [self.verifiedText setAlpha:1];
   }
 }
 
 -(void)credentialsNotVerified: (NSDictionary *)jsonResponse {
+  NSLog(@"Entered credentialsNotVerified");
   [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
-  NSString *failText = [[jsonResponse objectForKey:@"error"] objectForKey:@"reason"];
-  [self.verifiedText setText:failText];
+  [self.verifiedText setText:@"LOGIN FAILED. PLEASE TRY AGAIN"];
   [self.verifiedText setHidden:NO];
   [self.verifiedText setAlpha:1];
 
+}
+
+-(NSDictionary*)keychainCredentials {
+  self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
+  email = [self.keychain objectForKey:(__bridge id)kSecAttrAccount];
+  password = [self.keychain objectForKey:(__bridge id)kSecValueData];
+  NSString *encryptedEmail = [AESCrypt encrypt:email password:PUBLICKEY];
+  NSString *encryptedPassword = [AESCrypt encrypt:password password:PUBLICKEY];
+  
+  NSDictionary *params = @{@"email":encryptedEmail, @"password":encryptedPassword};
+  return params;
+}
+
+-(void)clearKeychain {
+  [self.keychain setObject:@"" forKey:(__bridge id)kSecAttrAccount];
+  [self.keychain setObject:@"" forKey:(__bridge id)kSecValueData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -188,7 +227,6 @@
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
-
 
 
 @end
