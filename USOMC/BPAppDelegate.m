@@ -36,6 +36,8 @@
   
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
   BPEventsNavigationController *eventsNavigationController = [[BPEventsNavigationController alloc] initWithRootViewController:eventsTableViewController];
+  UIBarButtonItem *butt = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
+  eventsTableViewController.navigationItem.rightBarButtonItem = butt;
   [eventsTableViewController setEventsNavigationController:eventsNavigationController];
   [self setHomeViewController:eventsNavigationController];
   
@@ -54,7 +56,7 @@
   AFHTTPClient *client = [manager HTTPClient];
   NSDictionary *params = [self.loginViewController keychainCredentials];
   
-  NSLog(@"DICTINARY: %@", params);
+  NSLog(@"Login Parameters: %@", params);
   
   NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -71,6 +73,13 @@
   [client enqueueHTTPRequestOperation:checkCredentials];
 }
 
+-(void)logout: (id)selector {
+  NSLog(@"logout button pressed");
+  //clear keychain
+  [self.loginViewController clearKeychain];
+  //display login controller
+  [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
   // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

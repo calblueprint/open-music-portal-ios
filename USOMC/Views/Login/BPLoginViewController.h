@@ -35,4 +35,5 @@
 
 - (id) init:(BPEventsNavigationController *)eventPage;
 - (NSDictionary*) keychainCredentials;
+- (void) clearKeychain;
 @end

@@ -217,6 +217,10 @@
   return params;
 }
 
+-(void)clearKeychain {
+  [self.keychain setObject:@"" forKey:(__bridge id)kSecAttrAccount];
+  [self.keychain setObject:@"" forKey:(__bridge id)kSecValueData];
+}
 
 - (void)didReceiveMemoryWarning
 {
