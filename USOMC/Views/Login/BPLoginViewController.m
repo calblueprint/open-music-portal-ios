@@ -183,7 +183,7 @@
 
 -(void)credentialsVerified: (NSDictionary *)jsonResponse {
   NSLog(@"Entered credentialsVerified");
-  if ([jsonResponse objectForKey:@"user"]) {
+  if ([jsonResponse objectForKey:@"judge"]) {
     //[NUILabelRenderer render:self.verifiedText withClass:@"ConfirmText"];
     //[self.verifiedText setText:@"Success! Credentials are valid."];
     //[self.verifiedText setHidden:NO];
