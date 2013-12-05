@@ -13,8 +13,8 @@
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
 @synthesize homeViewController;
-//@synthesize keychain;
 @synthesize loginViewController;
+@synthesize judge;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -61,8 +61,14 @@
   NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
     NSDictionary *jsonResponse = (NSDictionary*)JSON;
-    if ([jsonResponse objectForKey:@"user"]) {
-      //NSLog(jsonResponse);
+    if ([jsonResponse objectForKey:@"judge"]) {
+      NSLog(@"JsonResponse: %@", jsonResponse);
+      NSDictionary *judgeJson = [jsonResponse objectForKey:@"judge"];
+      //NSLog(@"JUDGE: %@", judgeJson);
+      self.judge = [[BPJudge alloc] init];
+      /*
+       SET JUDGE'S INFO
+       */
     } else{
       [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
     }

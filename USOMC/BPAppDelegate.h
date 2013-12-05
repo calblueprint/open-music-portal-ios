@@ -24,6 +24,7 @@
 @property (strong, nonatomic) BPLoginNavigationController *loginNavigationController;
 @property (strong, nonatomic) BPEventsTableViewController *eventTableViewController;
 @property (strong, nonatomic) BPEventsNavigationController *homeViewController;
+@property (strong) BPJudge *judge;
 //@property (nonatomic) KeychainItemWrapper *keychain;
 
 @end
