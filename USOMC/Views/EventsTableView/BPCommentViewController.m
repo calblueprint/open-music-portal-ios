@@ -84,15 +84,15 @@ UILabel *nameLabel;
 - (void)submitAction: (id)selector {
     NSLog(@"entering commentViewController submitAction");
     UIView *commentView = ((UIView *)selector).superview;
-    NSString *comments = ((UITextField *)[commentView.subviews objectAtIndex:0]).text;
+    NSString *commentsFromText = ((UITextField *)[commentView.subviews objectAtIndex:0]).text;
     NSNumber *judgeNum = self.judge.judgeId;
     NSNumber *contestantNum = self.contestant.contestantId;
-    NSNumber *eventNum = [NSNumber numberWithInt:self.eventId];
+    NSNumber *eventNum = [NSNumber numberWithInt:(int)self.eventId];
     NSLog(@"in CommentViewController submitAction eventNum is: %@", eventNum);
-    NSDictionary *commentDict = @{@"judge":judgeNum, @"contestant":contestantNum, @"event":eventNum, @"body":comments};
+    NSDictionary *commentDict = @{@"judge":judgeNum, @"contestant":contestantNum, @"event":eventNum, @"body":commentsFromText};
     //UNCOMMENT WHEN A REAL JUDGE IS PASSED IN
     //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,[self.judge.judgeId intValue], [self.contestant.contestantId intValue]];
-    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comment", self.eventId, [self.contestant.contestantId intValue]];
+    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comment", (int)self.eventId, [self.contestant.contestantId intValue]];
     
     NSLog(@"comment post path is: %@", pathString);
     
@@ -126,7 +126,7 @@ UILabel *nameLabel;
     NSLog(@"CommentViewController contestantId is %d", [self.contestant.contestantId intValue]);
     //UNCOMMENT WHEN REAL JUDGE PASSED IN
     //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,[self.judge.judgeId intValue], [self.contestant.contestantId intValue]];
-    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comments",self.eventId, [self.contestant.contestantId intValue]];
+    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comments",(int)self.eventId, [self.contestant.contestantId intValue]];
     NSLog(@"CommentViewController loadExistingcomments pathString is : %@", pathString);
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
                                                                                method:RKRequestMethodGET

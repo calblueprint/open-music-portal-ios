@@ -56,7 +56,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
-    NSLog(@"selected self.events objectAtIndex: %d: %@", indexPath.row, cell_event.name);
+    NSLog(@"selected self.events objectAtIndex: %d: %@", (int)indexPath.row, cell_event.name);
     NSInteger rowNum = (indexPath.row+1);
     NSLog(@"selected EventsTableViewController EventId: %d", (int)rowNum);
     self.subEvent = [[BPEventViewController alloc] init];

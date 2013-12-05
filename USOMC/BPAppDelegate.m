@@ -59,9 +59,9 @@
   KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
   [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
   
-  NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
-  NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
-  NSDictionary *auth = @{@"email":username, @"password":password};
+//  NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+//  NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
+//  NSDictionary *auth = @{@"email":username, @"password":password};
 
   NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -69,7 +69,7 @@
     if ([jsonResponse objectForKey:@"judge"]) {
       NSLog(@"JsonResponse: %@", jsonResponse);
       NSDictionary *judgeJson = [jsonResponse objectForKey:@"judge"];
-      //NSLog(@"JUDGE: %@", judgeJson);
+      NSLog(@"JUDGE: %@", judgeJson);
       self.judge = [[BPJudge alloc] init];
       /*
        SET JUDGE'S INFO
