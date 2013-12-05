@@ -27,30 +27,25 @@
     eventMapping.dateFormatters = [NSArray arrayWithObject: dateFormat];
      */
     [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contestants" toKeyPath:@"contestants" withMapping:BPContestant.mapping]];
-    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"judges" toKeyPath:@"judges" withMapping:BPJudge.mapping]];
-    NSLog(@"About to return eventMapping");
+    //[eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"judges" toKeyPath:@"judges" withMapping:BPJudge.mapping]];
     return eventMapping;
 }
 
 
-
+/*
 + (RKResponseDescriptor *)eventResponseDescriptor {
     NSLog(@"entering eventResponseDescriptor");
     RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"events" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return descriptor;
 }
+ */
 
 + (RKResponseDescriptor *)eventsResponseDescriptor {
-    NSLog(@"entering eventsResponseDescriptor");
     RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping
         method:RKRequestMethodGET
         pathPattern:nil
         keyPath:@"events"
         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    if (descriptor) {
-        NSLog(@"descriptor in eventsResponseDescriptor is not nil");
-        // Custom initialization
-    }
 
     return descriptor;
 }

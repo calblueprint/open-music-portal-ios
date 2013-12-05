@@ -25,7 +25,7 @@
 
 
 + (RKObjectMapping *)mapping;
-+ (RKResponseDescriptor *)eventResponseDescriptor;
+//+ (RKResponseDescriptor *)eventResponseDescriptor;
 + (RKResponseDescriptor *)eventsResponseDescriptor;
 
 @end

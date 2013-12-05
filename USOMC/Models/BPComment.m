@@ -13,9 +13,10 @@
     RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[self class]];
     [commentMapping addAttributeMappingsFromDictionary:@{
                                                       //@"name in json : name I assign"
-                                                      @"first_name" : @"firstName",
-                                                      @"last_name" : @"lastName",
-                                                      @"encid" : @"userId",
+                                                      //@"judge" : @"judgeId",
+                                                      //@"contestant" : @"contestantId",
+                                                      //@"event" : @"eventId",
+                                                      @"body" :@"body",
                                                       }];
     return commentMapping;
 }
@@ -25,7 +26,7 @@
     RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping
                                                                                     method:RKRequestMethodGET
                                                                                pathPattern:nil
-                                                                                   keyPath:@"users"
+                                                                                   keyPath:@"comments"
                                                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     if (descriptor) {
         NSLog(@"descriptor in commentsResponseDescriptor is not nil");

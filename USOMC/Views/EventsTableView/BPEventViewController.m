@@ -88,13 +88,9 @@ UILabel *roomLabel;
 
 
 - (void)commentButtonPressed: (id)selector {
-    NSLog(@"commentButtonPressed!");
     BPDummyViewController *dummyViewController = [[BPDummyViewController alloc] init];
-    
-    //NSArray *children = @[@"Sally", @"Billy", @"Raymond"];
-    //[dummyViewController setContestants:children];
+    NSLog(@"EventViewController commentButtonPressed eventID is: %d", (int)self.eventId);
     [dummyViewController setEventId:self.eventId];
-    NSLog(@"In EventViewController self.contestants.count = %d", self.contestants.count);
     [dummyViewController setContestants:self.contestants];
     [dummyViewController setJudge:self.judge];
     [dummyViewController makeSplitView];

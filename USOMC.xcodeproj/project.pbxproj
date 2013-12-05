@@ -19,9 +19,7 @@
 		09B9863F184C4CB8002B2746 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09B98639184C4CB8002B2746 /* README.md */; };
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
 		1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */; };
-		1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */; };
 		1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C38184729E500E2F8BC /* BPCommentViewController.m */; };
-		1CE88C3C18472A9600E2F8BC /* BPCommentSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C3B18472A9600E2F8BC /* BPCommentSplitViewController.m */; };
 		4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFB18416D7C006E09F0 /* BPEvent.m */; };
 		4D047EFF18416D9A006E09F0 /* BPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFE18416D9A006E09F0 /* BPTableViewCell.m */; };
 		4D047F0418416DC3006E09F0 /* BPEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */; };
@@ -84,12 +82,8 @@
 		09DFFA24182F1C7500488C2E /* BPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginViewController.m; path = Views/Login/BPLoginViewController.m; sourceTree = "<group>"; };
 		1CE88C2E1847244700E2F8BC /* BPSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSplitViewController.h; path = BPClasses/BPSplitViewController.h; sourceTree = "<group>"; };
 		1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPSplitViewController.m; path = BPClasses/BPSplitViewController.m; sourceTree = "<group>"; };
-		1CE88C341847262C00E2F8BC /* BPUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUsersTableViewController.h; path = Views/EventsTableView/BPUsersTableViewController.h; sourceTree = "<group>"; };
-		1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUsersTableViewController.m; path = Views/EventsTableView/BPUsersTableViewController.m; sourceTree = "<group>"; };
 		1CE88C37184729E500E2F8BC /* BPCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCommentViewController.h; path = Views/EventsTableView/BPCommentViewController.h; sourceTree = "<group>"; };
 		1CE88C38184729E500E2F8BC /* BPCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCommentViewController.m; path = Views/EventsTableView/BPCommentViewController.m; sourceTree = "<group>"; };
-		1CE88C3A18472A9600E2F8BC /* BPCommentSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCommentSplitViewController.h; path = Views/EventsTableView/BPCommentSplitViewController.h; sourceTree = "<group>"; };
-		1CE88C3B18472A9600E2F8BC /* BPCommentSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCommentSplitViewController.m; path = Views/EventsTableView/BPCommentSplitViewController.m; sourceTree = "<group>"; };
 		4D047EFA18416D7C006E09F0 /* BPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEvent.h; path = Models/BPEvent.h; sourceTree = "<group>"; };
 		4D047EFB18416D7C006E09F0 /* BPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEvent.m; path = Models/BPEvent.m; sourceTree = "<group>"; };
 		4D047EFD18416D9A006E09F0 /* BPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPTableViewCell.h; path = BPClasses/BPTableViewCell.h; sourceTree = "<group>"; };
@@ -343,16 +337,12 @@
 				4DBBD993182F115600166BC7 /* BPEventsNavigationController.m */,
 				4DBBD98C182F10EE00166BC7 /* BPEventsTableViewController.h */,
 				4DBBD98D182F10EE00166BC7 /* BPEventsTableViewController.m */,
-				1CE88C341847262C00E2F8BC /* BPUsersTableViewController.h */,
-				1CE88C351847262C00E2F8BC /* BPUsersTableViewController.m */,
 				4D8AFD8B18507417006B4A95 /* BPUserTableViewCell.h */,
 				4D8AFD8C18507417006B4A95 /* BPUserTableViewCell.m */,
 				1CE88C37184729E500E2F8BC /* BPCommentViewController.h */,
 				1CE88C38184729E500E2F8BC /* BPCommentViewController.m */,
 				4D8AFD7F185071C5006B4A95 /* BPDummyViewController.h */,
 				4D8AFD80185071C5006B4A95 /* BPDummyViewController.m */,
-				1CE88C3A18472A9600E2F8BC /* BPCommentSplitViewController.h */,
-				1CE88C3B18472A9600E2F8BC /* BPCommentSplitViewController.m */,
 			);
 			name = EventsTableView;
 			sourceTree = "<group>";
@@ -510,12 +500,10 @@
 				4D8AFD81185071C5006B4A95 /* BPDummyViewController.m in Sources */,
 				4D8AFD8A18507367006B4A95 /* BPUser.m in Sources */,
 				4DBBD95B182F0F2E00166BC7 /* main.m in Sources */,
-				1CE88C361847262C00E2F8BC /* BPUsersTableViewController.m in Sources */,
 				4D8AFD8918507367006B4A95 /* BPContestant.m in Sources */,
 				0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */,
 				4DBBD98B182F10C900166BC7 /* BPTableViewController.m in Sources */,
 				09B9863C184C4CB8002B2746 /* NSData+Base64.m in Sources */,
-				1CE88C3C18472A9600E2F8BC /* BPCommentSplitViewController.m in Sources */,
 				4D8AFD8D18507417006B4A95 /* BPUserTableViewCell.m in Sources */,
 				4D8AFD8818507367006B4A95 /* BPComment.m in Sources */,
 				1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */,

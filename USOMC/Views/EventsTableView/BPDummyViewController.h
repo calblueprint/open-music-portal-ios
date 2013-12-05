@@ -7,9 +7,8 @@
 //
 
 #import "BPViewController.h"
-#import "BPUsersTableViewController.h"
+#import "BPUserTableViewCell.h"
 #import "BPCommentViewController.h"
-#import "BPCommentSplitViewController.h"
 #import "BPUser.h"
 #import "BPJudge.h"
 #import "BPContestant.h"

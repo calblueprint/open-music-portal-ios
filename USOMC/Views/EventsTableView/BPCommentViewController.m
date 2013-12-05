@@ -20,6 +20,7 @@ UILabel *nameLabel;
 @synthesize eventName;
 @synthesize contestant;
 @synthesize eventId;
+@synthesize comments;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,7 +33,7 @@ UILabel *nameLabel;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    NSLog(@"entering commentViewController viewDidLoad");
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,6 +42,7 @@ UILabel *nameLabel;
     // Dispose of any resources that can be recreated.
 }
 - (void)makeInstructionView {
+    NSLog(@"entering commentViewController makeInstructionView");
     instructionLabel =[[UILabel alloc] initWithFrame:CGRectMake(50, 150, 600, 100)];
     instructionLabel.numberOfLines = 0;
     instructionLabel.text = @"Instructions: Select a Contestant from the list at the left to begin making comments.";
@@ -49,6 +51,7 @@ UILabel *nameLabel;
 }
 
 - (void)makeLabels {
+    NSLog(@"entering commentViewController makeLabels");
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(250, 100, 600, 100)];
     nameLabel.numberOfLines = 0;
     NSString *firstLast = [NSString stringWithFormat:@"%@ %@", contestant.firstName, contestant.lastName];
@@ -57,6 +60,7 @@ UILabel *nameLabel;
 }
 
 - (void)makeCommentField {
+    NSLog(@"entering commentViewController makeCommentField");
     self.textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 200, 600, 150)];
     self.textField.delegate = self;
     self.textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -72,20 +76,40 @@ UILabel *nameLabel;
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [submitButton setTitle:@"Submit!" forState:UIControlStateNormal];
     //[submitButton setNuiClass:@"Button:LargeButton"];
-    [submitButton setFrame:CGRectMake(70, 260, 180, 50)];
+    [submitButton setFrame:CGRectMake(500, 350, 180, 50)];
     [submitButton addTarget:self action:@selector(submitAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submitButton];
 }
 
 - (void)submitAction: (id)selector {
+    NSLog(@"entering commentViewController submitAction");
     UIView *commentView = ((UIView *)selector).superview;
     NSString *comments = ((UITextField *)[commentView.subviews objectAtIndex:0]).text;
-    NSDictionary *commentDict = @{@"body": comments};
-    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,(int)self.judge.judgeId, (int)self.contestant.contestantId];
+    NSNumber *judgeNum = self.judge.judgeId;
+    NSNumber *contestantNum = self.contestant.contestantId;
+    NSNumber *eventNum = [NSNumber numberWithInt:self.eventId];
+    NSLog(@"in CommentViewController submitAction eventNum is: %@", eventNum);
+    NSDictionary *commentDict = @{@"judge":judgeNum, @"contestant":contestantNum, @"event":eventNum, @"body":comments};
+    //UNCOMMENT WHEN A REAL JUDGE IS PASSED IN
+    //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,[self.judge.judgeId intValue], [self.contestant.contestantId intValue]];
+    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comment", self.eventId, [self.contestant.contestantId intValue]];
     
-    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil method:RKRequestMethodPOST path:pathString parameters:commentDict];
+    NSLog(@"comment post path is: %@", pathString);
+    
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
+                                                                    method:RKRequestMethodPOST
+                                                                    path:pathString
+                                                                    parameters:commentDict];
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ BPComment.commentsResponseDescriptor ]];
-    //[[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
+    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self setComments:[mappingResult.dictionary objectForKey:@"comments"]];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"ERROR: BPCommentViewController: submitAction");
+    }];
+
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
+
+
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -93,23 +117,40 @@ UILabel *nameLabel;
     [self.view endEditing:YES];
     [super touchesBegan:touches withEvent:event];
 }
-/*
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if ([textField canResignFirstResponder]) {
-        [textField resignFirstResponder];
+- (void)loadExistingComments {
+    NSLog(@"entering commentViewController loadExistingComments");
+    NSLog(@"Contestant in commentViewController: %@", contestant);
+    NSLog(@"Contestant in commentViewController: %@", self.contestant);
+    NSLog(@"CommentViewController contestantId is %d", [self.contestant.contestantId intValue]);
+    //UNCOMMENT WHEN REAL JUDGE PASSED IN
+    //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,[self.judge.judgeId intValue], [self.contestant.contestantId intValue]];
+    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comments",self.eventId, [self.contestant.contestantId intValue]];
+    NSLog(@"CommentViewController loadExistingcomments pathString is : %@", pathString);
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
+                                                                               method:RKRequestMethodGET
+                                                                                 path:pathString
+                                                                           parameters:nil];
+    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[BPComment.commentsResponseDescriptor]];
+    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self setComments:[mappingResult.dictionary objectForKey:@"comments"]];
+        NSLog(@"LOADED comments: %@", self.comments);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"ERROR: BPCommentViewController.loadExistingComments");
+    }];
+    NSLog(@"!!!!!self.comments: %@", self.comments);
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
+}
+
+- (void)displayComments {
+    NSLog(@"entering commentViewController displayingComments");
+    int yCoord = 375;
+    for (BPComment *c in self.comments) {
+        UILabel *commentLabel =[[UILabel alloc] initWithFrame:CGRectMake(30, yCoord, 600, 100)];
+        instructionLabel.numberOfLines = 0;
+        instructionLabel.text = c.body;
+        [self.view addSubview:commentLabel];
+        yCoord += 120;
     }
-    
-    return YES;
 }
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    // add your method here
-    
-    return YES;
-}
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    
-}
- */
-
 @end

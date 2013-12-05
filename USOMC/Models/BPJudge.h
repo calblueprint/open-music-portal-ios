@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 
 @interface BPJudge : NSObject
-@property (nonatomic) NSInteger *judgeId;
+@property (nonatomic) NSNumber *judgeId;
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
 

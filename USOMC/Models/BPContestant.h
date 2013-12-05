@@ -12,7 +12,7 @@
 @interface BPContestant : NSObject
 @property (nonatomic) NSString *firstName;
 @property (nonatomic) NSString *lastName;
-@property (nonatomic) NSString *contestantId;
+@property (nonatomic) NSNumber *contestantId;
 
 + (RKObjectMapping *) mapping;
 + (RKResponseDescriptor *) contestantsResponseDescriptor;

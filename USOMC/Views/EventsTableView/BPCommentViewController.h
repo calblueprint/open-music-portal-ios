@@ -16,7 +16,10 @@
 @property (nonatomic) NSInteger eventId;
 @property (nonatomic) BPContestant *contestant;
 @property (nonatomic) BPJudge *judge;
+@property (nonatomic) NSArray *comments;
 -(void)makeInstructionView;
 -(void)makeCommentField;
 -(void)makeLabels;
+-(void)loadExistingComments;
+-(void)displayComments;
 @end

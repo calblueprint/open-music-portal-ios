@@ -52,7 +52,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"in cellForRowAtIndexPath");
     static NSString *CellIdentifier = @"cellIdD";
     BPUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -63,23 +62,25 @@
     BPUser *cell_user = [self.contestants objectAtIndex:indexPath.row];
     NSString *firstLast = [NSString stringWithFormat:@"%@ %@", cell_user.firstName, cell_user.lastName];
     cell.textLabel.text = firstLast;
-    NSLog(@"cell_event.name is %@", firstLast);
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.commentViewController.view removeFromSuperview];
-    NSLog(@"selected row %d", indexPath.row);
+    
     BPContestant *cell_contestant = [self.contestants objectAtIndex:indexPath.row];
+    NSLog(@"selected DummyViewController ContestantId: %d", [cell_contestant.contestantId intValue]);
     float tableWidth = 350;
     self.commentViewController = [[BPCommentViewController alloc] init];
-    [self.commentViewController setTitle:@"CommentViewTitle"];
-    [self.commentViewController makeCommentField];
+    [self.commentViewController setEventId:self.eventId];
     [self.commentViewController setContestant:cell_contestant];
+    [self.commentViewController setJudge:self.judge];
+    [self.commentViewController loadExistingComments];
+    [self.commentViewController makeCommentField];
     [self.commentViewController makeLabels];
+    [self.commentViewController displayComments];
     [self.commentViewController.view setBackgroundColor:[UIColor whiteColor]];
     self.commentViewController.view.frame = CGRectMake(tableWidth, 64, self.view.frame.size.width - tableWidth, self.view.frame.size.height);
-    //[self.view addSubview:usersTableViewController.tableView];
     [self.view addSubview:self.commentViewController.view];
 
     
@@ -88,10 +89,12 @@
 
 
 - (void)makeSplitView {
-    NSLog(@"make split view");
+    NSLog(@"DummyViewController makeSplitView");
     NSLog(@"%f", self.view.frame.size.height);
     float tableWidth = 350;
     self.commentViewController = [[BPCommentViewController alloc] init];
+    [self.commentViewController setJudge: self.judge];
+    [self.commentViewController setEventId: self.eventId];
     [self.commentViewController setTitle:@"CommentViewTitle"];
     [self.commentViewController makeInstructionView];
     //[self.commentViewController makeCommentField];

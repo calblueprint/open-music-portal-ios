@@ -10,6 +10,10 @@
 #import "Restkit/Restkit.h"
 
 @interface BPComment : NSObject
+@property (nonatomic) NSNumber *judgeId;
+@property (nonatomic) NSNumber *contestantId;
+@property (nonatomic) NSNumber *eventId;
+@property (nonatomic) NSString *body;
 + (RKObjectMapping *)mapping;
 + (RKResponseDescriptor *)commentsResponseDescriptor;
 @end
