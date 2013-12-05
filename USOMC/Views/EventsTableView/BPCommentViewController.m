@@ -102,6 +102,7 @@ UILabel *nameLabel;
                                                                     parameters:commentDict];
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ BPComment.commentsResponseDescriptor ]];
     [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"got comments");
         [self setComments:[mappingResult.dictionary objectForKey:@"comments"]];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR: BPCommentViewController: submitAction");
@@ -135,6 +136,7 @@ UILabel *nameLabel;
     [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self setComments:[mappingResult.dictionary objectForKey:@"comments"]];
         NSLog(@"LOADED comments: %@", self.comments);
+        [self displayComments];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR: BPCommentViewController.loadExistingComments");
     }];
@@ -147,8 +149,9 @@ UILabel *nameLabel;
     int yCoord = 375;
     for (BPComment *c in self.comments) {
         UILabel *commentLabel =[[UILabel alloc] initWithFrame:CGRectMake(30, yCoord, 600, 100)];
-        instructionLabel.numberOfLines = 0;
-        instructionLabel.text = c.body;
+        commentLabel.numberOfLines = 0;
+        commentLabel.text = c.body;
+        NSLog(@"comment body: %@", c.body);
         [self.view addSubview:commentLabel];
         yCoord += 120;
     }
