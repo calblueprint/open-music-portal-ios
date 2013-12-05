@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0916AA821850258700654E51 /* piano.png in Resources */ = {isa = PBXBuildFile; fileRef = 0916AA811850258700654E51 /* piano.png */; };
 		0967DA461834C23D009D494A /* BPLoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0967DA451834C23D009D494A /* BPLoginNavigationController.m */; };
 		098909F51841567F004C22C2 /* BPJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F41841567F004C22C2 /* BPJudge.m */; };
 		098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 098909F718415E89004C22C2 /* KeychainItemWrapper.m */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0916AA811850258700654E51 /* piano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piano.png; sourceTree = "<group>"; };
 		0967DA441834C23D009D494A /* BPLoginNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginNavigationController.h; path = Views/Login/BPLoginNavigationController.h; sourceTree = "<group>"; };
 		0967DA451834C23D009D494A /* BPLoginNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginNavigationController.m; path = Views/Login/BPLoginNavigationController.m; sourceTree = "<group>"; };
 		098909F31841567F004C22C2 /* BPJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPJudge.h; path = Models/BPJudge.h; sourceTree = "<group>"; };
@@ -146,6 +148,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0916AA7E1850235D00654E51 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0916AA811850258700654E51 /* piano.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		098909EF18414888004C22C2 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +248,7 @@
 				098909F2184155FE004C22C2 /* Models */,
 				4DBBD987182F109400166BC7 /* Views */,
 				4DBBD966182F0F2E00166BC7 /* Images.xcassets */,
+				0916AA7E1850235D00654E51 /* Resources */,
 				4DBBD955182F0F2E00166BC7 /* Supporting Files */,
 			);
 			path = USOMC;
@@ -402,6 +413,7 @@
 			files = (
 				09B9863B184C4CB8002B2746 /* LICENSE in Resources */,
 				4DBBD967182F0F2E00166BC7 /* Images.xcassets in Resources */,
+				0916AA821850258700654E51 /* piano.png in Resources */,
 				09B9863F184C4CB8002B2746 /* README.md in Resources */,
 				4DBBD959182F0F2E00166BC7 /* InfoPlist.strings in Resources */,
 			);

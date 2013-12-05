@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:USOMC/Resources/piano.png">
+   </FileRef>
+   <FileRef
       location = "group:USOMC.xcodeproj">
    </FileRef>
    <FileRef

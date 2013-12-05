@@ -44,8 +44,11 @@
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
   [self.view setBackgroundColor:[UIColor whiteColor]];
+  UIImage *background = [UIImage imageNamed:@"piano.png"];
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:background];
+  [self.view addSubview:imageView];
   
-  UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(200, 310, 280, 30)];
+  UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(372, 330, 280, 30)];
   [usernameTextField setPlaceholder:@"Email"];
   [usernameTextField setReturnKeyType:UIReturnKeyDone];
   [usernameTextField setTag:998];
@@ -58,7 +61,7 @@
   [self setUsernameField:usernameTextField];
   [self.view addSubview:usernameTextField];
   
-  UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(200, 350, 280, 30)];
+  UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(372, 390, 280, 30)];
   [passwordTextField setPlaceholder:@"Password"];
   [passwordTextField setReturnKeyType:UIReturnKeyDone];
   [passwordTextField setTag:999];
@@ -72,9 +75,10 @@
   [self.view addSubview:passwordTextField];
   
   
-  UILabel *verified = [[UILabel alloc] initWithFrame:CGRectMake(200, 400, 400, 30)];
+  UILabel *verified = [[UILabel alloc] initWithFrame:CGRectMake(372, 450, 400, 30)];
   [verified setText:@"Invalid Login"];
   [verified setHidden:YES];
+  [verified setTextColor:[UIColor redColor]];
   [self setVerifiedText:verified];
   [self.view addSubview:verified];
   
@@ -188,6 +192,7 @@
     //[self.verifiedText setText:@"Success! Credentials are valid."];
     //[self.verifiedText setHidden:NO];
     //[self.verifiedText setAlpha:1];
+    [self.verifiedText setHidden:YES];
     [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
