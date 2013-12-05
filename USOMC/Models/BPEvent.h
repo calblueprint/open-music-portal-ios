@@ -8,13 +8,16 @@
 
 #import <RestKit/RestKit.h>
 #import <Foundation/Foundation.h>
+#import "BPUser.h"
+#import "BPContestant.h"
+#import "BPJudge.h"
 
 @interface BPEvent : NSObject
 
 @property (nonatomic) NSString *name;
-//@property (nonatomic) NSInteger *roomNumber;
-//@property (nonatomic) NSInteger *contestantList;
-//@property (nonatomic) NSArray *judgeList;
+@property (nonatomic) NSString *roomNumber;
+@property (nonatomic) NSArray *contestants;
+@property (nonatomic) NSArray *judges;
 //@property (nonatomic) NSDate *startTime;
 //@property (nonatomic) NSDate *endTime;
  
@@ -22,7 +25,7 @@
 
 
 + (RKObjectMapping *)mapping;
-+ (RKResponseDescriptor *)eventResponseDescriptor;
+//+ (RKResponseDescriptor *)eventResponseDescriptor;
 + (RKResponseDescriptor *)eventsResponseDescriptor;
 
 @end

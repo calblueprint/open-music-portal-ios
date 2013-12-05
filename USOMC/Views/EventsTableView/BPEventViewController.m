@@ -17,17 +17,14 @@
 
 UILabel *nameLabel;
 UILabel *roomLabel;
-//UILabel *roomNumberLabel;
-//UITableView *contestantListTable;
-//UITableView *judgeTable;
-//UILabel *startTimeLabel;
-//UILabel *endTimeLabel;
     
 }
 
 @synthesize name;
-//@synthesize roomNumber;
-//@synthesize contestantList;
+@synthesize eventId;
+@synthesize roomNumber;
+@synthesize contestants;
+@synthesize judge;
 //@synthesize judgeList;
 //@synthesize startTime;
 //@synthesize endTime;
@@ -50,13 +47,12 @@ UILabel *roomLabel;
 }
 
 - (void)makeLabels {
-    //User name label
-    //nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
-    //nameLabel.text = [NSString stringWithFormat:@"Name: %@", self.name];
-    //[self.view addSubview:nameLabel];
-    
     roomLabel =[[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
-    roomLabel.text = @"Room: 150";
+    if (self.roomNumber == nil) {
+        roomLabel.text = @"Room: Not Yet Assigned";
+    } else {
+        roomLabel.text = [NSString stringWithFormat:@"Room: %@", self.roomNumber];
+    }
     [self.view addSubview:roomLabel];
     
     /*
@@ -92,19 +88,13 @@ UILabel *roomLabel;
 
 
 - (void)commentButtonPressed: (id)selector {
-    NSLog(@"commentButtonPressed!");
-    BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
-    [commentViewController setEventName:self.name];
-    [commentViewController.view setBackgroundColor:[UIColor whiteColor]];
-    [self.eventsNavigationController pushViewController:commentViewController animated:YES];
-    /*
-    BPUsersTableViewController *usersTableViewController = [[BPUsersTableViewController alloc] init];
-    BPCommentViewController *commentViewController = [[BPCommentViewController alloc] init];
-    BPCommentSplitViewController *commentSplitViewController = [[BPCommentSplitViewController alloc] init];
-    NSArray *twoViewControllers = @[usersTableViewController, commentViewController];
-    commentSplitViewController.viewControllers = twoViewControllers;
-    [self.eventsNavigationController pushViewController:commentSplitViewController animated:YES];
-     */
+    BPDummyViewController *dummyViewController = [[BPDummyViewController alloc] init];
+    NSLog(@"EventViewController commentButtonPressed eventID is: %d", (int)self.eventId);
+    [dummyViewController setEventId:self.eventId];
+    [dummyViewController setContestants:self.contestants];
+    [dummyViewController setJudge:self.judge];
+    [dummyViewController makeSplitView];
+    [self.eventsNavigationController pushViewController:dummyViewController animated:YES];
 }
 
 

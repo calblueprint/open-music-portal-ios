@@ -8,16 +8,17 @@
 #import <UIKit/UIKit.h>
 #import "BPViewController.h"
 #import "BPEvent.h"
-#import "BPCommentSplitViewController.h"
 #import "BPEventsNavigationController.h"
-#import "BPUsersTableViewController.h"
-#import "BPCommentViewController.h"
+#import "BPDummyViewController.h"
+#import "BPJudge.h"
 
 @interface BPEventViewController : BPViewController
 
 @property (nonatomic) NSString *name;
-//@property (nonatomic) NSInteger *roomNumber;
-//@property (nonatomic) NSArray *contestantList;
+@property (nonatomic) NSInteger eventId;
+@property (nonatomic) NSString *roomNumber;
+@property (nonatomic) NSArray *contestants;
+@property (nonatomic) BPJudge *judge;
 //@property (nonatomic) NSArray *judgeList;
 //@property (nonatomic) NSDate *startTime;
 //@property (nonatomic) NSDate *endTime;

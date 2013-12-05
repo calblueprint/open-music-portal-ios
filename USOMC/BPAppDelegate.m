@@ -55,9 +55,14 @@
   RKObjectManager *manager = [RKObjectManager sharedManager];
   AFHTTPClient *client = [manager HTTPClient];
   NSDictionary *params = [self.loginViewController keychainCredentials];
+
+  KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
+  [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
   
-  NSLog(@"Login Parameters: %@", params);
-  
+  NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+  NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
+  NSDictionary *auth = @{@"email":username, @"password":password};
+
   NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
     NSDictionary *jsonResponse = (NSDictionary*)JSON;

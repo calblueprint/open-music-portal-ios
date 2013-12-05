@@ -29,10 +29,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-    NSLog(@"VIEWDIDLOAD - EVENTSTABLEVIEWCONTROLLER");
-    if (self.eventsNavigationController == nil) {
-        NSLog(@"THE EVENTSNAVIGATIONCONTROLLER is NIL");
-    }
   UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
   [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
@@ -54,17 +50,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
   // If you're serving data from an array, return the length of the array:
-  NSLog(@"self.events count %d", [self.events count]);
-  return [self.events count];
+    return [self.events count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
-    NSLog(@"self.events objectAtIndex: %d: %@", indexPath.row, cell_event.name);
+    NSLog(@"selected self.events objectAtIndex: %d: %@", indexPath.row, cell_event.name);
+    NSInteger rowNum = (indexPath.row+1);
+    NSLog(@"selected EventsTableViewController EventId: %d", (int)rowNum);
     self.subEvent = [[BPEventViewController alloc] init];
     [self.subEvent setName:cell_event.name];
-    [self.subEvent setTitle: cell_event.name];
+    [self.subEvent setTitle:cell_event.name];
+    [self.subEvent setContestants:cell_event.contestants];
+    [self.subEvent setJudge:self.judge];
+    [self.subEvent setEventId:rowNum];
+    [self.subEvent setRoomNumber:cell_event.roomNumber];
     [self.subEvent makeLabels];
     [self.subEvent makeButtons];
     [self.subEvent.view setBackgroundColor:[UIColor whiteColor]];
@@ -86,28 +87,22 @@
   
   BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
   cell.textLabel.text = cell_event.name;
-  NSLog(@"cell_event.name is %@", cell_event.name);
-  return cell;
+    return cell;
 }
 
 - (void)refreshTable: (UIRefreshControl *)calledRefreshControl {
-  NSLog(@"Refresh Events table");
   [calledRefreshControl beginRefreshing];
   [self loadEvents];
 }
 
 - (void)loadEvents {
-  NSLog(@"entering loadEvents method");
   NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
                                                                 method:RKRequestMethodGET
                                                                 path:@"events/index"
                                                                 parameters:nil];
-  NSLog(@"about to run RKObjectRequestOperation");
   RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[BPEvent.eventsResponseDescriptor]];
-  NSLog(@"finished RKObjectRequestOperation");
   [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
     [self setEvents:[mappingResult.dictionary objectForKey:@"events"]];
-    NSLog(@"setEvents");
     [self.refreshControl endRefreshing];
     NSLog(@"LOADED Events: %@", self.events);
     [self.tableView reloadData];

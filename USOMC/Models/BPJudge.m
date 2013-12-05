@@ -13,16 +13,13 @@
 + (RKObjectMapping *)mapping {
   RKObjectMapping *judgeMapping = [RKObjectMapping mappingForClass:[self class]];
   [judgeMapping addAttributeMappingsFromDictionary:@{
-                                                    @"name" : @"name",
-                                                    @"username" : @"username",
+                                                    @"first_name" : @"firstName",
+                                                    @"last_name" : @"lastName",
+                                                    @"encid" : @"judgeId",
                                                     }];
   return judgeMapping;
 }
 
-+ (RKResponseDescriptor *)judgeResponseDescriptor{
-  RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"judge" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-  return descriptor;
-}
 
 + (RKResponseDescriptor *)judgesResponseDescriptor{
   RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:self.mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"judges" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
