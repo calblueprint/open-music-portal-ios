@@ -85,7 +85,10 @@ UILabel *nameLabel;
     NSLog(@"entering commentViewController submitAction");
     UIView *commentView = ((UIView *)selector).superview;
     NSString *commentsFromText = ((UITextField *)[commentView.subviews objectAtIndex:0]).text;
-    NSNumber *judgeNum = self.judge.judgeId;
+    NSLog(@"body of new comment is: %@", commentsFromText);
+    //UNCOMMENT WHEN A REAL JUDGE IS PASSED IN
+    //NSNumber *judgeNum = self.judge.judgeId;
+    NSNumber *judgeNum = [NSNumber numberWithInt:8];
     NSNumber *contestantNum = self.contestant.contestantId;
     NSNumber *eventNum = [NSNumber numberWithInt:(int)self.eventId];
     NSLog(@"in CommentViewController submitAction eventNum is: %@", eventNum);
@@ -93,9 +96,7 @@ UILabel *nameLabel;
     //UNCOMMENT WHEN A REAL JUDGE IS PASSED IN
     //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comment", self.eventId,[self.judge.judgeId intValue], [self.contestant.contestantId intValue]];
     NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comment", (int)self.eventId, [self.contestant.contestantId intValue]];
-    
-    NSLog(@"comment post path is: %@", pathString);
-    
+    NSLog(@"Submit comment path is: %@", pathString);
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
                                                                     method:RKRequestMethodPOST
                                                                     path:pathString
@@ -104,6 +105,7 @@ UILabel *nameLabel;
     [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"got comments");
         [self setComments:[mappingResult.dictionary objectForKey:@"comments"]];
+        [self displayComments];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR: BPCommentViewController: submitAction");
     }];
@@ -146,14 +148,14 @@ UILabel *nameLabel;
 
 - (void)displayComments {
     NSLog(@"entering commentViewController displayingComments");
-    int yCoord = 375;
+    int yCoord = 350;
     for (BPComment *c in self.comments) {
-        UILabel *commentLabel =[[UILabel alloc] initWithFrame:CGRectMake(30, yCoord, 600, 100)];
+        UILabel *commentLabel =[[UILabel alloc] initWithFrame:CGRectMake(40, yCoord, 600, 100)];
         commentLabel.numberOfLines = 0;
         commentLabel.text = c.body;
         NSLog(@"comment body: %@", c.body);
         [self.view addSubview:commentLabel];
-        yCoord += 120;
+        yCoord += 30;
     }
 }
 @end

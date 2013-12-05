@@ -13,9 +13,9 @@
     RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[self class]];
     [commentMapping addAttributeMappingsFromDictionary:@{
                                                       //@"name in json : name I assign"
-                                                      //@"judge" : @"judgeId",
-                                                      //@"contestant" : @"contestantId",
-                                                      //@"event" : @"eventId",
+                                                      @"judge" : @"judgeId",
+                                                      @"contestant" : @"contestantId",
+                                                      @"event" : @"eventId",
                                                       @"body" :@"body",
                                                       }];
     return commentMapping;
