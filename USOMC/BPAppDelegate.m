@@ -12,9 +12,9 @@
 
 @implementation BPAppDelegate
 @synthesize loginNavigationController;
-@synthesize homeViewController;
+@synthesize homeNavigationView;
+@synthesize homeTableView;
 @synthesize loginViewController;
-@synthesize judge;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -39,11 +39,13 @@
   UIBarButtonItem *butt = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
   eventsTableViewController.navigationItem.rightBarButtonItem = butt;
   [eventsTableViewController setEventsNavigationController:eventsNavigationController];
-  [self setHomeViewController:eventsNavigationController];
+  [self setHomeNavigationView:eventsNavigationController];
+  [self setHomeTableView:eventsTableViewController];
   
   // Login
   self.loginViewController = [[BPLoginViewController alloc] init:eventsNavigationController];
   self.loginNavigationController = [[BPLoginNavigationController alloc] initWithRootViewController:self.loginViewController];
+  [self.loginViewController setEventsTableViewController:eventsTableViewController];
   
   
   self.window.rootViewController = eventsNavigationController;
@@ -58,10 +60,6 @@
 
   KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KeychainID" accessGroup:nil];
   [keychain setObject:@"USOMC" forKey:(__bridge id)kSecAttrService];
-  
-//  NSString *username = [keychain objectForKey:(__bridge id)kSecAttrAccount];
-//  NSString *password = [keychain objectForKey:(__bridge id)kSecValueData];
-//  NSDictionary *auth = @{@"email":username, @"password":password};
 
   NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"login" parameters:params];
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -69,13 +67,14 @@
     if ([jsonResponse objectForKey:@"judge"]) {
       NSLog(@"JsonResponse: %@", jsonResponse);
       NSDictionary *judgeJson = [jsonResponse objectForKey:@"judge"];
-      NSLog(@"JUDGE: %@", judgeJson);
-      self.judge = [[BPJudge alloc] init];
-      /*
-       SET JUDGE'S INFO
-       */
+      BPJudge *judge = [[BPJudge alloc] init];
+      [judge setFirstName:[judgeJson objectForKey:@"first_name"]];
+      [judge setLastName:[judgeJson objectForKey:@"last_name"]];
+      [judge setJudgeId:[judgeJson objectForKey:@"encid"]];
+      [self.homeTableView setJudge:judge];
+      NSLog(@"JUDGE OBJECT FOR: %@", self.homeTableView.judge.firstName);
     } else{
-      [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
+      [self.homeNavigationView presentViewController:self.loginNavigationController animated:YES completion:nil];
     }
   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
     NSLog(@"Failed to login with keychain credentials");
@@ -89,7 +88,7 @@
   //clear keychain
   [self.loginViewController clearKeychain];
   //display login controller
-  [self.homeViewController presentViewController:self.loginNavigationController animated:YES completion:nil];
+  [self.homeNavigationView presentViewController:self.loginNavigationController animated:YES completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -108,8 +107,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  //[self.homeViewController presentViewController:self.loginNavigationController animated:NO completion:nil];
-  if (!self.homeViewController.presentedViewController) {
+  //[self.homeNavigationView presentViewController:self.loginNavigationController animated:NO completion:nil];
+  if (!self.homeNavigationView.presentedViewController) {
     [self checkLogin];
   }
 

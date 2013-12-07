@@ -16,5 +16,5 @@
 @interface BPEventsTableViewController : BPTableViewController
 @property (nonatomic) NSMutableArray *events;
 @property (nonatomic) BPEventsNavigationController *eventsNavigationController;
-@property (nonatomic, assign) BPJudge *judge;
+@property (nonatomic) BPJudge *judge;
 @end
