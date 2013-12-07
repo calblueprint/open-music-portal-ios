@@ -12,6 +12,7 @@
 //#import <AFNetworking/AFJSONRequestOperation.h>
 
 #import "BPEventsNavigationController.h"
+#import "BPEventsTableViewController.h"
 #import "UIButton+NUI.h"
 #import "UILabel+NUI.h"
 #import "UITextField+NUI.h"
@@ -31,6 +32,7 @@
 @property (nonatomic, assign) UITextField *usernameField;
 @property (nonatomic, assign) UITextField *passwordField;
 @property (nonatomic, retain) BPEventsNavigationController *eventsNavigationController;
+@property (nonatomic) BPEventsTableViewController *eventsTableViewController;
 @property (nonatomic) KeychainItemWrapper *keychain;
 
 - (id) init:(BPEventsNavigationController *)eventPage;

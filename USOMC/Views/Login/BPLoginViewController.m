@@ -20,6 +20,7 @@
 @synthesize usernameField = _usernameField;
 @synthesize passwordField = _passwordField;
 @synthesize eventsNavigationController = _eventsNavigationController;
+@synthesize eventsTableViewController;
 @synthesize keychain;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -192,7 +193,15 @@
     //[self.verifiedText setText:@"Success! Credentials are valid."];
     //[self.verifiedText setHidden:NO];
     //[self.verifiedText setAlpha:1];
+    NSDictionary *judgeJson = [jsonResponse objectForKey:@"judge"];
     [self.verifiedText setHidden:YES];
+    BPJudge *judge = [[BPJudge alloc] init];
+    [judge setFirstName:[judgeJson objectForKey:@"first_name"]];
+    [judge setLastName:[judgeJson objectForKey:@"last_name"]];
+    [judge setJudgeId:[judgeJson objectForKey:@"encid"]];
+    [self.eventsTableViewController setJudge:judge];
+    //NSLog(@"judge's first name: %@", self.eventsTableViewController.judge.firstName);
+    
     [self.eventsNavigationController dismissViewControllerAnimated:YES completion:nil];
   } else {
     [NUILabelRenderer render:self.verifiedText withClass:@"DenyText"];
@@ -226,6 +235,7 @@
   [self.keychain setObject:@"" forKey:(__bridge id)kSecAttrAccount];
   [self.keychain setObject:@"" forKey:(__bridge id)kSecValueData];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
