@@ -52,6 +52,7 @@
 		4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBD98D182F10EE00166BC7 /* BPEventsTableViewController.m */; };
 		4DBBD991182F111C00166BC7 /* BPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBD990182F111C00166BC7 /* BPNavigationController.m */; };
 		4DBBD994182F115600166BC7 /* BPEventsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBD993182F115600166BC7 /* BPEventsNavigationController.m */; };
+		4DE600311858F5F300C20B32 /* BPRatingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE600301858F5F300C20B32 /* BPRatingsTableViewController.m */; };
 		BDA267CC2A7E483EB524F953 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D36959BA1154A91857AE966 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,8 @@
 		4DBBD990182F111C00166BC7 /* BPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPNavigationController.m; path = BPClasses/BPNavigationController.m; sourceTree = "<group>"; };
 		4DBBD992182F115600166BC7 /* BPEventsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEventsNavigationController.h; path = Views/EventsTableView/BPEventsNavigationController.h; sourceTree = "<group>"; };
 		4DBBD993182F115600166BC7 /* BPEventsNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventsNavigationController.m; path = Views/EventsTableView/BPEventsNavigationController.m; sourceTree = "<group>"; };
+		4DE6002F1858F5F300C20B32 /* BPRatingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPRatingsTableViewController.h; path = Views/Ratings/BPRatingsTableViewController.h; sourceTree = "<group>"; };
+		4DE600301858F5F300C20B32 /* BPRatingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPRatingsTableViewController.m; path = Views/Ratings/BPRatingsTableViewController.m; sourceTree = "<group>"; };
 		5D36959BA1154A91857AE966 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -352,6 +355,7 @@
 			children = (
 				09DFFA1F182F1BF400488C2E /* Login */,
 				4DBBD988182F10A100166BC7 /* EventsTableView */,
+				4DE6002E1858F5E100C20B32 /* Ratings */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -377,6 +381,15 @@
 				1C32B6501857DBD40047260F /* BPDisplayRankingsTableViewController.m */,
 			);
 			name = EventsTableView;
+			sourceTree = "<group>";
+		};
+		4DE6002E1858F5E100C20B32 /* Ratings */ = {
+			isa = PBXGroup;
+			children = (
+				4DE6002F1858F5F300C20B32 /* BPRatingsTableViewController.h */,
+				4DE600301858F5F300C20B32 /* BPRatingsTableViewController.m */,
+			);
+			name = Ratings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -542,6 +555,7 @@
 				09B9863C184C4CB8002B2746 /* NSData+Base64.m in Sources */,
 				4D8AFD8D18507417006B4A95 /* BPUserTableViewCell.m in Sources */,
 				4D8AFD8818507367006B4A95 /* BPComment.m in Sources */,
+				4DE600311858F5F300C20B32 /* BPRatingsTableViewController.m in Sources */,
 				1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */,
 				4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */,
 			);
