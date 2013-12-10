@@ -12,13 +12,11 @@
 
 @end
 
-@implementation BPEventViewController {
+@implementation BPEventViewController
     
 
 UILabel *nameLabel;
 UILabel *roomLabel;
-    
-}
 
 @synthesize name;
 @synthesize eventId;
@@ -83,6 +81,25 @@ UILabel *roomLabel;
     //[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [rateButton setTitle:@"Rate the Contestants (1 judge only)" forState:UIControlStateNormal];
     [self.view addSubview:rateButton];
+    
+    UIButton *rankingsButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [rankingsButton setBackgroundColor:[UIColor grayColor]];
+    [rankingsButton setFrame:CGRectMake(150, 600, 300, 100)];
+    [rankingsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rankingsButton setTitle:@"View Contestant Rankings" forState:UIControlStateNormal];
+    [rankingsButton addTarget:self action:@selector(viewRankings:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rankingsButton];
+
+}
+
+-(void)viewRankings: (id)selector {
+    BPDisplayRankingsTableViewController *displayRankingsTableViewController = [[BPDisplayRankingsTableViewController alloc] init];
+    [displayRankingsTableViewController setEventId:self.eventId];
+    [displayRankingsTableViewController.view setBackgroundColor:[UIColor whiteColor]];
+    [displayRankingsTableViewController setEventsNavigationController:self.eventsNavigationController];
+    //[displayRankingsViewController loadRankings];
+    [self.eventsNavigationController pushViewController:displayRankingsTableViewController animated:YES];
+    
 }
 
 
