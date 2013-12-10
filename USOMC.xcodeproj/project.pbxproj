@@ -18,6 +18,8 @@
 		09B9863E184C4CB8002B2746 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B98638184C4CB8002B2746 /* NSString+Base64.m */; };
 		09B9863F184C4CB8002B2746 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 09B98639184C4CB8002B2746 /* README.md */; };
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
+		1C32B6511857DBD40047260F /* BPDisplayRankingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C32B6501857DBD40047260F /* BPDisplayRankingsTableViewController.m */; };
+		1CD313DD1853C0C0002F66CF /* BPRanking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD313DC1853C0C0002F66CF /* BPRanking.m */; };
 		1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */; };
 		1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C38184729E500E2F8BC /* BPCommentViewController.m */; };
 		4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFB18416D7C006E09F0 /* BPEvent.m */; };
@@ -80,6 +82,10 @@
 		09B98639184C4CB8002B2746 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		09DFFA23182F1C7500488C2E /* BPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLoginViewController.h; path = Views/Login/BPLoginViewController.h; sourceTree = "<group>"; };
 		09DFFA24182F1C7500488C2E /* BPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLoginViewController.m; path = Views/Login/BPLoginViewController.m; sourceTree = "<group>"; };
+		1C32B64F1857DBD40047260F /* BPDisplayRankingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPDisplayRankingsTableViewController.h; path = Views/EventsTableView/BPDisplayRankingsTableViewController.h; sourceTree = "<group>"; };
+		1C32B6501857DBD40047260F /* BPDisplayRankingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPDisplayRankingsTableViewController.m; path = Views/EventsTableView/BPDisplayRankingsTableViewController.m; sourceTree = "<group>"; };
+		1CD313DB1853C0C0002F66CF /* BPRanking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPRanking.h; path = Models/BPRanking.h; sourceTree = "<group>"; };
+		1CD313DC1853C0C0002F66CF /* BPRanking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPRanking.m; path = Models/BPRanking.m; sourceTree = "<group>"; };
 		1CE88C2E1847244700E2F8BC /* BPSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSplitViewController.h; path = BPClasses/BPSplitViewController.h; sourceTree = "<group>"; };
 		1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPSplitViewController.m; path = BPClasses/BPSplitViewController.m; sourceTree = "<group>"; };
 		1CE88C37184729E500E2F8BC /* BPCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCommentViewController.h; path = Views/EventsTableView/BPCommentViewController.h; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				4D8AFD8518507367006B4A95 /* BPContestant.m */,
 				4D8AFD8618507367006B4A95 /* BPUser.m */,
 				4D8AFD8718507367006B4A95 /* BPUser.h */,
+				1CD313DB1853C0C0002F66CF /* BPRanking.h */,
+				1CD313DC1853C0C0002F66CF /* BPRanking.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -343,6 +351,8 @@
 				1CE88C38184729E500E2F8BC /* BPCommentViewController.m */,
 				4D8AFD7F185071C5006B4A95 /* BPDummyViewController.h */,
 				4D8AFD80185071C5006B4A95 /* BPDummyViewController.m */,
+				1C32B64F1857DBD40047260F /* BPDisplayRankingsTableViewController.h */,
+				1C32B6501857DBD40047260F /* BPDisplayRankingsTableViewController.m */,
 			);
 			name = EventsTableView;
 			sourceTree = "<group>";
@@ -495,9 +505,11 @@
 				4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */,
 				4DBBD991182F111C00166BC7 /* BPNavigationController.m in Sources */,
 				4DBBD95F182F0F2E00166BC7 /* BPAppDelegate.m in Sources */,
+				1CD313DD1853C0C0002F66CF /* BPRanking.m in Sources */,
 				098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */,
 				09B9863A184C4CB8002B2746 /* AESCrypt.m in Sources */,
 				4D8AFD81185071C5006B4A95 /* BPDummyViewController.m in Sources */,
+				1C32B6511857DBD40047260F /* BPDisplayRankingsTableViewController.m in Sources */,
 				4D8AFD8A18507367006B4A95 /* BPUser.m in Sources */,
 				4DBBD95B182F0F2E00166BC7 /* main.m in Sources */,
 				4D8AFD8918507367006B4A95 /* BPContestant.m in Sources */,
