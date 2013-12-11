@@ -45,7 +45,10 @@ UILabel *roomLabel;
 }
 
 - (void)makeLabels {
-    roomLabel =[[UILabel alloc] initWithFrame:CGRectMake(150, 150, 300, 100)];
+    roomLabel =[[UILabel alloc] initWithFrame:CGRectMake(600, 150, 300, 100)];
+    [roomLabel setNuiClass:@"roomLabel"];
+    roomLabel.numberOfLines = 0;
+    
     if (self.roomNumber == nil) {
         roomLabel.text = @"Room: Not Yet Assigned";
     } else {
@@ -66,25 +69,28 @@ UILabel *roomLabel;
 }
 - (void)makeButtons {
     UIButton *commentButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [commentButton setNuiClass:@"eventPageButton"];
     [commentButton setBackgroundColor:[UIColor grayColor]];
-    [commentButton setFrame:CGRectMake(150, 300, 300, 100)];
+    [commentButton setFrame:CGRectMake(130, 200, 300, 120)];
     [commentButton addTarget:self action:@selector(commentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [commentButton setTitle:@"Comment on a Contestant" forState:UIControlStateNormal];
+    [commentButton setTitle:@"Comment on Contestants" forState:UIControlStateNormal];
     [commentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:commentButton];
     
     UIButton *rateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [rateButton setNuiClass:@"eventPageButton"];
     [rateButton setBackgroundColor:[UIColor grayColor]];
-    [rateButton setFrame:CGRectMake(150, 450, 300, 100)];
+    [rateButton setFrame:CGRectMake(130, 350, 300, 120)];
     [rateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
     //[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [rateButton setTitle:@"Rate the Contestants (1 judge only)" forState:UIControlStateNormal];
+    [rateButton setTitle:@"Rank Contestants (1 judge only)" forState:UIControlStateNormal];
     [self.view addSubview:rateButton];
     
     UIButton *rankingsButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [rankingsButton setNuiClass:@"eventPageButton"];
     [rankingsButton setBackgroundColor:[UIColor grayColor]];
-    [rankingsButton setFrame:CGRectMake(150, 600, 300, 100)];
+    [rankingsButton setFrame:CGRectMake(130, 500, 300, 120)];
     [rankingsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [rankingsButton setTitle:@"View Contestant Rankings" forState:UIControlStateNormal];
     [rankingsButton addTarget:self action:@selector(viewRankings:) forControlEvents:UIControlEventTouchUpInside];

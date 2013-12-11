@@ -12,6 +12,9 @@
 #import "BPEventViewController.h"
 #import "BPEventsNavigationController.h"
 #import "BPEventsTableViewCell.h"
+#import "UIView+Nui.h"
+#import "UITableView+Nui.h"
+#import "UITableViewCell+Nui.h"
 
 @interface BPEventsTableViewController : BPTableViewController
 @property (nonatomic) NSMutableArray *events;

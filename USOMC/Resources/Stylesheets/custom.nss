@@ -10,11 +10,31 @@ NavigationBar {
     text-shadow-color: clear;
 }
 
-TableCell {
-    background-color-top: @secondaryBackgroundColorTop;
-    background-color-bottom: @secondaryBackgroundColorBottom;
-    font-color: #000000;
+eventsTableView {
+separator-color: #FFFFFF;
+}
+
+eventCell {
+    font-color: #COCOCO;
     font-name: Helvetica;
     font-size: 25;
     text-align: center;
 }
+
+eventView {
+    background-image: piano.png;
+}
+
+roomLabel {
+    font-size:30;
+    font-name: Helvetica;
+    font-color: #FFFFFF;
+}
+
+eventPageButton {
+font-size: 20
+font-color: #FFFFFF;
+background-color-top: #FFFFFF;
+background-color-bottom: #000000;
+}
+
