@@ -14,6 +14,7 @@
 #import "UITableViewCell+Nui.h"
 
 
+
 @interface BPDisplayRankingsTableViewController : BPTableViewController
 @property (nonatomic) NSMutableArray *rankings;
 @property (nonatomic) NSInteger *eventId;

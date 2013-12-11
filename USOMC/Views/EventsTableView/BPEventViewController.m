@@ -102,6 +102,7 @@ UILabel *roomLabel;
 -(void)viewRankings: (id)selector {
     BPDisplayRankingsTableViewController *displayRankingsTableViewController = [[BPDisplayRankingsTableViewController alloc] init];
     [displayRankingsTableViewController setEventId:self.eventId];
+    [displayRankingsTableViewController setJu]
     [displayRankingsTableViewController.view setBackgroundColor:[UIColor whiteColor]];
     [displayRankingsTableViewController setEventsNavigationController:self.eventsNavigationController];
     //[displayRankingsViewController loadRankings];
@@ -124,7 +125,6 @@ UILabel *roomLabel;
 - (void)rateButtonPressed: (id)selector {
   BPRatingsTableViewController *ratingsTableViewController = [[BPRatingsTableViewController alloc] init];
   [ratingsTableViewController setEventID:self.eventId];
-  [ratingsTableViewController setJudge:self.judge];
   [ratingsTableViewController setContestants:self.contestants];
   [self.eventsNavigationController pushViewController:ratingsTableViewController animated:YES];
 }
