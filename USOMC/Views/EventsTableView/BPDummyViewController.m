@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self setTitle:@"Comment on a Contestant"];
     }
     return self;
 }
@@ -93,6 +93,7 @@
     NSLog(@"%f", self.view.frame.size.height);
     float tableWidth = 350;
     self.commentViewController = [[BPCommentViewController alloc] init];
+    [self.commentViewController.view setNuiClass:@"commentView"];
     [self.commentViewController setJudge: self.judge];
     [self.commentViewController setEventId: self.eventId];
     [self.commentViewController setTitle:@"CommentViewTitle"];

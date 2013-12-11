@@ -10,6 +10,7 @@
 #import "BPJudge.h"
 #import "BPContestant.h"
 #import "BPComment.h"
+#import "UILabel+Nui.h"
 
 @interface BPCommentViewController : BPViewController<UITextFieldDelegate>
 @property (nonatomic) NSString *eventName;

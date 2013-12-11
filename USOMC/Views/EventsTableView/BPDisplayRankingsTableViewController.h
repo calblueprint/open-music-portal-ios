@@ -11,6 +11,7 @@
 #import "BPRanking.h"
 #import "BPEventsNavigationController.h"
 #import "BPTableViewCell.h"
+#import "UITableViewCell+Nui.h"
 
 
 @interface BPDisplayRankingsTableViewController : BPTableViewController

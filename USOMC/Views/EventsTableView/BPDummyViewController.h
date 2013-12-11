@@ -12,6 +12,7 @@
 #import "BPUser.h"
 #import "BPJudge.h"
 #import "BPContestant.h"
+#import "UIView+Nui.h"
 
 @interface BPDummyViewController : BPViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic) NSArray *contestants;

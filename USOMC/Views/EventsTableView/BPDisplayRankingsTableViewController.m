@@ -21,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self setTitle:@"Contestant Rankings"];
     }
     return self;
 }
@@ -64,6 +64,7 @@
     BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[BPTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setNuiClass:@"rankingCell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     

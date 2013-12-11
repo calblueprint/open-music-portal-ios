@@ -36,5 +36,35 @@ font-size: 20
 font-color: #FFFFFF;
 background-color-top: #FFFFFF;
 background-color-bottom: #000000;
+corner-radius:5.0f;
+}
+
+instructionLabel {
+font-name:Helvetica;
+font-size:50;
+text-align:center;
+
+}
+
+commentView{
+background-color:#C0C0C0;
+}
+
+commentNameLabel {
+font-size:50;
+text-align:center;
+}
+
+commentLabel {
+font-size:25
+}
+
+prevCommentsLabel {
+font-size:25;
+}
+
+rankingCell{
+font-size:25;
+text-align:center;
 }
 
