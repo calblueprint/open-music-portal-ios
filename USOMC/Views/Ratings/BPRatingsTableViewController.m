@@ -299,7 +299,7 @@
   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
     [hud hide:YES];
     NSLog(@"Ratings failed to post");
-    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"EROR" message:@"Unable to post ratings"];
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"ERROR" message:@"Unable to post ratings"];
     [modal show];
   }];
   
