@@ -39,7 +39,7 @@ eventPageButton {
     font-name: @primaryFontNameBold;
     font-size: 17;
     height: 100;
-    corner-radius: 4;
+    corner-radius: 4co;
     exclude-views: UIAlertButton;
     exclude-subviews: UITableViewCell,UITextField;
 }
