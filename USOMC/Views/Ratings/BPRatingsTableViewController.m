@@ -286,13 +286,13 @@
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
     NSDictionary *jsonResponse = (NSDictionary*)JSON;
     [hud hide:YES];
-    if ([jsonResponse objectForKey:@"ratings"]) {
+    if ([jsonResponse objectForKey:@"contestants"]) {
       NSLog(@"Ratings succesfully posted!");
       RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"SUCCESS!" message:@"Ratings were succesfully posted"];
       [modal show];
     } else {
       NSLog(@"Ratings failed to be posted");
-      RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"EROR" message:@"Unable to post ratings"];
+      RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"ERROR" message:@"Unable to post ratings"];
       [modal show];
     }
     
