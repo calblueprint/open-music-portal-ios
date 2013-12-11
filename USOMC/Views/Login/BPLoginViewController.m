@@ -62,7 +62,7 @@
   [self setUsernameField:usernameTextField];
   [self.view addSubview:usernameTextField];
   
-  UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(372, 390, 280, 30)];
+  UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(372, 370, 280, 30)];
   [passwordTextField setPlaceholder:@"Password"];
   [passwordTextField setReturnKeyType:UIReturnKeyDone];
   [passwordTextField setTag:999];
