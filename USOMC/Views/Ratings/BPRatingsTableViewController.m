@@ -276,7 +276,7 @@
   RKObjectManager *manager = [RKObjectManager sharedManager];
   AFHTTPClient *client = [manager HTTPClient];
   
-  NSString *pathString = [NSString stringWithFormat:@"/event/%d/ratings", (int)self.eventID];
+  NSString *pathString = [NSString stringWithFormat:@"events/%d/rankings", (int)self.eventID];
   NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:pathString parameters:params];
   
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
