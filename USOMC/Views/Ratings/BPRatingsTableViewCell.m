@@ -10,8 +10,8 @@
 
 @implementation BPRatingsTableViewCell
 
-@synthesize rank;
-@synthesize label;
+//@synthesize rank;
+//@synthesize label;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

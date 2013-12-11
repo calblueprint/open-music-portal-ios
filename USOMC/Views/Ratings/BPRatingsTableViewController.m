@@ -11,6 +11,7 @@
 @interface BPRatingsTableViewController ()
 {
   NSIndexPath *currentCell;
+  NSMutableDictionary *ratingDictionary;
 }
 
 @end
@@ -19,7 +20,7 @@
 @synthesize eventID;
 @synthesize judge;
 @synthesize contestants;
-@synthesize rankings;
+@synthesize ratings;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +33,8 @@
     //[myTable reloadData];
     [self.view addSubview:myTable];
     
-    self.rankings = @{@"rankings": @[]};
+    self.ratings = @{@"ratings": @[]};
+    ratingDictionary = [[NSMutableDictionary alloc] init];
     
   }
   return self;
@@ -50,6 +52,7 @@
 //perform your expand stuff (may include animation) for cell here. It will be called when the user touches a cell
 -(void)tableView:(UITableView *)tableView expandCell:(BPRatingsTableViewCell *)cell withIndexPath:(NSIndexPath *)indexPath
 {
+  
   [[cell.contentView viewWithTag:11] removeFromSuperview];
   [[cell.contentView viewWithTag:12] removeFromSuperview];
   
@@ -132,7 +135,7 @@
     [cell.contentView addSubview:expandGlyph];
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.detailTextLabel.numberOfLines = 0;
-    
+    /*
     UILabel *ranking = [[UILabel alloc] initWithFrame:CGRectMake(450, 30, 270, 40)];
     [ranking.layer setBorderWidth:0.7];
     //[ratingLabel setBackgroundColor:[UIColor blueColor]];
@@ -145,6 +148,7 @@
     
     [cell setLabel:ranking];
     [cell addSubview:ranking];
+     */
   }
   
   //alternative background colors for better division ;)
@@ -153,8 +157,8 @@
   else
     cell.backgroundColor = [UIColor colorWithRed:.8 green:.8 blue:.8 alpha:1];
   
-  BPContestant *cell_contestant = [self.contestants objectAtIndex:indexPath.row];
-  cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", cell_contestant.firstName, cell_contestant.lastName];
+  BPContestant *contestant = [self.contestants objectAtIndex:indexPath.row];
+  cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contestant.firstName, contestant.lastName];
   //cell.textLabel.text = [cellTitles objectAtIndex:indexPath.row % 10 ];
   cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row % 10 + 1]];
   
@@ -162,13 +166,13 @@
   if (!isExpanded) //prepare the cell as if it was collapsed! (without any animation!)
   {
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", cell.rank];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [ratingDictionary objectForKey:[NSString stringWithFormat:@"%@", contestant.contestantId]]];
     [cell.contentView viewWithTag:7].transform = CGAffineTransformMakeRotation(0);
     
   }
   else ///prepare the cell as if it was expanded! (without any animation!)
   {
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", cell.rank];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [ratingDictionary objectForKey:[NSString stringWithFormat:@"%@", contestant.contestantId]]];
     [cell.contentView viewWithTag:7].transform = CGAffineTransformMakeRotation(3.14);
     
     [[cell.contentView viewWithTag:11] removeFromSuperview];
@@ -220,6 +224,8 @@
   
   RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self view:popup];
   [modal show];
+  
+  
 }
 
 - (void)commentsButtonPressed: (id)selector {
@@ -228,16 +234,18 @@
 
 - (void)doneButtonPressed: (id)selector {
   NSLog(@"Done Button Pressed");
+  
 }
 
 //========= UIPickerView Logic ===========================================
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
   // Handle the selection
-  NSLog(@"current cell: %@", currentCell);
   BPRatingsTableViewCell *cell = (BPRatingsTableViewCell*)[myTable cellForRowAtIndexPath:currentCell];
-  cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", row];
-  [cell setRank:row];
-  
+  //cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", row];
+  BPContestant *contestant = [self.contestants objectAtIndex:currentCell.row];
+  [ratingDictionary setValue:[NSNumber numberWithInt:row] forKey:[NSString stringWithFormat:@"%@", contestant.contestantId]];
+  NSLog(@"dictionary: %@", [ratingDictionary objectForKey:contestant.contestantId]);
+  cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [ratingDictionary objectForKey:[NSString stringWithFormat:@"%@", contestant.contestantId]]];
 }
 
 // tell the picker how many rows are available for a given component

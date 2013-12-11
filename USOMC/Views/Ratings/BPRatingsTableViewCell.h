@@ -10,7 +10,7 @@
 
 @interface BPRatingsTableViewCell : BPTableViewCell
 
-@property (nonatomic, assign) NSInteger rank;
-@property (nonatomic, retain) UILabel *label;
+//@property (nonatomic, assign) NSInteger rank;
+//@property (nonatomic, retain) UILabel *label;
 
 @end

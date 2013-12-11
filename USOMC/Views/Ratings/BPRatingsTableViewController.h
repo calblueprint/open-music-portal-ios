@@ -24,5 +24,5 @@
 @property (nonatomic) NSInteger eventID;
 @property (nonatomic, retain) BPJudge *judge;
 @property (nonatomic, retain) NSArray *contestants;
-@property (nonatomic, retain) NSDictionary *rankings;
+@property (nonatomic, retain) NSDictionary *ratings;
 @end
