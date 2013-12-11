@@ -85,6 +85,7 @@ UILabel *roomLabel;
 
     //[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [rateButton setTitle:@"Rank Contestants (1 judge only)" forState:UIControlStateNormal];
+    [rateButton addTarget:self action:@selector(rateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rateButton];
     
     UIButton *rankingsButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -120,6 +121,13 @@ UILabel *roomLabel;
     [self.eventsNavigationController pushViewController:dummyViewController animated:YES];
 }
 
+- (void)rateButtonPressed: (id)selector {
+  BPRatingsTableViewController *ratingsTableViewController = [[BPRatingsTableViewController alloc] init];
+  [ratingsTableViewController setEventID:self.eventId];
+  [ratingsTableViewController setJudge:self.judge];
+  [ratingsTableViewController setContestants:self.contestants];
+  [self.eventsNavigationController pushViewController:ratingsTableViewController animated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {

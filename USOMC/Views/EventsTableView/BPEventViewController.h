@@ -10,10 +10,12 @@
 #import "BPEvent.h"
 #import "BPEventsNavigationController.h"
 #import "BPDummyViewController.h"
+#import "BPRatingsTableViewController.h"
 #import "BPJudge.h"
 #import "BPDisplayRankingsTableViewController.h"
 #import "UILabel+Nui.h"
 #import "UIButton+Nui.h"
+
 
 @interface BPEventViewController : BPViewController
 @property (nonatomic) NSString *name;

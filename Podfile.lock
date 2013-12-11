@@ -32,6 +32,7 @@ PODS:
   - RestKit/ObjectMapping (0.20.3)
   - RestKit/Support (0.20.3):
     - TransitionKit (= 1.1.1)
+  - RNBlurModalView (0.1.0)
   - SOCKit (1.1)
   - TransitionKit (1.1.1)
 
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.6)
   - NUI
   - RestKit (~> 0.20.0)
+  - RNBlurModalView (~> 0.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   NUI: 6e8921b4e628aa47f05cd7a481ecaa75354db707
   RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
+  RNBlurModalView: ab3855ced43749cb0fb4d370160bd2908476c8b6
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
 
