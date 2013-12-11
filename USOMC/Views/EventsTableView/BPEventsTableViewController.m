@@ -22,7 +22,7 @@
   self = [super initWithStyle:style];
   if (self) {
     // Custom initialization
-    [self setTitle:@"Events"];
+    [self setTitle:@"Select an Event:"];
   }
   return self;
 }
