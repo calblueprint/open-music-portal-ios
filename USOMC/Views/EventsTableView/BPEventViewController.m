@@ -102,7 +102,6 @@ UILabel *roomLabel;
 -(void)viewRankings: (id)selector {
     BPDisplayRankingsTableViewController *displayRankingsTableViewController = [[BPDisplayRankingsTableViewController alloc] init];
     [displayRankingsTableViewController setEventId:self.eventId];
-    [displayRankingsTableViewController setJu]
     [displayRankingsTableViewController.view setBackgroundColor:[UIColor whiteColor]];
     [displayRankingsTableViewController setEventsNavigationController:self.eventsNavigationController];
     //[displayRankingsViewController loadRankings];
