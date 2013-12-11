@@ -266,7 +266,7 @@
     if ([ratingDictionary objectForKey:key] == 0) {
       continue;
     } else{
-      NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rating":[ratingDictionary objectForKey:key]};
+      NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rank":[ratingDictionary objectForKey:key]};
       [ratingArray addObject:tempDict];
     }
   }
@@ -276,7 +276,8 @@
   RKObjectManager *manager = [RKObjectManager sharedManager];
   AFHTTPClient *client = [manager HTTPClient];
   
-  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"" parameters:params];
+  NSString *pathString = [NSString stringWithFormat:@"/event/%d/ratings", (int)self.eventID];
+  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:pathString parameters:params];
   
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
   hud.mode = MBProgressHUDModeIndeterminate;
