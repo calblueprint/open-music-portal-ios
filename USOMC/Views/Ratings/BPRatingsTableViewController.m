@@ -234,8 +234,8 @@
   NSIndexPath *indexPath = [myTable indexPathForRowAtPoint:buttonPosition];
   BPContestant *contestant = [self.contestants objectAtIndex:indexPath.row];
   
-  //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comments",(int)self.eventID, (int)self.judge.judgeId, [contestant.contestantId intValue]];
-  NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comments",(int)self.eventID, [contestant.contestantId intValue]];
+  NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%@/contestant/%d/comments",(int)self.eventID, [judge.judgeId stringValue], [contestant.contestantId intValue]];
+  //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comments",(int)self.eventID, [contestant.contestantId intValue]];
   NSLog(@"CommentViewController loadExistingcomments pathString is : %@", pathString);
   NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
                                                                              method:RKRequestMethodGET
@@ -263,13 +263,16 @@
  
   NSMutableArray *ratingArray = [[NSMutableArray alloc] init];
   for (id key in ratingDictionary) {
-    NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rating":[ratingDictionary objectForKey:key]};
-    [ratingArray addObject:tempDict];
+    if ([ratingDictionary objectForKey:key] == 0) {
+      continue;
+    } else{
+      NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rating":[ratingDictionary objectForKey:key]};
+      [ratingArray addObject:tempDict];
+    }
   }
 
   NSDictionary *params = @{@"ratings": (NSArray*)ratingArray};
   NSLog(@"PARAMS: %@", params);
-  
   RKObjectManager *manager = [RKObjectManager sharedManager];
   AFHTTPClient *client = [manager HTTPClient];
   
