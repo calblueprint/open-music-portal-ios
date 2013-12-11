@@ -266,7 +266,7 @@
     if ([ratingDictionary objectForKey:key] == 0) {
       continue;
     } else{
-      NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rating":[ratingDictionary objectForKey:key]};
+      NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rank":[ratingDictionary objectForKey:key]};
       [ratingArray addObject:tempDict];
     }
   }
@@ -276,18 +276,31 @@
   RKObjectManager *manager = [RKObjectManager sharedManager];
   AFHTTPClient *client = [manager HTTPClient];
   
-  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"" parameters:params];
+  NSString *pathString = [NSString stringWithFormat:@"events/%d/rankings", (int)self.eventID];
+  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:pathString parameters:params];
   
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
   hud.mode = MBProgressHUDModeIndeterminate;
   hud.labelText = @"Loading";
   
   AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    NSDictionary *jsonResponse = (NSDictionary*)JSON;
     [hud hide:YES];
-    NSLog(@"Ratings succesfully posted!");
+    if ([jsonResponse objectForKey:@"contestants"]) {
+      NSLog(@"Ratings succesfully posted!");
+      RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"SUCCESS!" message:@"Ratings were succesfully posted"];
+      [modal show];
+    } else {
+      NSLog(@"Ratings failed to be posted");
+      RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"ERROR" message:@"Unable to post ratings"];
+      [modal show];
+    }
+    
   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
     [hud hide:YES];
     NSLog(@"Ratings failed to post");
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"ERROR" message:@"Unable to post ratings"];
+    [modal show];
   }];
   
   [client enqueueHTTPRequestOperation:checkCredentials];
@@ -299,7 +312,11 @@
   // Handle the selection
   BPRatingsTableViewCell *cell = (BPRatingsTableViewCell*)[myTable cellForRowAtIndexPath:currentCell];
   BPContestant *contestant = [self.contestants objectAtIndex:currentCell.row];
-  [ratingDictionary setValue:[NSNumber numberWithInt:row] forKey:[NSString stringWithFormat:@"%@", contestant.contestantId]];
+  if (row != 0) {
+    [ratingDictionary setValue:[NSNumber numberWithInt:row] forKey:[NSString stringWithFormat:@"%@", contestant.contestantId]];
+  } else {
+    [ratingDictionary removeObjectForKey:[NSString stringWithFormat:@"%@", contestant.contestantId]];
+  }
   NSLog(@"dictionary: %@", [ratingDictionary objectForKey:contestant.contestantId]);
   cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [ratingDictionary objectForKey:[NSString stringWithFormat:@"%@", contestant.contestantId]]];
 }
