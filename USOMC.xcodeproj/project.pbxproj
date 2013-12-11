@@ -27,6 +27,8 @@
 		4D047EFF18416D9A006E09F0 /* BPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFE18416D9A006E09F0 /* BPTableViewCell.m */; };
 		4D047F0418416DC3006E09F0 /* BPEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */; };
 		4D047F0518416DC3006E09F0 /* BPEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047F0318416DC3006E09F0 /* BPEventViewController.m */; };
+		4D279E7C1858F68C00526FE4 /* BPRatingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D279E7B1858F68C00526FE4 /* BPRatingsTableViewCell.m */; };
+		4D279E801858F6CE00526FE4 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D279E7F1858F6CE00526FE4 /* HVTableView.m */; };
 		4D8AFD81185071C5006B4A95 /* BPDummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD80185071C5006B4A95 /* BPDummyViewController.m */; };
 		4D8AFD8818507367006B4A95 /* BPComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8318507367006B4A95 /* BPComment.m */; };
 		4D8AFD8918507367006B4A95 /* BPContestant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8518507367006B4A95 /* BPContestant.m */; };
@@ -104,6 +106,10 @@
 		4D047F0118416DC3006E09F0 /* BPEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventsTableViewCell.m; path = Views/EventsTableView/BPEventsTableViewCell.m; sourceTree = "<group>"; };
 		4D047F0218416DC3006E09F0 /* BPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEventViewController.h; path = Views/EventsTableView/BPEventViewController.h; sourceTree = "<group>"; };
 		4D047F0318416DC3006E09F0 /* BPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEventViewController.m; path = Views/EventsTableView/BPEventViewController.m; sourceTree = "<group>"; };
+		4D279E7A1858F68C00526FE4 /* BPRatingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPRatingsTableViewCell.h; path = Views/Ratings/BPRatingsTableViewCell.h; sourceTree = "<group>"; };
+		4D279E7B1858F68C00526FE4 /* BPRatingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPRatingsTableViewCell.m; path = Views/Ratings/BPRatingsTableViewCell.m; sourceTree = "<group>"; };
+		4D279E7E1858F6CE00526FE4 /* HVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HVTableView.h; sourceTree = "<group>"; };
+		4D279E7F1858F6CE00526FE4 /* HVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HVTableView.m; sourceTree = "<group>"; };
 		4D425E1EE5B347A0A41FA6BD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4D8AFD7F185071C5006B4A95 /* BPDummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPDummyViewController.h; path = Views/EventsTableView/BPDummyViewController.h; sourceTree = "<group>"; };
 		4D8AFD80185071C5006B4A95 /* BPDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPDummyViewController.m; path = Views/EventsTableView/BPDummyViewController.m; sourceTree = "<group>"; };
@@ -243,6 +249,16 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		4D279E7D1858F6CE00526FE4 /* HVTableView */ = {
+			isa = PBXGroup;
+			children = (
+				4D279E7E1858F6CE00526FE4 /* HVTableView.h */,
+				4D279E7F1858F6CE00526FE4 /* HVTableView.m */,
+			);
+			name = HVTableView;
+			path = BPClasses/HVTableView;
+			sourceTree = "<group>";
+		};
 		4DA5DB751857F5AD001F7FA0 /* Stylesheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +350,7 @@
 		4DBBD983182F105500166BC7 /* BPClasses */ = {
 			isa = PBXGroup;
 			children = (
+				4D279E7D1858F6CE00526FE4 /* HVTableView */,
 				09B9862F184C4CB8002B2746 /* AESCrypt */,
 				098909EF18414888004C22C2 /* Keychain */,
 				4DBBD984182F109100166BC7 /* BPViewController.h */,
@@ -386,6 +403,8 @@
 		4DE6002E1858F5E100C20B32 /* Ratings */ = {
 			isa = PBXGroup;
 			children = (
+				4D279E7A1858F68C00526FE4 /* BPRatingsTableViewCell.h */,
+				4D279E7B1858F68C00526FE4 /* BPRatingsTableViewCell.m */,
 				4DE6002F1858F5F300C20B32 /* BPRatingsTableViewController.h */,
 				4DE600301858F5F300C20B32 /* BPRatingsTableViewController.m */,
 			);
@@ -542,6 +561,7 @@
 				4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */,
 				4DBBD991182F111C00166BC7 /* BPNavigationController.m in Sources */,
 				4DBBD95F182F0F2E00166BC7 /* BPAppDelegate.m in Sources */,
+				4D279E801858F6CE00526FE4 /* HVTableView.m in Sources */,
 				1CD313DD1853C0C0002F66CF /* BPRanking.m in Sources */,
 				098909F818415E89004C22C2 /* KeychainItemWrapper.m in Sources */,
 				09B9863A184C4CB8002B2746 /* AESCrypt.m in Sources */,
@@ -555,6 +575,7 @@
 				09B9863C184C4CB8002B2746 /* NSData+Base64.m in Sources */,
 				4D8AFD8D18507417006B4A95 /* BPUserTableViewCell.m in Sources */,
 				4D8AFD8818507367006B4A95 /* BPComment.m in Sources */,
+				4D279E7C1858F68C00526FE4 /* BPRatingsTableViewCell.m in Sources */,
 				4DE600311858F5F300C20B32 /* BPRatingsTableViewController.m in Sources */,
 				1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */,
 				4DBBD98E182F10EE00166BC7 /* BPEventsTableViewController.m in Sources */,

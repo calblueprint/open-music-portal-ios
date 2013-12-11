@@ -7,8 +7,11 @@
 //
 
 #import "BPTableViewController.h"
+#import "BPRatingsTableViewCell.h"
 #import "BPJudge.h"
 #import "BPContestant.h"
+#import <RNBlurModalView/RNBlurModalView.h>
+#import "HVTableView.h"
 
 @interface BPRatingsTableViewController : BPTableViewController
 
