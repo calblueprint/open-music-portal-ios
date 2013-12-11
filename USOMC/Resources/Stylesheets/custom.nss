@@ -2,22 +2,23 @@
 @secondaryBackgroundColorTop: #FCFCFC;
 @secondaryBackgroundColorBottom: #F9F9F9;
 
+@primaryFontColor: #2F2F2F;
+
 NavigationBar {
-    background-color: #000000;
     font-name: @primaryFontName;
-    font-size: 45;
-    font-color: #FFFFFF;
+    font-size: 22;
+    font-color: @primaryFontColor;
     text-shadow-color: clear;
 }
 
 eventsTableView {
-separator-color: #FFFFFF;
+    separator-color: #EBEBEB;
 }
 
 eventCell {
-    font-color: #COCOCO;
+    font-color: @primaryFontColor;
     font-name: Helvetica;
-    font-size: 25;
+    font-size: 18;
     text-align: center;
 }
 
@@ -32,11 +33,15 @@ roomLabel {
 }
 
 eventPageButton {
-font-size: 20
-font-color: #FFFFFF;
-background-color-top: #FFFFFF;
-background-color-bottom: #000000;
-corner-radius:5.0f;
+    background-color: #37383D;
+    font-color: #FFFFFF;
+    font-color-highlighted: #CCCCCC;
+    font-name: @primaryFontNameBold;
+    font-size: 17;
+    height: 100;
+    corner-radius: 4;
+    exclude-views: UIAlertButton;
+    exclude-subviews: UITableViewCell,UITextField;
 }
 
 instructionLabel {
