@@ -13,7 +13,9 @@
 #import "BPRatingsTableViewCell.h"
 #import "BPJudge.h"
 #import "BPContestant.h"
+#import "BPComment.h"
 #import <RNBlurModalView/RNBlurModalView.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface BPRatingsTableViewController : BPViewController <HVTableViewDelegate, HVTableViewDataSource>
 {

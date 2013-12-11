@@ -230,18 +230,71 @@
 
 - (void)commentsButtonPressed: (id)selector {
   NSLog(@"comments button pressed");
+  CGPoint buttonPosition = [selector convertPoint:CGPointZero toView:myTable];
+  NSIndexPath *indexPath = [myTable indexPathForRowAtPoint:buttonPosition];
+  BPContestant *contestant = [self.contestants objectAtIndex:indexPath.row];
+  
+  //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%d/contestant/%d/comments",(int)self.eventID, (int)self.judge.judgeId, [contestant.contestantId intValue]];
+  NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comments",(int)self.eventID, [contestant.contestantId intValue]];
+  NSLog(@"CommentViewController loadExistingcomments pathString is : %@", pathString);
+  NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
+                                                                             method:RKRequestMethodGET
+                                                                               path:pathString
+                                                                         parameters:nil];
+  RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[BPComment.commentsResponseDescriptor]];
+  [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSArray *comments = [mappingResult.dictionary objectForKey:@"comments"];
+    NSLog(@"comments: %@", comments);
+    NSString *allComments = @"";
+    for (BPComment *com in comments) {
+      NSLog(@"comment body: %@", com.body);
+      allComments = [NSString stringWithFormat:@"%@\n%@", allComments, com.body];
+    }
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:[NSString stringWithFormat:@"%@ %@", contestant.firstName, contestant.lastName] message:allComments];
+    [modal show];
+  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    NSLog(@"ERROR: Could not load existing comments into BPRatingsTableViewController");
+  }];
+  [[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
 }
 
 - (void)doneButtonPressed: (id)selector {
   NSLog(@"Done Button Pressed");
+ 
+  NSMutableArray *ratingArray = [[NSMutableArray alloc] init];
+  for (id key in ratingDictionary) {
+    NSDictionary *tempDict = @{@"contestant_id":[NSString stringWithFormat:@"%@", key], @"rating":[ratingDictionary objectForKey:key]};
+    [ratingArray addObject:tempDict];
+  }
+
+  NSDictionary *params = @{@"ratings": (NSArray*)ratingArray};
+  NSLog(@"PARAMS: %@", params);
   
+  RKObjectManager *manager = [RKObjectManager sharedManager];
+  AFHTTPClient *client = [manager HTTPClient];
+  
+  NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"" parameters:params];
+  
+  MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+  hud.mode = MBProgressHUDModeIndeterminate;
+  hud.labelText = @"Loading";
+  
+  AFJSONRequestOperation *checkCredentials = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    [hud hide:YES];
+    NSLog(@"Ratings succesfully posted!");
+  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    [hud hide:YES];
+    NSLog(@"Ratings failed to post");
+  }];
+  
+  [client enqueueHTTPRequestOperation:checkCredentials];
 }
+  
 
 //========= UIPickerView Logic ===========================================
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
   // Handle the selection
   BPRatingsTableViewCell *cell = (BPRatingsTableViewCell*)[myTable cellForRowAtIndexPath:currentCell];
-  //cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", row];
   BPContestant *contestant = [self.contestants objectAtIndex:currentCell.row];
   [ratingDictionary setValue:[NSNumber numberWithInt:row] forKey:[NSString stringWithFormat:@"%@", contestant.contestantId]];
   NSLog(@"dictionary: %@", [ratingDictionary objectForKey:contestant.contestantId]);
@@ -261,8 +314,11 @@
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
   NSString *title;
-  title = [@"" stringByAppendingFormat:@"%d",row];
-  
+  if (row == 0) {
+    title = @"None";
+  } else {
+    title = [@"" stringByAppendingFormat:@"%d",row];
+  }  
   return title;
 }
 
