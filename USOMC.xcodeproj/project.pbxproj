@@ -31,6 +31,9 @@
 		4D8AFD8918507367006B4A95 /* BPContestant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8518507367006B4A95 /* BPContestant.m */; };
 		4D8AFD8A18507367006B4A95 /* BPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8618507367006B4A95 /* BPUser.m */; };
 		4D8AFD8D18507417006B4A95 /* BPUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AFD8C18507417006B4A95 /* BPUserTableViewCell.m */; };
+		4DA5DB721857F535001F7FA0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA5DB711857F535001F7FA0 /* QuartzCore.framework */; };
+		4DA5DB741857F53B001F7FA0 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA5DB731857F53B001F7FA0 /* CoreImage.framework */; };
+		4DA5DB771857F5AD001F7FA0 /* custom.nss in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5DB761857F5AD001F7FA0 /* custom.nss */; };
 		4DBBD94F182F0F2E00166BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD94E182F0F2E00166BC7 /* Foundation.framework */; };
 		4DBBD951182F0F2E00166BC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */; };
 		4DBBD953182F0F2E00166BC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBD952182F0F2E00166BC7 /* UIKit.framework */; };
@@ -109,6 +112,9 @@
 		4D8AFD8718507367006B4A95 /* BPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUser.h; path = Models/BPUser.h; sourceTree = "<group>"; };
 		4D8AFD8B18507417006B4A95 /* BPUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUserTableViewCell.h; path = Views/EventsTableView/BPUserTableViewCell.h; sourceTree = "<group>"; };
 		4D8AFD8C18507417006B4A95 /* BPUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUserTableViewCell.m; path = Views/EventsTableView/BPUserTableViewCell.m; sourceTree = "<group>"; };
+		4DA5DB711857F535001F7FA0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4DA5DB731857F53B001F7FA0 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		4DA5DB761857F5AD001F7FA0 /* custom.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = custom.nss; sourceTree = "<group>"; };
 		4DBBD94B182F0F2E00166BC7 /* USOMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USOMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBBD94E182F0F2E00166BC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +149,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA5DB741857F53B001F7FA0 /* CoreImage.framework in Frameworks */,
+				4DA5DB721857F535001F7FA0 /* QuartzCore.framework in Frameworks */,
 				4DBBD951182F0F2E00166BC7 /* CoreGraphics.framework in Frameworks */,
 				4DBBD953182F0F2E00166BC7 /* UIKit.framework in Frameworks */,
 				4DBBD94F182F0F2E00166BC7 /* Foundation.framework in Frameworks */,
@@ -166,6 +174,7 @@
 		0916AA7E1850235D00654E51 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DA5DB751857F5AD001F7FA0 /* Stylesheets */,
 				0916AA811850258700654E51 /* piano.png */,
 			);
 			path = Resources;
@@ -229,6 +238,14 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		4DA5DB751857F5AD001F7FA0 /* Stylesheets */ = {
+			isa = PBXGroup;
+			children = (
+				4DA5DB761857F5AD001F7FA0 /* custom.nss */,
+			);
+			path = Stylesheets;
+			sourceTree = "<group>";
+		};
 		4DBBD942182F0F2E00166BC7 = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +269,8 @@
 		4DBBD94D182F0F2E00166BC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DA5DB731857F53B001F7FA0 /* CoreImage.framework */,
+				4DA5DB711857F535001F7FA0 /* QuartzCore.framework */,
 				4DBBD94E182F0F2E00166BC7 /* Foundation.framework */,
 				4DBBD950182F0F2E00166BC7 /* CoreGraphics.framework */,
 				4DBBD952182F0F2E00166BC7 /* UIKit.framework */,
@@ -437,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09B9863B184C4CB8002B2746 /* LICENSE in Resources */,
+				4DA5DB771857F5AD001F7FA0 /* custom.nss in Resources */,
 				4DBBD967182F0F2E00166BC7 /* Images.xcassets in Resources */,
 				0916AA821850258700654E51 /* piano.png in Resources */,
 				09B9863F184C4CB8002B2746 /* README.md in Resources */,

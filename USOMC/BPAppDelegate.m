@@ -32,6 +32,7 @@
   RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
   [RKObjectManager setSharedManager:objectManager];
   
+  [NUISettings initWithStylesheet:@"custom"];
   [NUIAppearance init];
   
   BPEventsTableViewController *eventsTableViewController = [[BPEventsTableViewController alloc] init];
