@@ -11,11 +11,13 @@
 @implementation BPRatingsTableViewCell
 
 @synthesize rank;
+@synthesize label;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+
 
     }
     return self;

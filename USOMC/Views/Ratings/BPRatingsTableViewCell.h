@@ -11,5 +11,6 @@
 @interface BPRatingsTableViewCell : BPTableViewCell
 
 @property (nonatomic, assign) NSInteger rank;
+@property (nonatomic, retain) UILabel *label;
 
 @end
