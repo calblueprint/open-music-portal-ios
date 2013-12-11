@@ -20,6 +20,7 @@
 		09DFFA25182F1C7500488C2E /* BPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DFFA24182F1C7500488C2E /* BPLoginViewController.m */; };
 		1C32B6511857DBD40047260F /* BPDisplayRankingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C32B6501857DBD40047260F /* BPDisplayRankingsTableViewController.m */; };
 		1CD313DD1853C0C0002F66CF /* BPRanking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD313DC1853C0C0002F66CF /* BPRanking.m */; };
+		1CDECCAB185842BE00E25EBD /* custom2.nss in Resources */ = {isa = PBXBuildFile; fileRef = 1CDECCAA185842BE00E25EBD /* custom2.nss */; };
 		1CE88C301847244700E2F8BC /* BPSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */; };
 		1CE88C39184729E500E2F8BC /* BPCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE88C38184729E500E2F8BC /* BPCommentViewController.m */; };
 		4D047EFC18416D7C006E09F0 /* BPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D047EFB18416D7C006E09F0 /* BPEvent.m */; };
@@ -89,6 +90,7 @@
 		1C32B6501857DBD40047260F /* BPDisplayRankingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPDisplayRankingsTableViewController.m; path = Views/EventsTableView/BPDisplayRankingsTableViewController.m; sourceTree = "<group>"; };
 		1CD313DB1853C0C0002F66CF /* BPRanking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPRanking.h; path = Models/BPRanking.h; sourceTree = "<group>"; };
 		1CD313DC1853C0C0002F66CF /* BPRanking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPRanking.m; path = Models/BPRanking.m; sourceTree = "<group>"; };
+		1CDECCAA185842BE00E25EBD /* custom2.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = custom2.nss; sourceTree = "<group>"; };
 		1CE88C2E1847244700E2F8BC /* BPSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSplitViewController.h; path = BPClasses/BPSplitViewController.h; sourceTree = "<group>"; };
 		1CE88C2F1847244700E2F8BC /* BPSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPSplitViewController.m; path = BPClasses/BPSplitViewController.m; sourceTree = "<group>"; };
 		1CE88C37184729E500E2F8BC /* BPCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCommentViewController.h; path = Views/EventsTableView/BPCommentViewController.h; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				4DA5DB761857F5AD001F7FA0 /* custom.nss */,
+				1CDECCAA185842BE00E25EBD /* custom2.nss */,
 			);
 			path = Stylesheets;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CDECCAB185842BE00E25EBD /* custom2.nss in Resources */,
 				09B9863B184C4CB8002B2746 /* LICENSE in Resources */,
 				4DA5DB771857F5AD001F7FA0 /* custom.nss in Resources */,
 				4DBBD967182F0F2E00166BC7 /* Images.xcassets in Resources */,

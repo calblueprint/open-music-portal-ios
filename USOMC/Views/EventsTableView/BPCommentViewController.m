@@ -16,6 +16,7 @@
 @implementation BPCommentViewController
 UILabel *instructionLabel;
 UILabel *nameLabel;
+UILabel *prevCommentsLabel;
 
 @synthesize eventName;
 @synthesize contestant;
@@ -44,25 +45,33 @@ UILabel *nameLabel;
 }
 - (void)makeInstructionView {
     NSLog(@"entering commentViewController makeInstructionView");
-    instructionLabel =[[UILabel alloc] initWithFrame:CGRectMake(50, 150, 600, 100)];
+    instructionLabel =[[UILabel alloc] initWithFrame:CGRectMake(40, 0, 600, 600)];
     instructionLabel.numberOfLines = 0;
-    instructionLabel.text = @"Instructions: Select a Contestant from the list at the left to begin making comments.";
+    [instructionLabel setBackgroundColor:[UIColor clearColor]];
+    [instructionLabel setNuiClass:@"instructionLabel"];
+  
+    instructionLabel.text = @"Instructions: Select a contestant from the list at the left to begin making comments.";
     [self.view addSubview:instructionLabel];
 
 }
 
 - (void)makeLabels {
     NSLog(@"entering commentViewController makeLabels");
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(250, 100, 600, 100)];
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 600, 100)];
+    [nameLabel setNuiClass:@"commentNameLabel"];
     nameLabel.numberOfLines = 0;
     NSString *firstLast = [NSString stringWithFormat:@"%@ %@", contestant.firstName, contestant.lastName];
     nameLabel.text = firstLast;
     [self.view addSubview:nameLabel];
+    prevCommentsLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 250, 600, 100)];
+    [prevCommentsLabel setNuiClass:@"prevCommentsLabel"];
+    prevCommentsLabel.text = @"Previous Comments:";
+    [self.view addSubview:prevCommentsLabel];
 }
 
 - (void)makeCommentField {
     NSLog(@"entering commentViewController makeCommentField");
-    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 200, 600, 150)];
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 100, 600, 150)];
     self.textField.delegate = self;
     self.textField.borderStyle = UITextBorderStyleRoundedRect;
     self.textField.font = [UIFont systemFontOfSize:15];
@@ -77,7 +86,7 @@ UILabel *nameLabel;
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [submitButton setTitle:@"Submit!" forState:UIControlStateNormal];
     //[submitButton setNuiClass:@"Button:LargeButton"];
-    [submitButton setFrame:CGRectMake(500, 350, 180, 50)];
+    [submitButton setFrame:CGRectMake(500, 250, 180, 50)];
     [submitButton addTarget:self action:@selector(submitAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submitButton];
 }
@@ -149,9 +158,17 @@ UILabel *nameLabel;
 
 - (void)displayComments {
     NSLog(@"entering commentViewController displayingComments");
-    int yCoord = 350;
+    for(UIView * subView in self.view.subviews) {
+        if([subView isKindOfClass:[UILabel class]]) // Check is SubView Class Is UILabel class
+        {
+            [subView removeFromSuperview];  // You can write code here for your UILabel;
+        }
+    }
+    [self makeLabels];
+    int yCoord = 300;
     for (BPComment *c in self.comments) {
         UILabel *commentLabel =[[UILabel alloc] initWithFrame:CGRectMake(40, yCoord, 600, 100)];
+        commentLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
         commentLabel.numberOfLines = 0;
         commentLabel.text = c.body;
         NSLog(@"comment body: %@", c.body);

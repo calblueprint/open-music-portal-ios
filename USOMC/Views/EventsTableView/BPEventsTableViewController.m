@@ -22,7 +22,7 @@
   self = [super initWithStyle:style];
   if (self) {
     // Custom initialization
-    [self setTitle:@"Events"];
+    [self setTitle:@"Select an Event:"];
   }
   return self;
 }
@@ -32,6 +32,7 @@
   UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
   [refresh addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
+    [self.tableView setNuiClass:@"eventsTableView"];
   [self.tableView addSubview:refresh];
   [self refreshTable:self.refreshControl];
 	// Do any additional setup after loading the view.
@@ -60,6 +61,7 @@
     NSInteger rowNum = (indexPath.row+1);
     NSLog(@"selected EventsTableViewController EventId: %d", (int)rowNum);
     self.subEvent = [[BPEventViewController alloc] init];
+    [self.subEvent.view setNuiClass:@"eventView"];
     [self.subEvent setName:cell_event.name];
     [self.subEvent setTitle:cell_event.name];
     [self.subEvent setContestants:cell_event.contestants];
@@ -87,6 +89,7 @@
   
   BPEvent *cell_event = [self.events objectAtIndex:indexPath.row];
   cell.textLabel.text = cell_event.name;
+    [cell setNuiClass:@"eventCell"];
     return cell;
 }
 
