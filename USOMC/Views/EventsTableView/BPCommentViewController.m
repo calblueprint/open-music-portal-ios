@@ -105,7 +105,7 @@ UILabel *prevCommentsLabel;
     NSLog(@"in CommentViewController submitAction eventNum is: %@", eventNum);
     NSDictionary *commentDict = @{@"judge":judgeNum, @"contestant":contestantNum, @"event":eventNum, @"body":commentsFromText};
     //UNCOMMENT WHEN A REAL JUDGE IS PASSED IN
-    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%@/contestant/%d/comments", self.eventId,[self.judge.judgeId stringValue], [self.contestant.contestantId intValue]];
+    NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/%@/contestant/%d/comment", self.eventId,[self.judge.judgeId stringValue], [self.contestant.contestantId intValue]];
     //NSString *pathString = [NSString stringWithFormat:@"events/%d/judge/8/contestant/%d/comment", (int)self.eventId, [self.contestant.contestantId intValue]];
     NSLog(@"Submit comment path is: %@", pathString);
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:nil
