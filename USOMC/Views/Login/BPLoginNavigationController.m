@@ -19,7 +19,7 @@
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+//    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
   }
   return self;
 }
