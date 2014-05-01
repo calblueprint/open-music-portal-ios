@@ -1,4 +1,4 @@
-### United States Open Music Competition - iOS App
+### Open Music Portal - iOS App
 
 #### Setup
 
